@@ -12,8 +12,8 @@
   <title>Spring 3.0 MVC Series: Index - ViralPatel.net</title>
 </head>
 <body>
-wszystko dziala wow wow
-<a href="hello">Say Hello</a>
-<a href="witaj">Przywitac Cie?</a>
+wszystko dziala wow wow <br/>
+<a href="hello">Say Hello</a> <br/>
+<a href="witaj">Przywitac Cie?</a> <br/>
 </body>
 </html>
