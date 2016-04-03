@@ -12,7 +12,7 @@
 </head>
 <body>
 <h2>Witam Cie.</h2>
-Powitanka ta niech Ci radosc da....asdas
+Powitanka ta niech Ci radosc da....asdasddddd
 <hr/>
 <b> ${powitanie} </b>
 </body>
