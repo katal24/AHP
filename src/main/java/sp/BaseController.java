@@ -16,7 +16,7 @@ public class BaseController {
 
     @RequestMapping("/hello")
     public String przykladModelu(Model model) {
-        model.addAttribute("message", "EEEEEEEEEEEEEEEEEwEEEEEEEEEEEEEEE");
+        model.addAttribute("message", "DAWID JEST DZIWNY XDD");
         return "hello";
     }
 
