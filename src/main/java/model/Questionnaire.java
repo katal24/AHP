@@ -10,35 +10,32 @@ public class Questionnaire {
     private int id;
     private String type, owner, name, problem, properties, summary;
 
-    /**
-    *Lista wariantów, z których użytkownik chce wybrać najlepszy
-     */
+//    *Lista wariantów, z których użytkownik chce wybrać najlepszy
     private List<String> items;
 
-    /**
-    *Lista cech, które są dla użytkownika ważne przy wyborze
-     */
+//    *Lista cech, które są dla użytkownika ważne przy wyborze
     private List<String> criteria;
 
-    /**
-     * Macierz z wartosciami ważności cech (kryteriów wyboru)
-     */
+    //Macierz z wartosciami ważności cech (kryteriów wyboru)
     private double[][] mainMatrix;
 
-    /**
-    * Wektor, w ktorym zapisane sa proprytety cech
-     */
+//    * Wektor, w ktorym zapisane sa proprytety cech
     private double[] mainPriority;
 
-    /**
-    *Wspolczynnik niespojnosci
-     */
+//    *Wspolczynnik niespojnosci
     private double mainFactor;
 
     private int propertiesNumber;
+    private int itemsNumber;
 
 
+    public int getItemsNumber() {
+        return itemsNumber;
+    }
 
+    public void setItemsNumber(int itemsNumber) {
+        this.itemsNumber = itemsNumber;
+    }
 
     public List<String> getItems() {
         return items;
