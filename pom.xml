@@ -8,7 +8,28 @@
     <artifactId>AHP</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <name>ActiveJDBC </name>
+    <packaging>jar</packaging>
+
+    <properties>
+        <activejdbc.version>1.4.10</activejdbc.version>
+        <!--<tomcat.version>7.0.63</tomcat.version>-->
+    </properties>
+
     <dependencies>
+
+        <dependency>
+            <groupId>org.javalite</groupId>
+            <artifactId>activejdbc</artifactId>
+            <version>${activejdbc.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>opensymphony</groupId>
+                    <artifactId>oscache</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
         <dependency>
             <groupId>org.jboss.forge.addon</groupId>
             <artifactId>angularjs</artifactId>

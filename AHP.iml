@@ -35,9 +35,12 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="JBoss 7.1.1.Final" level="application_server_libraries" />
     <orderEntry type="library" name="Spring-4.2.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.forge.addon:angularjs:forge-addon:2.1.5.Final" level="project" />
     <orderEntry type="library" name="angular-material" level="application" />
     <orderEntry type="library" name="jquery-2.1.1" level="application" />
     <orderEntry type="library" name="angular" level="application" />
+    <orderEntry type="library" name="Maven: org.javalite:activejdbc:1.4.10" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.5" level="project" />
+    <orderEntry type="library" name="Maven: org.javalite:javalite-common:1.4.10" level="project" />
+    <orderEntry type="library" name="Maven: org.jboss.forge.addon:angularjs:forge-addon:2.1.5.Final" level="project" />
   </component>
 </module>
