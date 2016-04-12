@@ -19,5 +19,26 @@
 	<servlet-mapping>
 		<servlet-name>spring</servlet-name>
 		<url-pattern>/</url-pattern>
+
 	</servlet-mapping>
+
+	<!--<context-param>-->
+		<!--<param-name>spring</param-name>-->
+		<!--<param-value>WEB-INF/view/spring-servlet.xml</param-value>-->
+	<!--</context-param>-->
+
+	<!--<listener>-->
+		<!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+	<!--</listener>-->
+
+	<!--<context-param>-->
+		<!--<param-name>contextConfigLocation</param-name>-->
+		<!--<param-value>/WEB-INF/view/spring-servlet.xml</param-value>-->
+	<!--</context-param>-->
+
+	<!--<listener>-->
+		<!--<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>-->
+	<!--</listener>-->
+
+
 </web-app>

@@ -9,10 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 //
 
-//@RequestMapping("/kontroler")
+//@RequestMapping("/")
 //@EnableAutoConfiguration
 @Controller
 public class BaseController {
+
+
+    @RequestMapping(value="/")
+    public String index() {
+        return "index";
+    }
+
 
     @RequestMapping("/hello")
     public String przykladModelu(Model model) {
