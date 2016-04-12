@@ -10,13 +10,33 @@
 <html ng-app>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-  <title>Spring 3.0 MVC Series: Index - ViralPatel.net</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="view/main.css">
+
+    <title>Spring 3.0 MVC Series: Index - ViralPatel.net</title>
 </head>
 <body>
+<div class="logo">
+    <img src="images/background.png">
+</div>
+
+<h1 class="home-heading">
+    <!-- Build free online questionnaires & decide! -->
+    A simple tool to help you decide!
+</h1>
+
+<p class="home-text">
+    Sign up now for FREE unlimited surveys, questions & responses.
+</p>
+
+<h2><button type="submit" class="btn btn-danger">Sign Up</button></h2>
+
 <input type="text" ng-model="name">
 <h2>Hello {{name}}!</h2>
 wszystko dziala wow wow <br/>
 <a href="hello">Say Hello</a> <br/>
 <a href="witaj">Przywitac Cie?</a> <br/>
+
+<script src="scripts/main.js"></script>
 </body>
 </html>
