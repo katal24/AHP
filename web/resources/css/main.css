@@ -1,3 +1,6 @@
+body {
+    background-image: url("../images/background.png");
+}
 .logo img{
     width:  100%;
     height: 100%;
@@ -25,7 +28,9 @@
     font-family: "Courier New", Courier, monospace;
 }
 
-
+.tlo {
+    background-color: #fff;
+}
 @media (min-width:800px) and (max-width:1024px) {
     .home-heading{
         position: absolute;

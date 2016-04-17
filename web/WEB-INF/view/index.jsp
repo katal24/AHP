@@ -30,31 +30,20 @@
 </head>
 
 <body ng-app="hello">
-    <div class="logo">
-        <img src="${pageContext.request.contextPath}/resources/images/background.png" alt="hhh">
-    </div>
 
-    <h1 class="home-heading">
-        <!-- Build free online questionnaires & decide! -->
-        A simple tool to help you decide!
-    </h1>
+<%--<div class="logo">--%>
+    <%--<img src="${pageContext.request.contextPath}/resources/images/background.png" alt="hhh">--%>
+<%--</div>--%>
 
-    <p class="home-text">
-        Sign up now for FREE unlimited surveys, questions & responses. <br/>
-    <button class="btn btn-danger"><a href="#/login">Sign up!</a></button>
-    </p>
+        <div ng-view>
+        </div>
 
-
-
-    <input type="text">
-    <h2>Hello {{message}}!</h2>
-    <div ng-view>
-    </div>
+<footer>
     wszystko dziala wow wow <br/>
     <a href="hello">Say Hello</a> <br/>
     <a href="witaj">Przywitac Cie?</a> <br/>
 
-
+</footer>
 
 </body>
 </html>
