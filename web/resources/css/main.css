@@ -54,52 +54,6 @@ body {
 }
 
 
-.buttonDarklogin {
-    border-radius: 4px;
-    background-color: #383f50;
-    border: none;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 20px;
-    padding: 15px;
-    width: 150px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
-    font-family: "Courier New", Courier, monospace;
-}
-
-
-.buttonDarklogin span, .buttonDarklogin span a{
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-    color: #FFFFFF;
-}
-
-
-.buttonDarklogin span a:after {
-    content: '>';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-    color: #FFFFFF;
-}
-
-.buttonDarklogin:hover span a {
-    padding-right: 25px;
-    text-decoration: none;
-
-}
-
-.buttonDarklogin:hover span a:after {
-    opacity: 1;
-    right: 0;
-}
-
 .home-heading{
     position: absolute;
     font-size: 55px;
@@ -247,4 +201,25 @@ h2 {
 .buttonDark:hover span a:after {
     opacity: 1;
     right: 0;
+}
+
+
+.buttonGreen {
+    background-color: #77cc6d;
+    width: 270px;
+
+}
+
+.buttonLogin {
+
+    font-family: "Courier New", Courier, monospace;
+    font-size: 15px;
+
+}
+
+.buttonNewAccount {
+
+    font-family: "Courier New", Courier, monospace;
+    font-size: 15px;
+
 }
