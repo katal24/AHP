@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+
     <%--<link rel="stylesheet" href="resources/css/main.css">--%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/main.css">
     <script src="https://code.angularjs.org/1.5.3/angular.js"></script>
@@ -31,10 +32,9 @@
 
 <body ng-app="hello">
 
-<div class="logo">
+<div class="logo navbar-fixed-top">
     <a href="#/"><img src="${pageContext.request.contextPath}/resources/images/whitelogo.png"></a>
     <li><a class="login-button-nav" href="#/login" ng-show="!authenticated">login</a></li>
-
 </div>
 
 
