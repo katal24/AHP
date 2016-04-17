@@ -31,19 +31,23 @@
 
 <body ng-app="hello">
 
-<%--<div class="logo">--%>
-    <%--<img src="${pageContext.request.contextPath}/resources/images/background.png" alt="hhh">--%>
-<%--</div>--%>
+<div class="logo">
+    <a href="#/"><img src="${pageContext.request.contextPath}/resources/images/whitelogo.png"></a>
+    <li><a class="login-button-nav" href="#/login" ng-show="!authenticated">login</a></li>
+
+</div>
+
 
         <div ng-view>
+
         </div>
 
-<footer>
-    wszystko dziala wow wow <br/>
-    <a href="hello">Say Hello</a> <br/>
-    <a href="witaj">Przywitac Cie?</a> <br/>
+<%--<footer>--%>
+    <%--wszystko dziala wow wow <br/>--%>
+    <%--<a href="hello">Say Hello</a> <br/>--%>
+    <%--<a href="witaj">Przywitac Cie?</a> <br/>--%>
 
-</footer>
+<%--</footer>--%>
 
 </body>
 </html>
