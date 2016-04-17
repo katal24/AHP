@@ -1,22 +1,34 @@
 var myApp = angular.module('hello', [ 'ngRoute' ]);
 myApp.config(function($routeProvider) {
     $routeProvider.when('/', {
-        templateUrl : 'view/home.jsp',
-        controller : 'myController'
+        templateUrl : 'resources/view/home.html',
+        controller : 'homeController'
     }).when('/login', {
         templateUrl : 'resources/view/login.html',
-        controller : 'aboutController'
-    }).when('/contact', {
-        templateUrl : 'view/contact.jsp',
-        controller : 'contactController'
+        controller : 'loginController'
+    }).when('/createSurvey', {
+        templateUrl : 'resources/view/createSurvey.html',
+        controller : 'createSurveyController'
+    }).when('/newAccount', {
+        templateUrl : 'resources/view/newAccount.html',
+        controller : 'newAccountController'
+    }).when('/userPanel', {
+        templateUrl : 'resources/view/userPanel.html',
+        controller : 'userPanelController'
     });
 });
-myApp.controller('myController', function($scope) {
-    $scope.message = 'Everyone come and see how good I look!';
+myApp.controller('homeController', function($scope) {
+    $scope.message = 'Sign up!';
 });
-myApp.controller('aboutController', function($scope) {
-    $scope.message = 'Look! I am an about page.';
+myApp.controller('loginController', function($scope) {
+    $scope.message = 'Login in';
 });
-myApp.controller('contactController', function($scope) {
-    $scope.message = 'Contact us! JK. This is just a demo.';
+myApp.controller('createSurveyController', function($scope) {
+    $scope.message = 'Create survey';
+});
+myApp.controller('newAccountController', function($scope) {
+    $scope.message = 'New Account';
+});
+myApp.controller('userPanelController', function($scope) {
+    $scope.message = 'Your Panel';
 });
