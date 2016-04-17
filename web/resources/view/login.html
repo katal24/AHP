@@ -1,0 +1,21 @@
+<div class="form-container">
+
+    <!--ma kontoler nawigation -->
+    <form role="form" ng-submit="login()">
+        <h4 class="color-white text-center">Zaloguj się</h4>
+        <br>
+        <div class="form-group">
+            <label for="username" class="color-white">E-mail:</label> <input type="text"
+                                                                             class="form-control" id="username" name="username" ng-model="credentials.username"/>
+        </div>
+        <div class="form-group">
+            <label for="password" class="color-white">Hasło:</label> <input type="password"
+                                                                            class="form-control" id="password" name="password" ng-model="credentials.password"/>
+        </div>
+        <button type="submit" class="btn btn-success">Zaloguj</button>
+        <br>
+        <br>
+        <p class="color-white">Nie masz jeszcze konta? <a href="#/newAccount">Zarejestruj się!</a></p>
+    </form>
+
+</div>

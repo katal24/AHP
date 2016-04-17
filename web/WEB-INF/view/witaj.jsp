@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Powitanka ta</title>
+    <title>JAK JESTES LOG IN</title>
 </head>
 <body>
 <h2>Witam Cie.</h2>

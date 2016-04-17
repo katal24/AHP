@@ -1,28 +1,22 @@
-
-angular.module('hello', ['ngRoute']).config(function ($routeProvider, $httpProvider) {
-
-    //wstrzknelimsy ngroute do modulu
-
-    //tu sie ustawia kontoler i szablon html w zaleznosci od mapowania
+var myApp = angular.module('hello', [ 'ngRoute' ]);
+myApp.config(function($routeProvider) {
     $routeProvider.when('/', {
-        //index to slash
-        templateUrl: 'index.jsp',
-        controller: 'home'
+        templateUrl : 'view/home.jsp',
+        controller : 'myController'
+    }).when('/login', {
+        templateUrl : 'resources/view/login.html',
+        controller : 'aboutController'
+    }).when('/contact', {
+        templateUrl : 'view/contact.jsp',
+        controller : 'contactController'
     });
-
-
-    //<wylacza okno dialogowe popup przegladarki pytajace o haslo
-    $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
-}).controller('home', function ($scope, $http, $rootScope) {
-
-    if ($scope.authenticated) {
-        $http.get('/getResources/').success(function (data) {
-
-            $scope.greeting = data;
-
-
-        });
-
-    }
+});
+myApp.controller('myController', function($scope) {
+    $scope.message = 'Everyone come and see how good I look!';
+});
+myApp.controller('aboutController', function($scope) {
+    $scope.message = 'Look! I am an about page.';
+});
+myApp.controller('contactController', function($scope) {
+    $scope.message = 'Contact us! JK. This is just a demo.';
 });

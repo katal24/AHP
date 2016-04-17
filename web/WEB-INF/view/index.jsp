@@ -9,43 +9,52 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<html ng-app>
+<html>
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+
+
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <%--<link rel="stylesheet" href="resources/css/main.css">--%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/main.css">
+    <script src="https://code.angularjs.org/1.5.3/angular.js"></script>
+    <script src="https://code.angularjs.org/1.5.3/angular-route.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 
-    <spring:url value="/resources/js/main.js" var="mainJs" />
 
-    <title>Spring 3.0 MVC Series: Index - ViralPatel.net</title>
+
+    <title>Questionnaire</title>
 </head>
-<body>
-<div class="logo">
-    <img src="${pageContext.request.contextPath}/resources/images/background.png" alt="hhh">
-</div>
 
-<h1 class="home-heading">
-    <!-- Build free online questionnaires & decide! -->
-    A simple tool to help you decide!
-</h1>
+<body ng-app="hello">
+    <div class="logo">
+        <img src="${pageContext.request.contextPath}/resources/images/background.png" alt="hhh">
+    </div>
 
-<p class="home-text">
-    Sign up now for FREE unlimited surveys, questions & responses. <br/>
-<button type="submit" class="btn btn-danger">Sign Up</button>
-</p>
+    <h1 class="home-heading">
+        <!-- Build free online questionnaires & decide! -->
+        A simple tool to help you decide!
+    </h1>
+
+    <p class="home-text">
+        Sign up now for FREE unlimited surveys, questions & responses. <br/>
+    <button class="btn btn-danger"><a href="#/login">Sign up!</a></button>
+    </p>
 
 
 
-<input type="text" ng-model="name">
-<h2>Hello {{name}}!</h2>
-wszystko dziala wow wow <br/>
-<a href="hello">Say Hello</a> <br/>
-<a href="witaj">Przywitac Cie?</a> <br/>
+    <input type="text">
+    <h2>Hello {{message}}!</h2>
+    <div ng-view>
+    </div>
+    wszystko dziala wow wow <br/>
+    <a href="hello">Say Hello</a> <br/>
+    <a href="witaj">Przywitac Cie?</a> <br/>
 
-<%--<script src="resources/scripts/main.js"></script>--%>
+
+
 </body>
 </html>
