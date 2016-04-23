@@ -77,9 +77,9 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $locatio
             $rootScope.authenticated = false;
             $location.path("/");
         }).error(function (data) {"Logout failed"
-        $rootScope.authenticated = false;
-    });
-}
+            $rootScope.authenticated = false;
+        });
+    }
 
 });
 myApp.controller('createSurveyController', function($scope) {

@@ -1,8 +1,11 @@
 package sp;
 
+import model.Questionnaire;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Arrays;
 
 /**
  * Created by dawid on 02.04.16.
@@ -24,7 +27,14 @@ public class BaseController {
     @RequestMapping("/hello")
     public String przykladModelu(Model model) {
         model.addAttribute("message", "DAWID JEST DZIWNY XDD");
+
+        Questionnaire quest = new Questionnaire();
+        quest.makeQuestionnaire();
+        System.out.println(quest.getVariants());
+        System.out.println(Arrays.deepToString(quest.getMainMatrix()));
+
         return "hello";
+
     }
 
     @RequestMapping("/witaj")
