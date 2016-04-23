@@ -1,6 +1,7 @@
 package sp;
 
 import model.Questionnaire;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,14 +14,23 @@ import java.util.Arrays;
 //
 
 //@RequestMapping("/")
-//@EnableAutoConfiguration
+@EnableAutoConfiguration
 @Controller
 public class BaseController {
 
 
     @RequestMapping(value="/")
     public String index() {
+        Questionnaire quest = new Questionnaire();
+        quest.makeQuestionnaire();
+        System.out.println("            iiiiiindeeeeeeeeeeeeeeeeeeeexxxxxxxxxxxxxxxxxxxx");
         return "index";
+    }
+
+    @RequestMapping(value="/user")
+    public String login() {
+        System.out.println("           LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOGIN");
+        return "login";
     }
 
 
@@ -30,11 +40,11 @@ public class BaseController {
 
         Questionnaire quest = new Questionnaire();
         quest.makeQuestionnaire();
+        System.out.println("            HEEEEEEEEEEEEEEEEEEEEEEEEEEEELLLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
         System.out.println(quest.getVariants());
         System.out.println(Arrays.deepToString(quest.getMainMatrix()));
 
         return "hello";
-
     }
 
     @RequestMapping("/witaj")

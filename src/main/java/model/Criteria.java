@@ -1,6 +1,6 @@
 package model;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class Criteria {
 
+    // Lista zawierajaca kryteria wyboru
     private List<String> criteria; // = new LinkedList<String>();
 
     public void recznie(){
@@ -23,7 +24,7 @@ public class Criteria {
     }
 
     public Criteria(List<String> list){
-        criteria = new LinkedList<String>();
+        criteria = new ArrayList<String>();
 
         for(String s : list){
             criteria.add(s);
@@ -31,7 +32,7 @@ public class Criteria {
     }
 
     public Criteria(String... args){
-        criteria = new LinkedList<String>();
+        criteria = new ArrayList<String>();
         for(String s : args){
             criteria.add(s);
         }
@@ -44,5 +45,13 @@ public class Criteria {
             wiersz += s.toString() + "\t\t";
         }
         return wiersz;
+    }
+
+    public List<String> getCriteria() {
+        return criteria;
+    }
+
+    public void setCriteria(List<String> criteria) {
+        this.criteria = criteria;
     }
 }
