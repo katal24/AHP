@@ -22,6 +22,7 @@
       <root url="jar://$PROJECT_DIR$/lib/spring-web-4.2.5.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/spring-webmvc-4.2.5.RELEASE.jar!/" />
       <root url="jar://$USER_HOME$/Pobrane/Jama-1.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Jama-1.0.3.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/../../../javax.servlet.jsp.jstl-api-1.2.1-javadoc.jar!/" />
