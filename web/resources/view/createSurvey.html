@@ -1,72 +1,66 @@
 <div ng-app="hello" ng-controller="createSurveyController">
 
-    <div class="leftSidebar">
-        <div id="wrapper">
 
-            <!-- Sidebar -->
-            <div id="sidebar-wrapper">
-                <ul class="sidebar-nav">
-                    <li class="sidebar-brand">
-                        <a>
-                            My surveys
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#surveyName">Survey name</a>
-                    </li>
-                    <li>
-                        <a href="#">Categories</a>
-                    </li>
-                    <li>
-                        <a href="#">Variants</a>
-                    </li>
-                    <li>
-                        <a href="#">Save changes</a>
-                    </li>
+    <div id="wrapper">
 
-                </ul>
-            </div>
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a>
+                        My surveys
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Survey name</a>
+                </li>
+                <li>
+                    <a href="#">Categories</a>
+                </li>
+                <li>
+                    <a href="#">Variants</a>
+                </li>
+                <li>
+                    <a href="#">Save changes</a>
+                </li>
+            </ul>
         </div>
-    </div>
+        <!-- /#sidebar-wrapper -->
 
-
-    <div class="dashboard container">
-
-        <form class="form-horizontal">
-            <div class="form-group">
-                <label for="surveyName" class="col-sm-2 control-label">Survey name</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="surveyName" placeholder="e.g. Which car should I take?" name="surveyName" ng-model="">
-                </div>
-            </div>
-
-
-        </form>
-
-
-        <div class="row">
-            <div class="control-group" id="fields">
-                <label class="control-label" for="field1">Nice Multiple Form Fields</label>
-                <div class="controls">
-                    <form role="form" autocomplete="off">
-                        <div class="entry input-group col-xs-3">
-                            <input class="form-control" name="fields[]" type="text" placeholder="Type something" />
-                    	<span class="input-group-btn">
-                            <button class="btn btn-success btn-add" type="button">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </span>
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="surveyName" class="col-sm-2 control-label">Survey name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="surveyName" placeholder="e.g. Which car should I take?" name="surveyName" ng-model="">
+                            </div>
                         </div>
                     </form>
-                    <br>
-                    <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another form field :)</small>
+
+
+                    <form role="form" action="/wohoo" method="POST">
+                        <label>Stuff</label>
+                        <div class="multi-field-wrapper">
+                            <div class="multi-fields">
+                                <div class="multi-field">
+                                    <input type="text" name="stuff[]">
+                                    <button type="button" class="remove-field">Remove</button>
+                                </div>
+                            </div>
+                            <button type="button" class="add-field">Add field</button>
+                        </div>
+                    </form>
+
+
+
                 </div>
             </div>
         </div>
-
-
+        <!-- /#page-content-wrapper -->
 
     </div>
-
 
 </div>

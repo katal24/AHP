@@ -225,23 +225,11 @@ h2 {
 
 }
 
-.leftSidebar {
-    position:absolute;
-    left:0; top:78px; bottom: 0;
-    width: 250px;
-    background-color: #FFFFFF;
-}
 
-.dashboard {
-    position: absolute;
-    left:250px; top:78px; right:0; bottom:0;
-    background-color: #606573;
-    padding-top: 10px;
-    padding-left: 10px;
-}
-
+/*createSurvey i userPanel dashboard*/
 #wrapper {
     padding-left: 0;
+    top: 78px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -260,11 +248,11 @@ h2 {
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #383f50;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    background-color: #383f50;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -275,6 +263,7 @@ h2 {
     width: 100%;
     position: absolute;
     padding: 15px;
+    top: 78px;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -290,7 +279,7 @@ h2 {
     width: 250px;
     margin: 0;
     padding: 0;
-    /*list-style: none;*/
+    list-style: none;
 }
 
 .sidebar-nav li {
@@ -317,7 +306,7 @@ h2 {
 
 .sidebar-nav > .sidebar-brand {
     height: 65px;
-    font-size: 23px;
+    font-size: 18px;
     line-height: 60px;
 }
 
@@ -326,7 +315,7 @@ h2 {
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-    color: #ffffff;
+    color: #fff;
     background: none;
 }
 
@@ -341,6 +330,7 @@ h2 {
 
     #sidebar-wrapper {
         width: 250px;
+        top: 78px;
     }
 
     #wrapper.toggled #sidebar-wrapper {
@@ -350,6 +340,8 @@ h2 {
     #page-content-wrapper {
         padding: 20px;
         position: relative;
+
+
     }
 
     #wrapper.toggled #page-content-wrapper {
@@ -358,13 +350,4 @@ h2 {
     }
 }
 
-
-.entry:not(:first-of-type)
-{
-    margin-top: 10px;
-}
-
-.glyphicon
-{
-    font-size: 12px;
-}
+/*createSurvey i userPanel dashboard KONIEC*/

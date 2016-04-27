@@ -84,30 +84,17 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $locatio
 });
 myApp.controller('createSurveyController', function($scope) {
     $scope.message = 'Create survey';
-    $(function()
-    {
-        $(document).on('click', '.btn-add', function(e)
-        {
-            e.preventDefault();
 
-            var controlForm = $('.controls form:first'),
-                currentEntry = $(this).parents('.entry:first'),
-                newEntry = $(currentEntry.clone()).appendTo(controlForm);
-
-            newEntry.find('input').val('');
-            controlForm.find('.entry:not(:last) .btn-add')
-                .removeClass('btn-add').addClass('btn-remove')
-                .removeClass('btn-success').addClass('btn-danger')
-                .html('<span class="glyphicon glyphicon-minus"></span>');
-        }).on('click', '.btn-remove', function(e)
-        {
-            $(this).parents('.entry:first').remove();
-
-            e.preventDefault();
-            return false;
+    $('.multi-field-wrapper').each(function() {
+        var $wrapper = $('.multi-fields', this);
+        $(".add-field", $(this)).click(function(e) {
+            $('.multi-field:first-child', $wrapper).clone(true).appendTo($wrapper).find('input').val('').focus();
+        });
+        $('.multi-field .remove-field', $wrapper).click(function() {
+            if ($('.multi-field', $wrapper).length > 1)
+                $(this).parent('.multi-field').remove();
         });
     });
-
 
 });
 myApp.controller('newAccountController', function($scope) {
