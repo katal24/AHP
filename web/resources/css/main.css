@@ -171,6 +171,7 @@ h2 {
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
+    font-family: "Courier New", Courier, monospace;
 }
 
 
@@ -351,3 +352,11 @@ h2 {
 }
 
 /*createSurvey i userPanel dashboard KONIEC*/
+
+* {
+.border-radius(0) !important;
+}
+
+#field {
+    margin-bottom:20px;
+}
