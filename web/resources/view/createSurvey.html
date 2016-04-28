@@ -30,92 +30,62 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <form class="form-horizontal">
-                <div class="form-group">
-                    <label for="surveyName" class="col-sm-2 control-label">survey name</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="surveyName" placeholder="e.g. Which car should I take?" name="surveyName">
-                    </div>
-                </div>
-                <br/>
-                <div class="form-group">
-                    <label for="category1" class="col-sm-2 control-label">category 1.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="category1" placeholder="e.g. price" name="category1">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="category2" class="col-sm-2 control-label">category 2.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="category2" placeholder="e.g. fuel" name="category2">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="category3" class="col-sm-2 control-label">category 3.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="category3" placeholder="e.g. color" name="category3">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="category4" class="col-sm-2 control-label">category 4.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="category4" placeholder="other" name="category4">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="category5" class="col-sm-2 control-label">category 5.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="category5" placeholder="other" name="category5">
-                    </div>
-                </div>
-                <br/>
-                <div class="form-group">
-                    <label for="variant1" class="col-sm-2 control-label">variant 1.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="variant1" placeholder="e.g. Fiat" name="variant1">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="variant2" class="col-sm-2 control-label">variant 2.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="variant2" placeholder="e.g. Toyota" name="variant2">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="variant3" class="col-sm-2 control-label">variant 3.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="variant3" placeholder="e.g. BMW" name="variant3">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="variant4" class="col-sm-2 control-label">variant 4.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="variant4" placeholder="e.g. Land Rover" name="variant4">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="variant5" class="col-sm-2 control-label">variant 5.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="variant5" placeholder="e.g. Mazda" name="variant5">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="buttonDark buttonGreen" data-ng-click="getSurveydatas()"><span><a href="#/userPanel">SAVE CHANGES </a></span></button>
-                    </div>
-                </div>
-            </form>
 
 
+
+                <div class="table-responsive">
+                    <table class="table-responsive">
+                        <tr>
+                            <td><input type="text" class="form-control" id="variant5" value="Categories/Variants" name="variant5"></td>
+                            <td><input type="text" class="form-control" id="category1" placeholder="e.g. price" name="category1"></td>
+                            <td><input type="text" class="form-control" id="category2" placeholder="e.g. fuel" name="category2"></td>
+                            <td><input type="text" class="form-control" id="category3" placeholder="e.g. color" name="category3"></td>
+                            <td><input type="text" class="form-control" id="category4" placeholder="other" name="category4"></td>
+                            <td><input type="text" class="form-control" id="category5" placeholder="other" name="category5"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" id="variant1" placeholder="e.g. Fiat" name="variant1"></td>
+                            <td><input type="text" class="form-control" id="catVar1" placeholder="e.g. 1500" name="catVar1"></td>
+                            <td><input type="text" class="form-control" id="catVar2" placeholder="e.g. diesel" name="catVar2"></td>
+                            <td><input type="text" class="form-control" id="catVar3" placeholder="e.g. black" name="catVar3"></td>
+                            <td><input type="text" class="form-control" id="catVar4" placeholder="other" name="catVar4"></td>
+                            <td><input type="text" class="form-control" id="catVar5" placeholder="other" name="catVar5"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" id="variant2" placeholder="e.g. Toyota" name="variant2"></td>
+                            <td><input type="text" class="form-control" id="catVar1" placeholder="e.g. 1500" name="catVar1"></td>
+                            <td><input type="text" class="form-control" id="catVar2" placeholder="e.g. diesel" name="catVar2"></td>
+                            <td><input type="text" class="form-control" id="catVar3" placeholder="e.g. black" name="catVar3"></td>
+                            <td><input type="text" class="form-control" id="catVar4" placeholder="other" name="catVar4"></td>
+                            <td><input type="text" class="form-control" id="catVar5" placeholder="other" name="catVar5"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" id="variant3" placeholder="e.g. BMW" name="variant3"></td>
+                            <td><input type="text" class="form-control" id="catVar1" placeholder="e.g. 1500" name="catVar1"></td>
+                            <td><input type="text" class="form-control" id="catVar2" placeholder="e.g. diesel" name="catVar2"></td>
+                            <td><input type="text" class="form-control" id="catVar3" placeholder="e.g. black" name="catVar3"></td>
+                            <td><input type="text" class="form-control" id="catVar4" placeholder="other" name="catVar4"></td>
+                            <td><input type="text" class="form-control" id="catVar5" placeholder="other" name="catVar5"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" id="variant4" placeholder="e.g. Land Rover" name="variant4"></td>
+                            <td><input type="text" class="form-control" id="catVar1" placeholder="e.g. 1500" name="catVar1"></td>
+                            <td><input type="text" class="form-control" id="catVar2" placeholder="e.g. diesel" name="catVar2"></td>
+                            <td><input type="text" class="form-control" id="catVar3" placeholder="e.g. black" name="catVar3"></td>
+                            <td><input type="text" class="form-control" id="catVar4" placeholder="other" name="catVar4"></td>
+                            <td><input type="text" class="form-control" id="catVar5" placeholder="other" name="catVar5"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" id="variant5" placeholder="e.g. Mazda" name="variant5"></td>
+                            <td><input type="text" class="form-control" id="catVar1" placeholder="e.g. 1500" name="catVar1"></td>
+                            <td><input type="text" class="form-control" id="catVar2" placeholder="e.g. diesel" name="catVar2"></td>
+                            <td><input type="text" class="form-control" id="catVar3" placeholder="e.g. black" name="catVar3"></td>
+                            <td><input type="text" class="form-control" id="catVar4" placeholder="other" name="catVar4"></td>
+                            <td><input type="text" class="form-control" id="catVar5" placeholder="other" name="catVar5"></td>
+                    </table>
+                </div>
+
+            </div>
 
         </div>
         <!-- /#page-content-wrapper -->
