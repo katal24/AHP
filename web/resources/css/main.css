@@ -197,6 +197,7 @@ h2 {
 .buttonDark:hover span a {
     padding-right: 25px;
     text-decoration: none;
+    color: #ffffff;
 
 }
 
@@ -224,6 +225,19 @@ h2 {
     font-family: "Courier New", Courier, monospace;
     font-size: 15px;
 
+}
+
+.buttonNext{
+    font-size: 15px;
+    text-decoration: none;
+    float: right;
+    width: 100px;
+    color: #ffffff;
+    padding: 10px;
+}
+.buttonNext:hover {
+    text-decoration: none;
+    color: white;
 }
 
 

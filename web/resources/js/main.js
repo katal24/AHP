@@ -88,10 +88,11 @@ myApp.controller('createSurveyController', function($scope) {
     $scope.getSurveydatas = function () {
 
         var surveyName = document.getElementById('surveyName').value;
-        surveyName.innerHTML;
+        $scope.surveyName = surveyName;
 
         
     }
+    
 
 });
 myApp.controller('newAccountController', function($scope) {
