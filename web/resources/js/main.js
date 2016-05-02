@@ -109,8 +109,11 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
         var lastItem = $scope.variants.length-1;
         $scope.variants.splice(lastItem);
     };
-    
-    $scope.getSurveyData = function () {
+
+
+
+
+    $scope.getSurveydata = function () {
 
         var cs = {
             surveyName: $scope.surveyName
@@ -121,12 +124,13 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
         console.log("GetSurvaysData sdsd");
 
 
-        $http.post('${pageContext.request.contextPath}/main/java/sp/BaseController/setSurveysData/', cs).success(function (data) {
+        $http.post('/cosik_war_exploded/#/setSurveysData/', cs).success(function (data) {
+          //  $http.post('', cs).success(function (data) {
 
             // $rootScope.errorEditProfile = false;
            // $rootScope.EditProfileOK = true;
-            console.log("GetSurvaysData sdsd");
-            $window.location.href = '#/';
+            console.log("udalo sie w http.post");
+           // $window.location.href = '#/';
 
 
         }).error(function (data) {
