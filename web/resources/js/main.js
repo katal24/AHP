@@ -124,7 +124,7 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
         console.log("GetSurvaysData sdsd");
 
 
-        $http.post('/setSurveysData/', cs).success(function (data) {
+        $http.post('/cosik_war_exploded/#/setSurveysData/', cs).success(function (data) {
 
             // $rootScope.errorEditProfile = false;
            // $rootScope.EditProfileOK = true;

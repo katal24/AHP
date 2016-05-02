@@ -58,7 +58,7 @@ public class BaseController {
         return "witaj";
     }
 
-    @RequestMapping(value = "/setSurveysData/", method = RequestMethod.POST)
+    @RequestMapping(value = "/cosik_war_exploded/#/setSurveysData/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public void setSurveysData(@RequestBody NewQuest cs) throws ClassNotFoundException, SQLException {
 
