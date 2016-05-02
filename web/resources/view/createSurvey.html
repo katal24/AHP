@@ -113,57 +113,20 @@
 
                 <div ng-show="showmeData">
                 <div class="form-group" >
-                    <table class="table1">
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th scope="col" abbr="Starter">{{category1}}</th>
-                            <th scope="col" abbr="Medium">{{category2}}</th>
-                            <th scope="col" abbr="Business">{{category3}}</th>
-                            <th scope="col" abbr="Deluxe">{{category4}}</th>
-                            <th scope="col" abbr="Deluxe">{{category5}}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">{{variant1}}</th>
-                            <td>512 MB</td>
-                            <td><input type="text" class="form-control" id="cat" placeholder="e.g. color" name="cat" ng-model="cat"></td>
-                            <td><input type="text" class="form-control" id="cat" placeholder="e.g. color" name="cat" ng-model="cat"></td>
-                            <td><input type="text" class="form-control" id="cat" placeholder="e.g. color" name="cat" ng-model="cat"></td>
-                            <td><input type="text" class="form-control" id="cat" placeholder="e.g. color" name="cat" ng-model="cat"></td>
+                    <fieldset  data-ng-repeat="choice in choices">
+                        <select>
+                            <option>Mobile</option>
+                            <option>Office</option>
+                            <option>Home</option>
+                        </select>
+                        <input type="text" ng-model="choice.name" name="" placeholder="Enter mobile number">
+                        <button class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
+                    </fieldset>
+                    <button class="addfields" ng-click="addNewChoice()">Add fields</button>
 
-                        </tr>
-                        <tr>
-                            <th scope="row">{{variant2}}</th>
-                            <td><input type="text" class="form-control" id="cat" placeholder="e.g. color" name="cat" ng-model="cat"></td>
-                            <td><input type="text" class="form-control" id="cat" placeholder="e.g. color" name="cat" ng-model="cat"></td>
-                            <td><input type="text" class="form-control" id="cat" placeholder="e.g. color" name="cat" ng-model="cat"></td>
-                            <td><input type="text" class="form-control" id="cat" placeholder="e.g. color" name="cat" ng-model="cat"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">{{variant3}}</th>
-                            <td>Unlimited</td>
-                            <td>Unlimited</td>
-                            <td>Unlimited</td>
-                            <td>Unlimited</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">{{variant4}}</th>
-                            <td>19.90 $</td>
-                            <td>12.90 $</td>
-                            <td>free</td>
-                            <td>free</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">{{variant5}}</th>
-                            <td><span class="check"></span></td>
-                            <td><span class="check"></span></td>
-                            <td><span class="check"></span></td>
-                            <td><span class="check"></span></td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div id="choicesDisplay">
+                        {{ choices }}
+                    </div>
 
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="buttonDark buttonGreen" data-ng-click="getSurveydata()">SAVE CHANGES</button>
