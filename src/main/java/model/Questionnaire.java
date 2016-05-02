@@ -263,7 +263,7 @@ public double sumArray(double[] array){
         this.variantsString = variantsString;
     }
 
-    public static void setSurvaysData(NewQuest ep) {
-
+    public static void setSurvaysData(NewQuest cs) {
+        System.out.println("        JEEEEEEEEEEEEEEEEEEEEESTEM W JAAAAAAAAAAAAAAAAAAAAAAAAAVIEEEEEEEEEEEEEEEEEEEE");
     }
 }

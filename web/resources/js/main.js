@@ -82,7 +82,7 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $locatio
     }
 
 });
-myApp.controller('createSurveyController', function($scope) {
+myApp.controller('createSurveyController', function($scope, $window) {
     $scope.message = 'Create survey';
 
     $scope.categories = [{id: 'category1'}, {id: 'category2'}];
@@ -115,12 +115,26 @@ myApp.controller('createSurveyController', function($scope) {
 
     $scope.getSurveydata = function () {
 
-        var ep = {
+        var cs = {
             surveyName: $scope.surveyName,
             categories: $scope.categories,
-            variants: $scope.edProf.variants
+            variants: $scope.variants
         };
 
+        $http.post('/setSurvaysData/', ep).success(function (data) {
+
+            // $rootScope.errorEditProfile = false;
+           // $rootScope.EditProfileOK = true;
+            $window.location.href = '#/';
+
+
+        }).error(function (data) {
+            console.log("Setting up account failed");
+           // $rootScope.errorEditProfile = true;
+
+
+
+        });
         
     }
     
