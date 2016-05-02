@@ -116,7 +116,7 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
     $scope.getSurveydata = function () {
 
         var cs = {
-            surveyName: $scope.surveyName,
+            surveyName: $scope.surveyName
            // categories: $scope.categories,
            // variants: $scope.variants
         };
