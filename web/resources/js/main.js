@@ -125,6 +125,7 @@ myApp.controller('createSurveyController', function($scope, $window) {
 
             // $rootScope.errorEditProfile = false;
            // $rootScope.EditProfileOK = true;
+            console.log("GetSurvaysData sdsd");
             $window.location.href = '#/';
 
 
