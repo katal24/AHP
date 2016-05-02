@@ -82,7 +82,7 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $locatio
     }
 
 });
-myApp.controller('createSurveyController', function($scope, $window) {
+myApp.controller('createSurveyController', function($scope, $window, $http) {
     $scope.message = 'Create survey';
 
     $scope.categories = [{id: 'category1'}, {id: 'category2'}];
