@@ -121,7 +121,7 @@ myApp.controller('createSurveyController', function($scope, $window) {
             variants: $scope.variants
         };
 
-        $http.post('/setSurvaysData/', ep).success(function (data) {
+        $http.post('/setSurvaysData/', cs).success(function (data) {
 
             // $rootScope.errorEditProfile = false;
            // $rootScope.EditProfileOK = true;
