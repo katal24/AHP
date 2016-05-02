@@ -8,9 +8,7 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a>
-                        Steps
-                    </a>
+                    <a href="" ng-click="showmeSurveyname=false; showmeCategories=false; showmeVariants=false; showmeData=false">Steps</a>
                 </li>
                 <li>
                     <a href="" ng-click="showmeSurveyname=true; showmeCategories=false; showmeVariants=false; showmeData=false">Step 1. Survey name</a>
@@ -22,7 +20,7 @@
                     <a href="" ng-click="showmeVariants=true; showmeSurveyname=false; showmeCategories=false; showmeData=false">Step 3. Variants</a>
                 </li>
                 <li>
-                    <a href="" ng-click="showmeData=true; showmeSurveyname=false; showmeCategories=false; showmeVariants=false">Step 4. Fill data</a>
+                    <a href="" ng-click="showmeData=true; showmeSurveyname=false; showmeCategories=false; showmeVariants=false">Step 4. Complete data</a>
                 </li>
             </ul>
         </div>
@@ -115,8 +113,58 @@
 
                 <div ng-show="showmeData">
                 <div class="form-group" >
-                    JDLJFKJKDJFD
-                    {{surveyName}}
+                    <table class="table1">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th scope="col" abbr="Starter">{{category1}}</th>
+                            <th scope="col" abbr="Medium">{{category2}}</th>
+                            <th scope="col" abbr="Business">{{category3}}</th>
+                            <th scope="col" abbr="Deluxe">{{category4}}</th>
+                            <th scope="col" abbr="Deluxe">{{category5}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">{{variant1}}</th>
+                            <td>512 MB</td>
+                            <td><input type="text" class="form-control" id="cat" placeholder="e.g. color" name="cat" ng-model="cat"></td>
+                            <td><input type="text" class="form-control" id="cat" placeholder="e.g. color" name="cat" ng-model="cat"></td>
+                            <td><input type="text" class="form-control" id="cat" placeholder="e.g. color" name="cat" ng-model="cat"></td>
+                            <td><input type="text" class="form-control" id="cat" placeholder="e.g. color" name="cat" ng-model="cat"></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">{{variant2}}</th>
+                            <td><input type="text" class="form-control" id="cat" placeholder="e.g. color" name="cat" ng-model="cat"></td>
+                            <td><input type="text" class="form-control" id="cat" placeholder="e.g. color" name="cat" ng-model="cat"></td>
+                            <td><input type="text" class="form-control" id="cat" placeholder="e.g. color" name="cat" ng-model="cat"></td>
+                            <td><input type="text" class="form-control" id="cat" placeholder="e.g. color" name="cat" ng-model="cat"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{{variant3}}</th>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{{variant4}}</th>
+                            <td>19.90 $</td>
+                            <td>12.90 $</td>
+                            <td>free</td>
+                            <td>free</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{{variant5}}</th>
+                            <td><span class="check"></span></td>
+                            <td><span class="check"></span></td>
+                            <td><span class="check"></span></td>
+                            <td><span class="check"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="buttonDark buttonGreen" data-ng-click="getSurveydata()">SAVE CHANGES</button>
                     </div>
