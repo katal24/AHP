@@ -264,7 +264,7 @@ public double sumArray(double[] array){
         this.variantsString = variantsString;
     }
 
-    public static void setSurvaysData(@RequestBody NewQuest cs) {
+    public static void setSurveysData(@RequestBody NewQuest cs) {
         System.out.println("        JEEEEEEEEEEEEEEEEEEEEESTEM W JAAAAAAAAAAAAAAAAAAAAAAAAAVIEEEEEEEEEEEEEEEEEEEE");
     }
 }
