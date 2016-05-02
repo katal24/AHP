@@ -85,20 +85,35 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $locatio
 myApp.controller('createSurveyController', function($scope) {
     $scope.message = 'Create survey';
 
-    $scope.choices = [{id: 'choice1'}, {id: 'choice2'}];
+    $scope.categories = [{id: 'category1'}, {id: 'category2'}];
 
-    $scope.addNewChoice = function() {
-        var newItemNo = $scope.choices.length+1;
-        $scope.choices.push({'id':'choice'+newItemNo});
+    $scope.addNewCategory = function() {
+        var newItemNo = $scope.categories.length+1;
+        $scope.categories.push({'id':'category'+newItemNo});
     };
 
-    $scope.removeChoice = function() {
-        var lastItem = $scope.choices.length-1;
-        $scope.choices.splice(lastItem);
+    $scope.removeCategory = function() {
+        var lastItem = $scope.categories.length-1;
+        $scope.categories.splice(lastItem);
     };
 
 
-    $scope.getSurveydatas = function () {
+    $scope.variants = [{id: 'variant1'}, {id: 'variant2'}];
+
+    $scope.addNewVariant = function() {
+        var newItemNo = $scope.variants.length+1;
+        $scope.variants.push({'id':'variant'+newItemNo});
+    };
+
+    $scope.removeVariant = function() {
+        var lastItem = $scope.variants.length-1;
+        $scope.variants.splice(lastItem);
+    };
+
+    
+    
+
+    $scope.getSurveydata = function () {
 
         var ep = {
             surveyName: $scope.surveyName,

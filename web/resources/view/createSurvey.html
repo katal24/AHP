@@ -37,96 +37,35 @@
                 </div>
 
                 <div ng-show="showmeCategories">
-                <div class="form-group">
-                    <label for="category1" class="col-sm-2 control-label">category 1.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="category1" placeholder="e.g. price" name="category1" ng-model="category1">
-                    </div>
-                </div>
+                    <fieldset  data-ng-repeat="category in categories">
+                        <input type="text" ng-model="category.name" name="" placeholder="e.g. price">
+                        <button class="remove" ng-show="$last" ng-click="removeCategory()">-</button>
+                    </fieldset>
+                    <button class="addfields" ng-click="addNewCategory()">Add fields</button>
 
-                <div class="form-group">
-                    <label for="category2" class="col-sm-2 control-label">category 2.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="category2" placeholder="e.g. fuel" name="category2" ng-model="category2">
+                    <div id="categoriesDisplay">
+                        {{ categories }}
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="category3" class="col-sm-2 control-label">category 3.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="category3" placeholder="e.g. color" name="category3" ng-model="category3">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="category4" class="col-sm-2 control-label">category 4.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="category4" placeholder="other" name="category4" ng-model="category4">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="category5" class="col-sm-2 control-label">category 5.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="category5" placeholder="other" name="category5" ng-model="category5">
-                    </div>
-                </div>
                 </div>
 
                 <div ng-show="showmeVariants">
-                <div class="form-group">
-                    <label for="variant1" class="col-sm-2 control-label">variant 1.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="variant1" placeholder="e.g. Fiat" name="variant1" ng-model="variant1">
-                    </div>
-                </div>
+                    <fieldset  data-ng-repeat="variant in variants">
+                        <input type="text" ng-model="variant.name" name="" placeholder="e.g. Fiat">
+                        <button class="remove" ng-show="$last" ng-click="removeVariant()">-</button>
+                    </fieldset>
+                    <button class="addfields" ng-click="addNewVariant()">Add fields</button>
 
-                <div class="form-group">
-                    <label for="variant2" class="col-sm-2 control-label">variant 2.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="variant2" placeholder="e.g. Toyota" name="variant2" ng-model="variant2">
+                    <div id="variantsDisplay">
+                        {{ variants }}
                     </div>
-                </div>
+                    <button type="submit" class="buttonDark buttonGreen" data-ng-click="getSurveydata()"><a href="" ng-click="showmeData=true; showmeSurveyname=false; showmeCategories=false; showmeVariants=false">SAVE CHANGES</a></button>
 
-                <div class="form-group">
-                    <label for="variant3" class="col-sm-2 control-label">variant 3.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="variant3" placeholder="e.g. BMW" name="variant3" ng-model="variant3">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="variant4" class="col-sm-2 control-label">variant 4.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="variant4" placeholder="e.g. Land Rover" name="variant4" ng-model="variant4">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="variant5" class="col-sm-2 control-label">variant 5.</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="variant5" placeholder="e.g. Mazda" name="variant5" ng-model="variant5">
-                    </div>
-                </div>
                 </div>
 
 
                 <div ng-show="showmeData">
                 <div class="form-group" >
-                    <fieldset  data-ng-repeat="choice in choices">
-                        <select>
-                            <option>Mobile</option>
-                            <option>Office</option>
-                            <option>Home</option>
-                        </select>
-                        <input type="text" ng-model="choice.name" name="" placeholder="Enter mobile number">
-                        <button class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
-                    </fieldset>
-                    <button class="addfields" ng-click="addNewChoice()">Add fields</button>
 
-                    <div id="choicesDisplay">
-                        {{ choices }}
-                    </div>
 
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="buttonDark buttonGreen" data-ng-click="getSurveydata()">SAVE CHANGES</button>
