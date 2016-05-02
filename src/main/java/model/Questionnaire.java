@@ -1,5 +1,7 @@
 package model;
 
+import sp.NewQuest;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,8 +22,14 @@ public class Questionnaire {
     List<PriorityMatrix> matrixes;
     String[][] allProperties;
 
+    List<String> categoriesString;
+    List<String> variantsString;
+
 
     public void makeQuestionnaire(){
+
+        categoriesString = new LinkedList<String>();
+        variantsString = new LinkedList<String>();
 
         variants = new Variants();
 
@@ -237,5 +245,25 @@ public double sumArray(double[] array){
 
     public void setSummary(String summary) {
         this.summary = summary;
+    }
+
+    public List<String> getCategoriesString() {
+        return categoriesString;
+    }
+
+    public void setCategoriesString(List<String> categoriesString) {
+        this.categoriesString = categoriesString;
+    }
+
+    public List<String> getVariantsString() {
+        return variantsString;
+    }
+
+    public void setVariantsString(List<String> variantsString) {
+        this.variantsString = variantsString;
+    }
+
+    public static void setSurvaysData(NewQuest ep) {
+
     }
 }
