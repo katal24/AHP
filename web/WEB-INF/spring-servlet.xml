@@ -29,6 +29,13 @@
 
 	</bean>
 
+	<!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+		<!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
+		<!--<property name="url" value="jdbc:mysql://mysql.agh.edu.pl:3306/talaga2" />-->
+		<!--<property name="username" value="talaga2" />-->
+		<!--<property name="password" value="cjwcz84i" />-->
+	<!--</bean>-->
+
 	<!--<mvc:resources mapping="/resources/**" location="/resources/"-->
 				   <!--cache-period="31556926"/>-->
 

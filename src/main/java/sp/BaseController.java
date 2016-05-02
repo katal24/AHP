@@ -2,10 +2,15 @@ package sp;
 
 import model.Questionnaire;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.sql.SQLException;
 import java.util.Arrays;
 
 /**
@@ -51,6 +56,14 @@ public class BaseController {
     public String przyklad(Model model) {
         model.addAttribute("powitanie", "Mile powitanie? NIEEEEEEE");
         return "witaj";
+    }
+
+    @RequestMapping(value = "setSurvaysData/", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
+    public void setSurvaysData(@RequestBody NewQuest ep) throws ClassNotFoundException, SQLException {
+
+        Questionnaire.setSurvaysData(ep);
+
     }
 
 //    @Autowired
