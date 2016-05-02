@@ -117,8 +117,8 @@ myApp.controller('createSurveyController', function($scope, $window) {
 
         var cs = {
             surveyName: $scope.surveyName,
-            categories: $scope.categories,
-            variants: $scope.variants
+           // categories: $scope.categories,
+           // variants: $scope.variants
         };
 
         $http.post('/setSurvaysData/', cs).success(function (data) {

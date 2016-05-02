@@ -60,9 +60,10 @@ public class BaseController {
 
     @RequestMapping(value = "setSurvaysData/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
-    public void setSurvaysData(@RequestBody NewQuest ep) throws ClassNotFoundException, SQLException {
+    public void setSurvaysData(@RequestBody NewQuest cs) throws ClassNotFoundException, SQLException {
 
-        Questionnaire.setSurvaysData(ep);
+        System.out.println("        JEEEEEEEEEEEEEEST W BASE---------------------------------");
+        Questionnaire.setSurvaysData(cs);
 
     }
 

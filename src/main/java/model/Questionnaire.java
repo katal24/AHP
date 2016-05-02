@@ -1,5 +1,6 @@
 package model;
 
+import org.springframework.web.bind.annotation.RequestBody;
 import sp.NewQuest;
 
 import java.util.Arrays;
@@ -263,7 +264,7 @@ public double sumArray(double[] array){
         this.variantsString = variantsString;
     }
 
-    public static void setSurvaysData(NewQuest cs) {
+    public static void setSurvaysData(@RequestBody NewQuest cs) {
         System.out.println("        JEEEEEEEEEEEEEEEEEEEEESTEM W JAAAAAAAAAAAAAAAAAAAAAAAAAVIEEEEEEEEEEEEEEEEEEEE");
     }
 }

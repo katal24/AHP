@@ -5,9 +5,16 @@ package sp;
  */
 public class NewQuest {
 
-    private String username;
-    private String password;
-    private String name;
+    private String surveyName;
+   // private String password;
+   // private String name;
 
 
+    public String getSurveyName() {
+        return surveyName;
+    }
+
+    public void setSurveyName(String surveyName) {
+        this.surveyName = surveyName;
+    }
 }
