@@ -117,12 +117,8 @@ myApp.controller('createSurveyController', function($scope) {
 
         var ep = {
             surveyName: $scope.surveyName,
-            categroy1: $scope.edProf.age,
-            edprofheight: $scope.edProf.height,
-            edprofweight: $scope.edProf.weight,
-            edprofactivity: $scope.edProf.activity,
-            edprofvegetarian: $scope.edProf.vegetarian
-
+            categories: $scope.categories,
+            variants: $scope.edProf.variants
         };
 
         
