@@ -5,8 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -22,13 +21,17 @@ import java.util.Arrays;
 @Controller
 public class BaseController {
 
+   // @ResponseStatus(HttpStatus.OK)
+   // @RequestMapping("/setSurveysData")
+    @RequestMapping(value = "/setSurveysData", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping("/setSurveysData")
-       public void setSurveysData(NewQuest cs) throws ClassNotFoundException, SQLException {
+    @ResponseBody
+       public void setSurveysData(@ModelAttribute NewQuest cs) throws ClassNotFoundException, SQLException {
     //public void setSurveysData() throws ClassNotFoundException, SQLException {
 
-        System.out.println("        JEEEEEEEEEEEEEEST W BASE ---------------------------------");
-         Questionnaire.setSurveysData(cs);
+        System.out.println("        JEEEEEEEEEEEEEEST W BASE ------------------------  " + cs.getSurveyName());
+
+        Questionnaire.setSurveysData(new NewQuest());
         return;// "setSurveysData";
     }
 

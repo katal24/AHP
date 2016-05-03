@@ -82,7 +82,7 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $locatio
     }
 
 });
-myApp.controller('createSurveyController', function($scope, $window, $http) {
+myApp.controller('createSurveyController', function($scope, $window, $http, $rootScope) {
     $scope.message = 'Create survey';
 
     $scope.categories = [{id: 'category1'}, {id: 'category2'}];
@@ -116,7 +116,7 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
     $scope.getSurveydata = function () {
 
         var cs = {
-            surveyName: $scope.surveyName
+            surveyName: $scope.s.surveyName
             // categories: $scope.categories,
             // variants: $scope.variants
         };
@@ -128,6 +128,7 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
         //  $http.post('#/setSurveysData/', cs).success(function (data) {
         $http.post('setSurveysData/', cs).success(function (data) {
 
+            console.log(cs.surveyName);
             // $rootScope.errorEditProfile = false;
             // $rootScope.EditProfileOK = true;
             console.log("udalo sie w http.post");

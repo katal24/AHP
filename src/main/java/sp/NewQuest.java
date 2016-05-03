@@ -17,4 +17,9 @@ public class NewQuest {
     public void setSurveyName(String surveyName) {
         this.surveyName = surveyName;
     }
+
+    //@ModelAttribute("cs")
+    public NewQuest getNewQuest(){
+        return new NewQuest();
+    }
 }
