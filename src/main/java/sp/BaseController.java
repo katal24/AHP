@@ -1,10 +1,14 @@
 package sp;
 
 import model.Questionnaire;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,12 +25,14 @@ import java.util.Arrays;
 @Controller
 public class BaseController {
 
-    @ModelAttribute("NQ")
-    public NewQuest populateNewQuest(String imie) {
-        NewQuest nq = new NewQuest();
-        nq.setSurveyName(imie);
-        return nq;
-    }
+
+
+//    @ModelAttribute("NQ")
+//    public NewQuest populateNewQuest(String imie) {
+//        NewQuest nq = new NewQuest();
+//        nq.setSurveyName(imie);
+//        return nq;
+//    }
 
 
    // @ResponseStatus(HttpStatus.OK)
@@ -43,6 +49,11 @@ public class BaseController {
 
         System.out.println("        JEEEEEEEEEEEEEEST W BASE ------------------------  " + cs);
       //  System.out.println(Arrays.toString(cs.getClass().getDeclaredFields()));
+
+        NewQuest nq;
+         System.out.println(new ObjectMapper().readValue(cs, NewQuest.class));
+        //Gson gson = new Gson();
+        //NewQuest nq = gson.fromJson(cs,NewQuest.class);
 
 
 //        Questionnaire.setSurveysData(cs);
