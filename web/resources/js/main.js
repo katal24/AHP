@@ -117,32 +117,34 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
 
         var cs = {
             surveyName: $scope.surveyName
-           // categories: $scope.categories,
-           // variants: $scope.variants
+            // categories: $scope.categories,
+            // variants: $scope.variants
         };
 
         console.log("GetSurvaysData sdsd");
 
 
-        $http.post('/cosik_war_exploded/#/setSurveysData/', cs).success(function (data) {
-          //  $http.post('', cs).success(function (data) {
+        //  $http.post('/setSurveysData').success(function (data) {
+        //  $http.post('#/setSurveysData/', cs).success(function (data) {
+        $http.post('setSurveysData/', cs).success(function (data) {
 
             // $rootScope.errorEditProfile = false;
-           // $rootScope.EditProfileOK = true;
+            // $rootScope.EditProfileOK = true;
             console.log("udalo sie w http.post");
-           // $window.location.href = '#/';
+            // $window.location.href = '#/userPanel';
+            //  $window.location.href = '#/setSurveysData';
 
 
         }).error(function (data) {
             console.log("Setting up account failed");
-           // $rootScope.errorEditProfile = true;
+            // $rootScope.errorEditProfile = true;
 
 
 
         });
-        
+
     }
-    
+
 
 });
 myApp.controller('newAccountController', function($scope) {

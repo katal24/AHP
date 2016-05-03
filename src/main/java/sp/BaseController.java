@@ -2,16 +2,11 @@ package sp;
 
 import model.Questionnaire;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -19,31 +14,23 @@ import java.util.Arrays;
 /**
  * Created by dawid on 02.04.16.
  */
-//
-//@RequestMapping("/")
-
-@EnableWebMvc
-@ComponentScan(basePackageClasses = BaseController.class)
-@Configuration
+///@RequestMapping("/")
+//@EnableWebMvc
+//@ComponentScan(basePackageClasses = BaseController.class)
+//@Configuration
 @EnableAutoConfiguration
 @Controller
 public class BaseController {
 
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping("/setSurveysData")
+       public void setSurveysData(NewQuest cs) throws ClassNotFoundException, SQLException {
+    //public void setSurveysData() throws ClassNotFoundException, SQLException {
 
-    @RequestMapping(value="/")
-    public String index() {
-        Questionnaire quest = new Questionnaire();
-        quest.makeQuestionnaire();
-        System.out.println("            iiiiiindeeeeeeeeeeeeeeeeeeeexxxxxxxxxxxxxxxxxxxx");
-        return "index";
+        System.out.println("        JEEEEEEEEEEEEEEST W BASE ---------------------------------");
+         Questionnaire.setSurveysData(cs);
+        return;// "setSurveysData";
     }
-
-    @RequestMapping(value="/user")
-    public String login() {
-        System.out.println("           LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOGIN");
-        return "login";
-    }
-
 
     @RequestMapping("/hello")
     public String przykladModelu(Model model) {
@@ -58,20 +45,32 @@ public class BaseController {
         return "hello";
     }
 
+    @RequestMapping(value="/")
+    public String index() {
+        Questionnaire quest = new Questionnaire();
+      //  quest.makeQuestionnaire();
+        System.out.println("               jestem w index");
+
+        System.out.println("            iiiiiindeeeeeeeeeeeeeeeeeeeexxxxxxxxxxxxxxxxxxxx");
+        return "index";
+    }
+
+    @RequestMapping(value="/user")
+    public String login() {
+        System.out.println("           LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOGIN");
+        return "login";
+    }
+
+
+
+
     @RequestMapping("/witaj")
     public String przyklad(Model model) {
         model.addAttribute("powitanie", "Mile powitanie? NIEEEEEEE");
         return "witaj";
     }
 
-    @RequestMapping(value = "/setSurveysData", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.OK)
-    public void setSurveysData(@RequestBody NewQuest cs) throws ClassNotFoundException, SQLException {
 
-        System.out.println("        JEEEEEEEEEEEEEEST W BASE---------------------------------");
-        Questionnaire.setSurveysData(cs);
-
-    }
 
 //    @Autowired
 //    private Inquiry inquiry;        // chcemy miec obiekt Inquiry i miec go dostepnego pod nazwa inquiry
