@@ -1,7 +1,8 @@
 package sp;
 
+
+import com.google.gson.Gson;
 import model.Questionnaire;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Arrays;
 
+//import org.codehaus.jackson.map.ObjectMapper;
+
 /**
  * Created by dawid on 02.04.16.
  */
@@ -25,40 +28,22 @@ import java.util.Arrays;
 @Controller
 public class BaseController {
 
-
-
-//    @ModelAttribute("NQ")
-//    public NewQuest populateNewQuest(String imie) {
-//        NewQuest nq = new NewQuest();
-//        nq.setSurveyName(imie);
-//        return nq;
-//    }
-
-
-   // @ResponseStatus(HttpStatus.OK)
-   // @RequestMapping("/setSurveysData")
     @RequestMapping(value = "/setSurveysData", method = RequestMethod.POST)//, headers = "content-type=application/x-www-form-urlencoded")
-//    @ResponseStatus(HttpStatus.OK)
    @ResponseBody
-//    public void setSurveysData(@ModelAttribute("NQ") NewQuest cs) throws ClassNotFoundException, SQLException {
     public void setSurveysData(@RequestBody String cs) throws ClassNotFoundException, SQLException, IOException {
 
-      //  NewQuest nq = new ObjectMapper().readValue(cs, NewQuest.class);
-
-            //public void setSurveysData() throws ClassNotFoundException, SQLException {
 
         System.out.println("        JEEEEEEEEEEEEEEST W BASE ------------------------  " + cs);
-      //  System.out.println(Arrays.toString(cs.getClass().getDeclaredFields()));
 
-        NewQuest nq;
-         System.out.println(new ObjectMapper().readValue(cs, NewQuest.class));
-        //Gson gson = new Gson();
-        //NewQuest nq = gson.fromJson(cs,NewQuest.class);
+        Gson gson = new Gson();
+        NewQuest nq = gson.fromJson(cs, NewQuest.class);
 
+        nq.setLists();
+        System.out.println("CATEGORIES: " + Arrays.toString(nq.getCategoriesList().toArray()));
+        System.out.println("VARIANTS:   " + Arrays.toString(nq.getVariantsList().toArray()));
 
-//        Questionnaire.setSurveysData(cs);
-      //  return;// "setSurveysData";
     }
+
 
     @RequestMapping("/hello")
     public String przykladModelu(Model model) {

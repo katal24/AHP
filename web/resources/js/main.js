@@ -127,8 +127,7 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
         //list.push(surveyName);
         var cs = {
             surveyName: $scope.s.surveyName,
-            //categories: $filter('filter')($scope.categories)
-          //surveyName2: $scope.s.surveyName
+          //  surveyName2: $scope.s.surveyName
             categories: $scope.categories,
             variants: $scope.variants
         };
@@ -153,11 +152,6 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
 
         });
 
-        $http.get('/getValues/').success(function (data) {
-            $scope.values = data;
-        });
-
-       
     };;
 
 
