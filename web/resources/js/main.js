@@ -50,7 +50,7 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $locatio
             callback && callback(false);
         });
 
-    }
+    };
 
     //proboje samo bez wysylania fomularza jesli juz mamy to ciastko a jedynie odswiezylismy
     authenticate();
@@ -59,12 +59,12 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $locatio
     $scope.login = function () {
         authenticate($scope.credentials, function (authenticated) {
             if (authenticated) {
-                console.log("Login succeeded")
+                console.log("Login succeeded");
                 $location.path("/");
                 $scope.error = false;
                 $rootScope.authenticated = true;
             } else {
-                console.log("Login failed")
+                console.log("Login failed");
                 $location.path("/login");
                 $scope.error = true;
                 $rootScope.authenticated = false;
@@ -76,13 +76,13 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $locatio
         $http.post('logout', {}).success(function () {
             $rootScope.authenticated = false;
             $location.path("/");
-        }).error(function (data) {"Logout failed"
+        }).error(function (data) {"Logout failed";
             $rootScope.authenticated = false;
         });
     }
 
 });
-myApp.controller('createSurveyController', function($scope, $window, $http, $rootScope) {
+myApp.controller('createSurveyController', function($scope, $window, $http) {
     $scope.message = 'Create survey';
 
     $scope.categories = [{id: 'category1'}, {id: 'category2'}];
@@ -111,21 +111,29 @@ myApp.controller('createSurveyController', function($scope, $window, $http, $roo
     };
 
 
-
-
     $scope.getSurveydata = function () {
 
+        //var cs = [{
+        //    name: $scope.s.surveyName,
+        //}];
+        //var Nq = $resource('/sp/NewQuest');
+        //Nq.save({surveyName:$scope.s.surveyName});
+        ////, function(response){
+        ////    $scope.message = response.message;
+        ////});
+        //
+        //var surveyName =  $scope.s.surveyName;
+        //var list = [];
+        //list.push(surveyName);
         var cs = {
-            surveyName: $scope.s.surveyName
+            surveyName: $scope.s.surveyName,
+          //  surveyName2: $scope.s.surveyName
             // categories: $scope.categories,
             // variants: $scope.variants
         };
 
         console.log("GetSurvaysData sdsd");
 
-
-        //  $http.post('/setSurveysData').success(function (data) {
-        //  $http.post('#/setSurveysData/', cs).success(function (data) {
         $http.post('setSurveysData/', cs).success(function (data) {
 
             console.log(cs.surveyName);
@@ -144,7 +152,7 @@ myApp.controller('createSurveyController', function($scope, $window, $http, $roo
 
         });
 
-    }
+    };;
 
 
 });

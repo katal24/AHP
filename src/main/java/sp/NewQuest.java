@@ -5,7 +5,7 @@ package sp;
  */
 public class NewQuest {
 
-    private String surveyName;
+    String surveyName;
    // private String password;
    // private String name;
 
@@ -18,8 +18,8 @@ public class NewQuest {
         this.surveyName = surveyName;
     }
 
-    //@ModelAttribute("cs")
-    public NewQuest getNewQuest(){
-        return new NewQuest();
-    }
+//    //@ModelAttribute("cs")
+//    public NewQuest getNewQuest(){
+//        return new NewQuest();
+//    }
 }

@@ -1,6 +1,6 @@
 package model;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import sp.NewQuest;
 
 import java.util.Arrays;
@@ -264,7 +264,8 @@ public double sumArray(double[] array){
         this.variantsString = variantsString;
     }
 
-    public static void setSurveysData(@ModelAttribute NewQuest cs) {
+
+    public static void setSurveysData(@RequestBody NewQuest cs) {
         System.out.println("        JEEEEEEEEEEEEEEEEEEEEESTEM W JAAAAAAAAAAAAAAAAAAAAAAAAAVIEEEEEEEEEEEEEEEEEEEE");
         System.out.println("        Nazwa ankiety: " + cs.getSurveyName());
     }

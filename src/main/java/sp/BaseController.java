@@ -2,11 +2,11 @@ package sp;
 
 import model.Questionnaire;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Arrays;
 
@@ -21,18 +21,32 @@ import java.util.Arrays;
 @Controller
 public class BaseController {
 
+    @ModelAttribute("NQ")
+    public NewQuest populateNewQuest(String imie) {
+        NewQuest nq = new NewQuest();
+        nq.setSurveyName(imie);
+        return nq;
+    }
+
+
    // @ResponseStatus(HttpStatus.OK)
    // @RequestMapping("/setSurveysData")
-    @RequestMapping(value = "/setSurveysData", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-       public void setSurveysData(@ModelAttribute NewQuest cs) throws ClassNotFoundException, SQLException {
-    //public void setSurveysData() throws ClassNotFoundException, SQLException {
+    @RequestMapping(value = "/setSurveysData", method = RequestMethod.POST)//, headers = "content-type=application/x-www-form-urlencoded")
+//    @ResponseStatus(HttpStatus.OK)
+   @ResponseBody
+//    public void setSurveysData(@ModelAttribute("NQ") NewQuest cs) throws ClassNotFoundException, SQLException {
+    public void setSurveysData(@RequestBody String cs) throws ClassNotFoundException, SQLException, IOException {
 
-        System.out.println("        JEEEEEEEEEEEEEEST W BASE ------------------------  " + cs.getSurveyName());
+      //  NewQuest nq = new ObjectMapper().readValue(cs, NewQuest.class);
 
-        Questionnaire.setSurveysData(new NewQuest());
-        return;// "setSurveysData";
+            //public void setSurveysData() throws ClassNotFoundException, SQLException {
+
+        System.out.println("        JEEEEEEEEEEEEEEST W BASE ------------------------  " + cs);
+      //  System.out.println(Arrays.toString(cs.getClass().getDeclaredFields()));
+
+
+//        Questionnaire.setSurveysData(cs);
+      //  return;// "setSurveysData";
     }
 
     @RequestMapping("/hello")
