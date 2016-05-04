@@ -59,41 +59,53 @@
                     <div id="variantsDisplay">
                         {{ variants }}
                     </div>
-                    <button type="submit" class="buttonDark buttonGreen" data-ng-click="getSurveydata()"><a href="" ng-click="showmeData=true; showmeSurveyname=false; showmeCategories=false; showmeVariants=false">SAVE CHANGES</a></button>
+                    <button type="submit" class="buttonDark buttonGreen" data-ng-click="getSurveydata()">SAVE CHANGES</button>
                 </div>
 
 
                 <div ng-show="showmeData">
-                <div class="form-group">
+                    <div class="form-group">
 
-cos tu sie dzieje <br/>
+                        cos tu sie dzieje <br/>
 
-                    <div class="range">
-                        <input type="range" name="range" min="1" max="100" value="50" onchange="range.value=value">
-                        <output id="range">50</output>
+                        <div class="range">
+                            <input type="range" name="range" min="1" max="100" value="50" onchange="range.value=value">
+                            <output id="range">50</output>
+                        </div>
+
+
+                        <h2>nazwa: {{surveyData.nazwa}}</h2>
+
+
+                        <div data-ng-repeat="(id, name) in surveyData.variants track by $index">
+                            <h3>wariant: {{name}}</h3>
+
+                            <div data-ng-repeat="y in surveyData.categories">
+                                <h4>
+                                    {{y}}:
+                                    <input type="text" class="form-control" placeholder="130000 euro" name="" ng-model="item[x]">
+                                    <!--<input type="text" class="form-control" placeholder="130000 euro" name="" ng-model=".name">-->
+
+                                <!--id={{id}}, name={{name}}-->
+                                </h4>
+
+
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="buttonDark buttonGreen"  data-ng-click="completeData()">COMPLETE</button>
+                        </div>
                     </div>
-
-                    <div data-ng-repeat="x in surveyData">
-
-                        <h2>{{ x.surveyName }}</h2>
-                        <h3>{{ x.categoriesList }}</h3>
-                        <h4>{{ x.variantsList }}</h4>
-
-
-                    </div>
-
-
-
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="buttonDark buttonGreen" data-ng-click="getSurveydata()">SAVE CHANGES</button>
-                    </div>
-                </div>
                 </div>
             </form>
-            </div>
-
         </div>
-        <!-- /#page-content-wrapper -->
-    </div>
 
+    </div>
+    <!-- /#page-content-wrapper -->
 </div>
+
+</div>ite

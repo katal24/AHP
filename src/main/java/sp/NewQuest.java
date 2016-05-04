@@ -7,40 +7,42 @@ import java.util.ArrayList;
  */
 public class NewQuest {
 
-    private String surveyName;
+    private String surveyName = "ala";
     private ArrayList<Item> categories;
     private ArrayList<Item> variants;
 
-    private ArrayList<String> CategoriesList;
-    private ArrayList<String> VariantsList;
+    private ArrayList<String> categoriesList;
+    private ArrayList<String> variantsList;
 
     public void setLists(){
-        CategoriesList = new ArrayList<String>();
-        VariantsList = new ArrayList<String>();
+        categoriesList = new ArrayList<String>();
+        variantsList = new ArrayList<String>();
 
         for(Item i : categories){
-            CategoriesList.add(i.getName());
+            categoriesList.add(i.getName());
         }
 
         for(Item i : variants){
-            VariantsList.add(i.getName());
+            variantsList.add(i.getName());
         }
     }
+    
+    
 
     public ArrayList<String> getCategoriesList() {
-        return CategoriesList;
+        return categoriesList;
     }
 
     public void setCategoriesList(ArrayList<String> categoriesList) {
-        CategoriesList = categoriesList;
+        categoriesList = categoriesList;
     }
 
     public ArrayList<String> getVariantsList() {
-        return VariantsList;
+        return variantsList;
     }
 
     public void setVariantsList(ArrayList<String> variantsList) {
-        VariantsList = variantsList;
+        variantsList = variantsList;
     }
 
     public String getSurveyName() {

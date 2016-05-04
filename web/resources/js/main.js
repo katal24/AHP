@@ -12,6 +12,9 @@ myApp.config(function($routeProvider) {
     }).when('/newAccount', {
         templateUrl : 'resources/view/newAccount.html',
         controller : 'newAccountController'
+    }).when('/completeData', {
+        templateUrl : 'resources/view/completeData.html',
+        controller : 'completeDataController'
     }).when('/userPanel', {
         templateUrl : 'resources/view/userPanel.html',
         controller : 'userPanelController'
@@ -113,18 +116,6 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
 
     $scope.getSurveydata = function () {
 
-        //var cs = [{
-        //    name: $scope.s.surveyName,
-        //}];
-        //var Nq = $resource('/sp/NewQuest');
-        //Nq.save({surveyName:$scope.s.surveyName});
-        ////, function(response){
-        ////    $scope.message = response.message;
-        ////});
-        //
-        //var surveyName =  $scope.s.surveyName;
-        //var list = [];
-        //list.push(surveyName);
         var cs = {
             surveyName: $scope.s.surveyName,
           //  surveyName2: $scope.s.surveyName
@@ -140,8 +131,12 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
             // $rootScope.errorEditProfile = false;
             // $rootScope.EditProfileOK = true;
             console.log("udalo sie w http.post");
-            // $window.location.href = '#/userPanel';
+          //   $window.location.href = '#/completeData';
             //  $window.location.href = '#/setSurveysData';
+            $http.get('getSurveyData/').success(function (data) {
+                console.log("get daty w MAINNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
+                $scope.surveyData = data;
+            });
 
 
         }).error(function (data) {
@@ -150,11 +145,40 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
 
         });
 
+
+
+
+
+
     };
 
-    $http.get('/getSurveyData/').success(function (data) {
-        $scope.surveyData = data;
-    });
+    $scope.completeData = function () {
+        var cs = {
+            categoriesInput: $scope.item
+        };
+
+
+        console.log("Jestesmy w main.js compete");
+
+        $http.post('setCompletedData/', cs).success(function (data) {
+
+          //  console.log(cs.surveyName);
+            // $rootScope.errorEditProfile = false;
+            // $rootScope.EditProfileOK = true;
+           //$window.location.href = '#/completeData';
+            console.log("udalo sie w complee.post");
+            //   $window.location.href = '#/completeData';
+            //  $window.location.href = '#/setSurveysData';
+
+        }).error(function (data) {
+            console.log("Setting up account failed");
+            // $rootScope.errorEditProfile = true;
+
+        });
+
+
+    }
+
 
 
 });
@@ -164,4 +188,12 @@ myApp.controller('newAccountController', function($scope) {
 myApp.controller('userPanelController', function($scope) {
     $scope.message = 'Your Panel';
 });
+myApp.controller('completeDataController', function($scope, $http) {
+    $scope.message = 'Your Panel';
 
+    $http.get('getSurveyData/').success(function (data) {
+        console.log("get daty w MAINNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
+        $scope.surveyData = data;
+    });
+
+});
