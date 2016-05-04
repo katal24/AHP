@@ -73,6 +73,17 @@ cos tu sie dzieje <br/>
                         <output id="range">50</output>
                     </div>
 
+                    <div data-ng-repeat="x in surveyData">
+
+                        <h2>{{ x.surveyName }}</h2>
+                        <h3>{{ x.categoriesList }}</h3>
+                        <h4>{{ x.variantsList }}</h4>
+
+
+                    </div>
+
+
+
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="buttonDark buttonGreen" data-ng-click="getSurveydata()">SAVE CHANGES</button>
                     </div>
