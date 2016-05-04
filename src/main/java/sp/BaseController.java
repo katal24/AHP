@@ -32,10 +32,13 @@ public class BaseController {
    @ResponseBody
     public void setSurveysData(@RequestBody String cs) throws ClassNotFoundException, SQLException, IOException {
 
+        // cs to JSON zawierajacay dane z formularza (step 1-3)
 
         System.out.println("        JEEEEEEEEEEEEEEST W BASE ------------------------  " + cs);
 
         Gson gson = new Gson();
+
+        // zwiera dane z formularza step 1-3
         NewQuest nq = gson.fromJson(cs, NewQuest.class);
 
         nq.setLists();

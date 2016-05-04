@@ -13,6 +13,15 @@ import java.util.List;
 
 public class Questionnaire {
 
+    public Questionnaire(NewQuest nq){
+        categoriesList = nq.getCategoriesList();
+        variantsList = nq.getVariantsList();
+
+
+    }
+
+    public Questionnaire(){}
+
     private int id;
     private String type, owner, name, problem, properties, summary;
 
@@ -23,14 +32,14 @@ public class Questionnaire {
     List<PriorityMatrix> matrixes;
     String[][] allProperties;
 
-    List<String> categoriesString;
-    List<String> variantsString;
+    List<String> categoriesList;
+    List<String> variantsList;
 
 
     public void makeQuestionnaire(){
 
-        categoriesString = new LinkedList<String>();
-        variantsString = new LinkedList<String>();
+        //categoriesString = new LinkedList<String>();
+        //variantsString = new LinkedList<String>();
 
         variants = new Variants();
 
@@ -248,22 +257,45 @@ public double sumArray(double[] array){
         this.summary = summary;
     }
 
-    public List<String> getCategoriesString() {
-        return categoriesString;
+    public List<String> getCategoriesList() {
+        return categoriesList;
     }
 
-    public void setCategoriesString(List<String> categoriesString) {
-        this.categoriesString = categoriesString;
+    public void setCategoriesList(List<String> categoriesList) {
+        this.categoriesList = categoriesList;
     }
 
-    public List<String> getVariantsString() {
-        return variantsString;
+    public List<String> getVariantsList() {
+        return variantsList;
     }
 
-    public void setVariantsString(List<String> variantsString) {
-        this.variantsString = variantsString;
+    public void setVariantsList(List<String> variantsList) {
+        this.variantsList = variantsList;
     }
 
+    public String[][] getAllProperties() {
+        return allProperties;
+    }
+
+    public void setAllProperties(String[][] allProperties) {
+        this.allProperties = allProperties;
+    }
+
+    public List<PriorityMatrix> getMatrixes() {
+        return matrixes;
+    }
+
+    public void setMatrixes(List<PriorityMatrix> matrixes) {
+        this.matrixes = matrixes;
+    }
+
+    public PriorityMatrix getMacierz() {
+        return macierz;
+    }
+
+    public void setMacierz(PriorityMatrix macierz) {
+        this.macierz = macierz;
+    }
 
     public static void setSurveysData(@RequestBody NewQuest cs) {
         System.out.println("        JEEEEEEEEEEEEEEEEEEEEESTEM W JAAAAAAAAAAAAAAAAAAAAAAAAAVIEEEEEEEEEEEEEEEEEEEE");
