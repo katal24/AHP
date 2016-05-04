@@ -150,7 +150,11 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
 
         });
 
-    };;
+    };
+
+    $http.get('/getSurveyData/').success(function (data) {
+        $scope.surveyData = data;
+    });
 
 
 });
