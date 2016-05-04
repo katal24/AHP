@@ -46,6 +46,7 @@
                     <div id="categoriesDisplay">
                         {{ categories }}
                     </div>
+
                 </div>
 
                 <div ng-show="showmeVariants">
@@ -58,16 +59,20 @@
                     <div id="variantsDisplay">
                         {{ variants }}
                     </div>
-                    <!--<button type="submit" class="buttonDark buttonGreen" data-ng-click="getSurveydata()">SAVE CHANGES</button>-->
                     <button type="submit" class="buttonDark buttonGreen" data-ng-click="getSurveydata()"><a href="" ng-click="showmeData=true; showmeSurveyname=false; showmeCategories=false; showmeVariants=false">SAVE CHANGES</a></button>
-
                 </div>
 
 
                 <div ng-show="showmeData">
-                <div class="form-group" >
+                <div class="form-group">
 
-<br>
+cos tu sie dzieje <br/>
+
+                    <div class="range">
+                        <input type="range" name="range" min="1" max="100" value="50" onchange="range.value=value">
+                        <output id="range">50</output>
+                    </div>
+
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="buttonDark buttonGreen" data-ng-click="getSurveydata()">SAVE CHANGES</button>
                     </div>

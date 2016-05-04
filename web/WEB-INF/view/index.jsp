@@ -26,7 +26,6 @@
     <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 
 
-
     <title>Questionnaire</title>
 </head>
 
