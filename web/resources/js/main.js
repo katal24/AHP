@@ -154,7 +154,7 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
 
     $scope.completeData = function () {
         var cs = {
-            categoriesInput: $scope.item
+            categoriesInput: $scope.variants
         };
 
 

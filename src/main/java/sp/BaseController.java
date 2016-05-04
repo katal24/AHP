@@ -62,7 +62,7 @@ public class BaseController {
         System.out.println("        JEEEEEEEEEEEEEEST W BASE COMPLETE ------------------------  " + cs);
         //nq.listas(cs)
         //nq.deletefirsvariant();
-//        Gson gson = new Gson();
+        Gson gson = new Gson();
 //
 //        // zwiera dane z formularza step 1-3
 //        nq = gson.fromJson(cs, NewQuest.class);
@@ -111,7 +111,7 @@ public class BaseController {
     @RequestMapping(value="/")
     public String index() {
         Questionnaire quest = new Questionnaire();
-      //  quest.makeQuestionnaire();
+        quest.makeQuestionnaire();
         System.out.println("               jestem w index");
 
         System.out.println("            iiiiiindeeeeeeeeeeeeeeeeeeeexxxxxxxxxxxxxxxxxxxx");
