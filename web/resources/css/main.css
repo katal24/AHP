@@ -346,6 +346,7 @@ h6{
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
+    background-color: #606573;
 
 }
 
@@ -438,21 +439,17 @@ fieldset{
 }
 
 
-/*.whiteBoard {*/
-    /*!*background-color: #FFFFFF ;*!*/
-    /*!*position: absolute;*!*/
-    /*!*top: 40px;*!*/
-    /*!*left: 50px;*!*/
-    /*!*padding: 5px 20px 5px 20px;*!*/
-    /*!*height: 600px;*!*/
-    /*!*width: 95%;*!*/
-    /*!*border: 1px solid #FFFFFF;*!*/
+.whiteBoard {
 
-    /*!*background-size: cover;*!*/
+    background: url('../images/tlo.png') no-repeat center center;
+    background-size: cover;
 
-    /*top: 40px;*/
-    /*left: 50px;*/
-    /*background: url('../images/tlo.png') no-repeat center center;*/
-    /*background-size: cover;*/
-    /*padding: 10px;*/
-/*}*/
+    top: 100px;
+    left: 100px;
+    padding: 5px 20px 5px 20px;
+    height: 600px;
+    width: 1000px;
+
+    overflow-y: hidden;
+    overflow-x: hidden;
+}

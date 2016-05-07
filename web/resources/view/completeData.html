@@ -3,13 +3,15 @@
     <br/>
     <br/>
     <br/>
+    <br/>
 
-    <h3>{{surveyData.nazwa}}</h3>
+
+    <h3>nazaw : {{surveyData.nazwa}}</h3>
 
 
     <div data-ng-repeat="element in model.listToScroll track by $index">
         <!--<div data-ng-repeat="item in items">-->
-        <h4>{{element.name}}</h4>
+        <h4>nazwa jakas {{element.name}}</h4>
         <h5>{{element.s1}}</h5>
         <h6>{{element.s2}}</h6>
         <div data-ng-controller="AppController">
@@ -17,7 +19,7 @@
             <div class="container" style="margin-top: 100px;">
                 <section class="row">
                     <div class="col-md-6 col-md-offset-3">
-                        <p>Value: {{element.value[$index]}}</p>
+                        <p>{{element.value[$index]}}</p>
                         <div data-range-slider
                              data-floor="-8"
                              data-ceiling="8"
@@ -37,7 +39,7 @@
     </div>
 
 
-    <button type="submit" class="buttonDark buttonGreen" data-ng-click="setAllData()"><a href="#/userPanel"> GET ANSWER</a></button>
+    <button type="submit" class="buttonDark buttonGreen" data-ng-click="setAllData()"><span><a href="#/userPanel"> GET ANSWER</a></span></button>
 
 
 
