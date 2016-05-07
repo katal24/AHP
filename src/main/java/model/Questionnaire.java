@@ -1,8 +1,10 @@
 package model;
 
 import org.springframework.web.bind.annotation.RequestBody;
+import sp.BaseController;
 import sp.NewQuest;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -43,11 +45,21 @@ public class Questionnaire {
 
         variants = new Variants();
 
-        variants.addVariant(new Criteria("Nazwa", "Cena", "Bateria", "Ekran", "Pamiec", "Aparat"));
-        variants.addVariant(new Criteria("A", "3100 zl", "79 h", "5.5\"FHD", "64 GB", "8 Mpx"));
-        variants.addVariant(new Criteria("B", "1550 zl", "72 h", "5.1\"FHD", "16 GB", "16 Mpx"));
-        variants.addVariant(new Criteria("C", "1850 zl", "46 h", "5\"FHD", "32 GB", "20 Mpx"));
-        variants.addVariant(new Criteria("D", "1900 zl", "85 h", "5.2\"FHD", "16 GB", "20.2 Mpx"));
+        List<String> nullVawiant = BaseController.nq.getCategoriesList();
+        nullVawiant.add(0,"Nazwa");
+
+        variants.addVariant(new Criteria(nullVawiant));
+       // variants.addVariant(new Criteria("Nazwa", "Cena", "Bateria", "Ekran", "Pamiec", "Aparat"));
+        for(int i=0; i<BaseController.nq.getVariantsList().size(); i++){
+          //  System.out.println(BaseController.ncq.getCompletedVariant(i));
+            ArrayList<String> oneVariant = new ArrayList<String>(BaseController.ncq.getCompletedVariant(i));
+            oneVariant.add(0, BaseController.nq.getVariantsList().get(i));
+            variants.addVariant(new Criteria(oneVariant));
+        }
+//        variants.addVariant(new Criteria("A", "3100 zl", "79 h", "5.5\"FHD", "64 GB", "8 Mpx"));
+//        variants.addVariant(new Criteria("B", "1550 zl", "72 h", "5.1\"FHD", "16 GB", "16 Mpx"));
+//        variants.addVariant(new Criteria("C", "1850 zl", "46 h", "5\"FHD", "32 GB", "20 Mpx"));
+//        variants.addVariant(new Criteria("D", "1900 zl", "85 h", "5.2\"FHD", "16 GB", "20.2 Mpx"));
 
         allProperties = variants.buildMatrix();
 
@@ -55,14 +67,14 @@ public class Questionnaire {
 
         matrixes = new LinkedList<PriorityMatrix>();
 
-        matrixes.add(new PriorityMatrix("Ogolne", "Cena", "Bateria", "Ekran", "Pamiec", "Aparat"));
+        matrixes.add(new PriorityMatrix("Ogolne", BaseController.nq.getCategoriesList().subList(1,BaseController.nq.getCategoriesList().size())));
         //macierz = new PriorityMatrix(5);
         //macierz = new PriorityMatrix("Cena", "Bateria", "Ekran", "Pamiec", "Aparat");
         //macierz.countEigenVector();
 
         for(String[] s : Arrays.copyOfRange(allProperties,1,allProperties.length)){
             System.out.println("Macierz dla: " + s[0]);
-            macierz = new PriorityMatrix(s[0], Arrays.copyOfRange(s,1,s.length));
+            macierz = new PriorityMatrix(s[0], Arrays.asList(Arrays.copyOfRange(s,1,s.length)));
             macierz.countEigenVector();
         }
 

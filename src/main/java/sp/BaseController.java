@@ -32,7 +32,8 @@ import java.util.Map;
 @Controller
 public class BaseController {
 
-    static NewQuest nq = new NewQuest();
+    public static NewQuest nq = new NewQuest();
+    public static NewCompletedQuest ncq = new NewCompletedQuest();
 
     @RequestMapping("/getSurveyData/")
     @ResponseBody
@@ -59,13 +60,19 @@ public class BaseController {
 
         // cs to JSON zawierajacay dane z formularza (step 1-3)
 
-        System.out.println("        JEEEEEEEEEEEEEEST W BASE COMPLETE ------------------------  " + cs);
+        System.out.println("        JEST W BASE COMPLETE ------------------------  " + cs);
         //nq.listas(cs)
         //nq.deletefirsvariant();
         Gson gson = new Gson();
 //
 //        // zwiera dane z formularza step 1-3
-//        nq = gson.fromJson(cs, NewQuest.class);
+        ncq = gson.fromJson(cs, NewCompletedQuest.class);
+        System.out.println("WYPELNIONE: " + Arrays.toString(ncq.getCategoriesInput().toArray()));
+        System.out.println("DRUGI WARIANT: " + ncq.getCategoriesInput().get(1).getValue());
+
+        Questionnaire quest = new Questionnaire();
+        quest.makeQuestionnaire();
+
 //
 //        nq.setLists();
 //        System.out.println("CATEGORIES: " + Arrays.toString(nq.getCategoriesList().toArray()));
@@ -90,6 +97,7 @@ public class BaseController {
         nq.setLists();
         System.out.println("CATEGORIES: " + Arrays.toString(nq.getCategoriesList().toArray()));
         System.out.println("VARIANTS:   " + Arrays.toString(nq.getVariantsList().toArray()));
+
        // getSurveyData(nq);
 
     }
@@ -110,8 +118,8 @@ public class BaseController {
 
     @RequestMapping(value="/")
     public String index() {
-        Questionnaire quest = new Questionnaire();
-        quest.makeQuestionnaire();
+//        Questionnaire quest = new Questionnaire();
+//        quest.makeQuestionnaire();
         System.out.println("               jestem w index");
 
         System.out.println("            iiiiiindeeeeeeeeeeeeeeeeeeeexxxxxxxxxxxxxxxxxxxx");

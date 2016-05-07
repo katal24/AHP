@@ -35,23 +35,23 @@ public class PriorityMatrix {
     private double mainFactor;
 
 
-    PriorityMatrix(String name, String... variants){
+    PriorityMatrix(String name, List<String> variants){
         this.name = name;
 
-        this.size = variants.length;
+        this.size = variants.size();
         priority = new String[size];
         for(int i=0; i<size; i++){
-            priority[i] = variants[i];
+            priority[i] = variants.get(i);
         }
         mainMatrix = new double[size][size];
 
         for(int i = 0; i<this.size; i++){
             for(int j = 0; j<this.size; j++){
                 if(i==j) {
-                    map.put(new Pair(variants[i],variants[j],i,j), 1.0);
+                    map.put(new Pair(variants.get(i),variants.get(j),i,j), 1.0);
                 }
                 else {
-                    map.put(new Pair(variants[i], variants[j], i, j), 0.0);
+                    map.put(new Pair(variants.get(i), variants.get(j), i, j), 0.0);
                 }
             }
         }
