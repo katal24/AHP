@@ -144,12 +144,7 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
             // $rootScope.errorEditProfile = true;
 
         });
-
-
-
-
-
-
+        
     };
 
     $scope.completeData = function () {
@@ -190,6 +185,7 @@ myApp.controller('userPanelController', function($scope) {
 });
 
 myApp.controller('completeDataController', function($scope, $http) {
+    
     $scope.message = 'Your Panel';
 
     $http.get('getDataToScroll').success(function (data) {

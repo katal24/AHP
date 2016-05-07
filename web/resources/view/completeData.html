@@ -22,30 +22,53 @@
 
 
 
-    pasek tu
-    <div class="examples">
+    <input-stars ng-model="App.prop1" max="5"></input-stars> value: {{App.prop1}}
+    <br>
+    <input-stars ng-model="App.prop2" max="5"></input-stars> value: {{App.prop2}}
+    <br>
+    <input-stars ng-model="App.prop3" max="5"></input-stars> value: {{App.prop3}}
+    <br>
+    <input-stars ng-model="App.prop4" max="5"></input-stars> value: {{App.prop4}}
+    <br>
+    <input-stars ng-model="App.prop5" max="5"></input-stars> value: {{App.prop5}}
 
-        <div class="row">
-            <div class="col">
+    <h3>Readonly</h3>
 
-                <div class="box box-green box-large box-example-reversed">
-                    <div class="box-header">Reversed Rating</div>
-                    <div class="box-body">
-                        <select id="example-reversed" name="rating">
-                            <option value="Strongly Agree">Strongly Agree</option>
-                            <option value="Agree">Agree</option>
-                            <option value="Neither Agree or Disagree" selected="selected">Neither Agree or Disagree</option>
-                            <option value="Disagree">Disagree</option>
-                            <option value="Strongly Disagree">Strongly Disagree</option>
-                        </select>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
+    <input-stars readonly="true" ng-model="App.prop1" max="5"></input-stars> value: {{App.prop1}}
+    <br>
+    <input-stars readonly="readonly" ng-model="App.prop2" max="5"></input-stars> value: {{App.prop2}}
+    <br>
+    <input-stars readonly ng-model="App.prop3" max="5"></input-stars> value: {{App.prop3}}
+    <br>
+    <input-stars readonly ng-model="App.prop4" max="5"></input-stars> value: {{App.prop4}}
+    <br>
+    <input-stars readonly ng-model="App.prop5" max="5"></input-stars> value: {{App.prop5}}
 
 
-    </div>
+    <!--pasek tu-->
+    <!--<div class="examples">-->
+
+        <!--<div class="row">-->
+            <!--<div class="col">-->
+
+                <!--<div class="box box-green box-large box-example-reversed">-->
+                    <!--<div class="box-header">Reversed Rating</div>-->
+                    <!--<div class="box-body">-->
+                        <!--<select id="example-reversed" name="rating">-->
+                            <!--<option value="Strongly Agree">Strongly Agree</option>-->
+                            <!--<option value="Agree">Agree</option>-->
+                            <!--<option value="Neither Agree or Disagree" selected="selected">Neither Agree or Disagree</option>-->
+                            <!--<option value="Disagree">Disagree</option>-->
+                            <!--<option value="Strongly Disagree">Strongly Disagree</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+            <!--</div>-->
+
+        <!--</div>-->
+
+
+
+    <!--</div>-->
 </div>
