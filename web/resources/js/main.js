@@ -204,14 +204,15 @@ myApp.controller('completeDataController', function($scope, $http) {
        $scope.model = data;
     });
 
-    $scope.items=[{id: 'id1'}];
+    //$scope.items=[{id: 'id1'}];
 
+    $scope.items=[];
 
 
     $scope.setAllData = function () {
 
         var items = {
-            items: $scope.items
+            items: $scope.model.listToScroll
         };
 
         console.log("przesylasz suwakiiiiiiiid");

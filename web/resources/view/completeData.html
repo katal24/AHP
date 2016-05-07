@@ -8,7 +8,7 @@
     <h2>ddd</h2>
 
     <div data-ng-repeat="element in model.listToScroll track by $index">
-        <div data-ng-repeat="item in items">
+        <!--<div data-ng-repeat="item in items">-->
         <h3>{{element.name}}: {{element.s1}}  vs  {{element.s2}}</h3>
         <div data-ng-controller="AppController">
 
@@ -22,7 +22,7 @@
                              data-step="1"
                              data-precision="1"
                              data-highlight="center"
-                             data-ng-model="item.value[$index]"></div>
+                             data-ng-model="element.value[$index]"></div>
                     </div>
                 </section>
 
