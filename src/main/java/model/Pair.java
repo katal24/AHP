@@ -9,6 +9,7 @@ public class Pair {
     private String s1,s2;
     private int x,y;
     boolean first;
+    private double value = 0.0;
 
     public Pair(String name, String s1, String s2, int x, int y) {
         this.name = name;
@@ -46,6 +47,14 @@ public class Pair {
         result = 31 * result + x;
         result = 31 * result + y;
         return result;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
     }
 
     public String getName() {

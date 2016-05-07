@@ -15,14 +15,14 @@
             <div class="container" style="margin-top: 100px;">
                 <section class="row">
                     <div class="col-md-6 col-md-offset-3">
-                        <p>Value: {{items[0].value}}</p>
+                        <p>Value: {{element.value[$index]}}</p>
                         <div data-range-slider
                              data-floor="-8"
                              data-ceiling="8"
                              data-step="1"
                              data-precision="1"
                              data-highlight="center"
-                             data-ng-model="element.value[$index]"></div>
+                             data-ng-model="element.value"></div>
                     </div>
                 </section>
 
