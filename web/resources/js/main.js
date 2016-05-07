@@ -208,7 +208,7 @@ myApp.controller('completeDataController', function($scope, $http) {
     $scope.message = 'Your Panel';
 
     $http.get('getDataToScroll').success(function (data) {
-       $scope.surveyData = data;
+       $scope.model = data;
     });
 
 });
