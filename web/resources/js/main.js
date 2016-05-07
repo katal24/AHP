@@ -144,6 +144,12 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
             // $rootScope.errorEditProfile = true;
 
         });
+
+
+
+
+
+
     };
 
     $scope.completeData = function () {
@@ -183,17 +189,11 @@ myApp.controller('userPanelController', function($scope) {
     $scope.message = 'Your Panel';
 });
 
-
-myApp.controller('completeDataController', function($scope) {
-
-
+myApp.controller('completeDataController', function($scope, $http) {
     $scope.message = 'Your Panel';
 
-   
-
-    // $http.get('getSurveyData/').success(function (data) {
-    //     console.log("get daty w MAINNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
-    //     $scope.surveyData = data;
-    // });
+    $http.get('getDataToScroll').success(function (data) {
+       $scope.surveyData = data;
+    });
 
 });
