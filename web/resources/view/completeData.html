@@ -20,6 +20,10 @@
     <h2>nazwa: {{surveyData.nazwa}}</h2>
     <h2>ddd</h2>
 
+    <div data-ng-repeat="element in model.listToScroll">
+        <h3>porownaj: {{element.s1}}  vs  {{element.s2}}</h3>
+    </div>
+
     <div class="range">
         <input type="range" name="range" min="-9" max="9" value="1" onchange="range.value=value">
         <output id="range">50</output>
