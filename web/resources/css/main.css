@@ -157,7 +157,40 @@ body {
 h2 {
     text-align: center;
 }
+h3 {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 50px;
+    color: #FFFFFF;
+    padding-left: 20px;
+}
 
+h4 {
+    color: #383f50;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    padding-left: 70px;
+}
+
+h5 {
+    text-align:left;
+    float:left;
+    color: #383f50;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    padding-left: 120px;
+
+}
+
+h6{
+
+    text-align:right;
+    float:right;
+    color: #383f50;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding-right: 120px;
+    font-size: 30px;
+
+}
 
 .buttonDark {
     border-radius: 4px;
@@ -210,6 +243,8 @@ h2 {
 .buttonGreen {
     background-color: #77cc6d;
     width: 270px;
+    color: #FFFFFF;
+    text-decoration: none;
 
 }
 
@@ -311,7 +346,7 @@ h2 {
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
-    background: rgba(255,255,255,0.2);
+
 }
 
 .sidebar-nav li a:active,
@@ -369,42 +404,55 @@ h2 {
 
 fieldset{
     padding: 16px;
-    border: 1px solid #D5D5D5;
 }
 .addfields{
     margin: 10px 0;
 }
 
-#categoriesDisplay {
-    padding: 10px;
-    background: rgb(227, 250, 227);
-    border: 1px solid rgb(171, 239, 171);
-    color: rgb(9, 56, 9);
-}
 
-#variantsDisplay {
-    padding: 10px;
-    background: rgb(227, 250, 227);
-    border: 1px solid rgb(171, 239, 171);
-    color: rgb(9, 56, 9);
-}
+/*#categoriesDisplay {*/
+    /*padding: 10px;*/
+    /*background: rgb(227, 250, 227);*/
+    /*border: 1px solid rgb(171, 239, 171);*/
+    /*color: rgb(9, 56, 9);*/
+/*}*/
+
+/*#variantsDisplay {*/
+    /*padding: 10px;*/
+    /*background: rgb(227, 250, 227);*/
+    /*border: 1px solid rgb(171, 239, 171);*/
+    /*color: rgb(9, 56, 9);*/
+/*}*/
 
 
 .remove{
     background: #C76868;
     color: #FFF;
     font-weight: bold;
-    font-size: 21px;
+    font-size: 23px;
     border: 0;
     cursor: pointer;
-    display: inline-block;
-    padding: 4px 9px;
+    padding: 5px 9px;
     vertical-align: top;
     line-height: 100%;
 }
-input[type="text"],
-select{
-    padding:5px;
-}
 
 
+/*.whiteBoard {*/
+    /*!*background-color: #FFFFFF ;*!*/
+    /*!*position: absolute;*!*/
+    /*!*top: 40px;*!*/
+    /*!*left: 50px;*!*/
+    /*!*padding: 5px 20px 5px 20px;*!*/
+    /*!*height: 600px;*!*/
+    /*!*width: 95%;*!*/
+    /*!*border: 1px solid #FFFFFF;*!*/
+
+    /*!*background-size: cover;*!*/
+
+    /*top: 40px;*/
+    /*left: 50px;*/
+    /*background: url('../images/tlo.png') no-repeat center center;*/
+    /*background-size: cover;*/
+    /*padding: 10px;*/
+/*}*/
