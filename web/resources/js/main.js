@@ -21,30 +21,21 @@ myApp.config(function($routeProvider) {
     });
 });
 
-myApp.controller('AppController',['$scope', function($s) {
+myApp.controller('AppController',['$scope', function($scope, $s) {
+    
+    
 
     $s.items = [{
         name  : 'First Item',
         value : 5
     }];
 
-    $scope.getAllData = function () {
+    // $scope.setAllData = function () {
+    //
+    //     console.log("czescccccccccccccccccccccccccccccccccc");
+    // }
 
-        var items = {
-            items: $scope.items
-        };
-    }
-
-    $http.post('setAllData/', items).success(function (data) {
-
-        console.log("udalo sie w completedata suqaki");
-
-   
-
-    }).error(function (data) {
-        console.log("Setting up account failed");
-    });
-
+    
 }]);
 
 
