@@ -28,6 +28,13 @@ myApp.controller('AppController',['$scope', function($s) {
         value : 5
     }];
 
+    $scope.getAllData = function () {
+
+        var items = {
+            items: $scope.items
+        };
+    }
+
 }]);
 
 
