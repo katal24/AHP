@@ -204,6 +204,7 @@ myApp.controller('completeDataController', function($scope, $http) {
        $scope.model = data;
     });
 
+    $scope.items=[{id: 'id1'}];
 
 
 
@@ -229,18 +230,18 @@ myApp.controller('completeDataController', function($scope, $http) {
     
     
     
-
-    var items = {
-        items: $scope.items
-    };
-
-    $http.post('setAllData/', items).success(function (data) {
-
-    console.log("przesylasz suwaki");
-        
-    }).error(function (data) {
-        console.log("Setting up account failed");
-        
-    });
+    //
+    //var items = {
+    //    items: $scope.items
+    //};
+    //
+    //$http.post('setAllData/', items).success(function (data) {
+    //
+    //console.log("przesylasz suwaki");
+    //
+    //}).error(function (data) {
+    //    console.log("Setting up account failed");
+    //
+    //});
 
 });
