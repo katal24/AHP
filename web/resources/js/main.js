@@ -1,4 +1,4 @@
-var myApp = angular.module('hello', [ 'ngRoute' ]);
+var myApp = angular.module('hello', [ 'ngRoute', 'angularRangeSlider' ]);
 myApp.config(function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl : 'resources/view/home.html',
@@ -20,6 +20,24 @@ myApp.config(function($routeProvider) {
         controller : 'userPanelController'
     });
 });
+
+myApp.controller('AppController',['$scope', function($s) {
+
+    $s.items = [{
+        name  : 'First Item',
+        value : 500
+    },
+        {
+            name  : 'Second Item',
+            value : 200
+        },
+        {
+            name  : 'Third Item',
+            value : 700
+        }];
+
+}]);
+
 
 myApp.controller('homeController', function($scope) {
     $scope.message = 'Sign up!';
@@ -186,10 +204,11 @@ myApp.controller('userPanelController', function($scope) {
 
 myApp.controller('completeDataController', function($scope, $http) {
     
+    
     $scope.message = 'Your Panel';
 
     $http.get('getDataToScroll').success(function (data) {
-       $scope.model = data;
+       $scope.surveyData = data;
     });
 
 });
