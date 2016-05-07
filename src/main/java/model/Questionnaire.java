@@ -72,10 +72,18 @@ public class Questionnaire {
         //macierz = new PriorityMatrix("Cena", "Bateria", "Ekran", "Pamiec", "Aparat");
         //macierz.countEigenVector();
 
+
+        // wypisuje kazdy z kazdym i liczy wektor wlasny
         for(String[] s : Arrays.copyOfRange(allProperties,1,allProperties.length)){
             System.out.println("Macierz dla: " + s[0]);
             macierz = new PriorityMatrix(s[0], Arrays.asList(Arrays.copyOfRange(s,1,s.length)));
+            matrixes.add(macierz);
             macierz.countEigenVector();
+        }
+
+        System.out.println("POROWNANIA DO SUWAKOW WSZYSTKIE: ");
+        for(PriorityMatrix pm : matrixes){
+            System.out.println(pm.mapToFil);
         }
 
 //        mainMatrix = new double[variantsNumber][variantsNumber];

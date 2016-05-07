@@ -24,6 +24,8 @@ public class PriorityMatrix {
     String[] concrete;
     double[][] mainMatrix;
     Map<Pair,Double> map = new LinkedHashMap<Pair, Double>();
+    public Map<Pair,Double> mapToFil = new LinkedHashMap<Pair, Double>();
+
 
     public void fillMap(){
 
@@ -51,6 +53,9 @@ public class PriorityMatrix {
                     map.put(new Pair(variants.get(i),variants.get(j),i,j), 1.0);
                 }
                 else {
+                    if(i<j){
+                        mapToFil.put(new Pair(variants.get(i), variants.get(j), i, j), 0.0);
+                    }
                     map.put(new Pair(variants.get(i), variants.get(j), i, j), 0.0);
                 }
             }
@@ -60,13 +65,17 @@ public class PriorityMatrix {
             System.out.println(p + " : " + map.get(p));
         }
 
+        System.out.println("DO SUWAKÓW");
+        for (Pair p : mapToFil.keySet()) {
+            System.out.println(p + " : " + mapToFil.get(p));
+        }
 
 
         // teraz uzytkownik uzupelnia mape !!!
 
 
 
-        // uzupenianie macierzy matrix musi sie robic na podstawie mapy, teraz to zrobie
+        // uzupenianie macierzy matrix musi sie robic na podstawie mapy
         for(Pair p : map.keySet()){
             mainMatrix[p.getX()][p.getY()] = map.get(p);
         }
