@@ -35,6 +35,16 @@ myApp.controller('AppController',['$scope', function($s) {
         };
     }
 
+    $http.post('setAllData/', items).success(function (data) {
+
+        console.log("udalo sie w completedata suqaki");
+
+   
+
+    }).error(function (data) {
+        console.log("Setting up account failed");
+    });
+
 }]);
 
 
