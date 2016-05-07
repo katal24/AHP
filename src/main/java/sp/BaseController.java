@@ -63,6 +63,12 @@ public class BaseController {
         return model;
     }
 
+    @RequestMapping(value="/setAllData", method = RequestMethod.POST)
+    @ResponseBody
+    public void setAllData(@RequestBody String items){
+
+        System.out.println("--------------ITEEEEEEEEEEEEEEEEEEEEEM: " + items);
+    }
 
 
 
