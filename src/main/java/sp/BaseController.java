@@ -32,15 +32,17 @@ import java.util.Map;
 @Controller
 public class BaseController {
 
+    public static Questionnaire quest;
     public static NewQuest nq = new NewQuest();
     public static NewCompletedQuest ncq = new NewCompletedQuest();
+    public static Map<String, Object> model = new HashMap<String, Object>();
 
     @RequestMapping("/getSurveyData/")
     @ResponseBody
     Map<String, Object> getSurveyData() throws SQLException {
     System.out.println("         GET DATY   YYYYYYYYYYYYYYYYY");
 
-        Map<String, Object> model = new HashMap<String, Object>();
+
 
         System.out.println("         NAZWA : " + nq.getSurveyName());
         model.put("nazwa", nq.getSurveyName());
@@ -49,6 +51,15 @@ public class BaseController {
         model.put("ileVar", nq.getVariantsList().size());
 
        return model;
+    }
+
+    @RequestMapping("/getDataToScroll")
+    @ResponseBody
+    Map<String, Object> getDataToScroll(){
+        model.put("listToScroll", quest.getListToScroll());
+
+
+        return model;
     }
 
 
@@ -70,9 +81,11 @@ public class BaseController {
         System.out.println("WYPELNIONE: " + Arrays.toString(ncq.getCategoriesInput().toArray()));
         System.out.println("DRUGI WARIANT: " + ncq.getCategoriesInput().get(1).getValue());
 
-        Questionnaire quest = new Questionnaire();
+        quest = new Questionnaire();
         quest.makeQuestionnaire();
 
+        System.out.println("LISTA DO SUWAKOW: ");
+        System.out.println(quest.getListToScroll());
 //
 //        nq.setLists();
 //        System.out.println("CATEGORIES: " + Arrays.toString(nq.getCategoriesList().toArray()));

@@ -4,10 +4,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import sp.BaseController;
 import sp.NewQuest;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by dawid on 11.04.16.
@@ -67,7 +64,7 @@ public class Questionnaire {
 
         matrixes = new LinkedList<PriorityMatrix>();
 
-        matrixes.add(new PriorityMatrix("Ogolne", BaseController.nq.getCategoriesList().subList(1,BaseController.nq.getCategoriesList().size())));
+        matrixes.add(new PriorityMatrix("PRIORYTETY", BaseController.nq.getCategoriesList().subList(1,BaseController.nq.getCategoriesList().size())));
         //macierz = new PriorityMatrix(5);
         //macierz = new PriorityMatrix("Cena", "Bateria", "Ekran", "Pamiec", "Aparat");
         //macierz.countEigenVector();
@@ -85,6 +82,8 @@ public class Questionnaire {
         for(PriorityMatrix pm : matrixes){
             System.out.println(pm.mapToFil);
         }
+
+
 
 //        mainMatrix = new double[variantsNumber][variantsNumber];
 //
@@ -124,6 +123,16 @@ public class Questionnaire {
 //        System.out.println("B: " + Arrays.toString(B.eig().getRealEigenvalues()));
 
 
+    }
+
+    public LinkedList<Pair> getListToScroll(){
+        LinkedList<Pair> listToScroll = new LinkedList<Pair>();
+
+        for(PriorityMatrix matrix : matrixes){
+            listToScroll.addAll(matrix.getMapToFillAsList());
+        }
+
+        return listToScroll;
     }
 
 //    *Lista cech, które są dla użytkownika ważne przy wyborze

@@ -3,10 +3,7 @@ package model;
 
 import Jama.Matrix;
 
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by dawid on 11.04.16.
@@ -26,6 +23,9 @@ public class PriorityMatrix {
     Map<Pair,Double> map = new LinkedHashMap<Pair, Double>();
     public Map<Pair,Double> mapToFil = new LinkedHashMap<Pair, Double>();
 
+    public LinkedList<Pair> getMapToFillAsList(){
+        return new LinkedList<Pair>(mapToFil.keySet());
+    }
 
     public void fillMap(){
 
@@ -50,13 +50,13 @@ public class PriorityMatrix {
         for(int i = 0; i<this.size; i++){
             for(int j = 0; j<this.size; j++){
                 if(i==j) {
-                    map.put(new Pair(variants.get(i),variants.get(j),i,j), 1.0);
+                    map.put(new Pair(name, variants.get(i),variants.get(j),i,j), 1.0);
                 }
                 else {
                     if(i<j){
-                        mapToFil.put(new Pair(variants.get(i), variants.get(j), i, j), 0.0);
+                        mapToFil.put(new Pair(name, variants.get(i), variants.get(j), i, j), 0.0);
                     }
-                    map.put(new Pair(variants.get(i), variants.get(j), i, j), 0.0);
+                    map.put(new Pair(name, variants.get(i), variants.get(j), i, j), 0.0);
                 }
             }
         }
