@@ -21,19 +21,12 @@ myApp.config(function($routeProvider) {
     });
 });
 
-myApp.controller('AppController',['$scope', function($scope, $s) {
-    
-    
+myApp.controller('AppController',['$scope', function($s) {
 
     $s.items = [{
         name  : 'First Item',
         value : 5
     }];
-
-    // $scope.setAllData = function () {
-    //
-    //     console.log("czescccccccccccccccccccccccccccccccccc");
-    // }
 
     
 }]);
@@ -209,6 +202,45 @@ myApp.controller('completeDataController', function($scope, $http) {
 
     $http.get('getDataToScroll').success(function (data) {
        $scope.model = data;
+    });
+
+
+
+
+    $scope.setAllData = function () {
+
+        var items = {
+            items: $scope.items
+        };
+
+        console.log("przesylasz suwakiiiiiiiid");
+
+        $http.post('setAllData/', items).success(function (data) {
+
+            console.log(items);
+            
+            console.log("udalo sie w suwakach");
+        }).error(function (data) {
+            console.log("Setting up account failed");
+        });
+
+    };
+    
+    
+    
+    
+
+    var items = {
+        items: $scope.items
+    };
+
+    $http.post('setAllData/', items).success(function (data) {
+
+    console.log("przesylasz suwaki");
+        
+    }).error(function (data) {
+        console.log("Setting up account failed");
+        
     });
 
 });
