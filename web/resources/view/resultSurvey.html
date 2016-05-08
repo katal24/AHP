@@ -24,11 +24,11 @@
         <div id="page-content-wrapper">
 
 
-            <button class="buttonDark buttonLogin" type="submit" data-ng-click="getResult()">kliknij zeby zobaczyc czary</button>
+           The Best variant is: {{ model.resultList[0].variant}}
 
             <div data-ng-repeat="element in model.resultList track by $index">
                 <!--<div data-ng-repeat="item in items">-->
-                <h2>{{$index}}. {{element.variant}}: {{element.result}}</h2>
+                <h2>{{$index}}. {{element.variant}}: {{element.result}} %</h2>
 
             </div>
 
