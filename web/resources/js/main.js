@@ -41,9 +41,8 @@ myApp.controller('homeController', function($scope) {
 
 
 myApp.controller('resultSurveyController', function($scope) {
-    $scope.message = 'Sign up!';
 
-    $http.get('getResult').success(function (data) {
+    $http.get('getResult/').success(function (data) {
         $scope.model = data;
     });
 
