@@ -40,12 +40,13 @@ myApp.controller('homeController', function($scope) {
 });
 
 
-myApp.controller('resultSurveyController', function($scope) {
+myApp.controller('resultSurveyController', function($scope, $http) {
 
-    $http.get('getResult/').success(function (data) {
-        $scope.model = data;
-    });
-
+    $scope.getResult = function () {
+        $http.get('getResult/').success(function (data) {
+            $scope.model = data;
+        });
+    }
 
 });
 
@@ -241,6 +242,10 @@ myApp.controller('completeDataController', function($scope, $http) {
             console.log("Setting up account failed");
         });
 
+
+       
+
     };
 
 });
+
