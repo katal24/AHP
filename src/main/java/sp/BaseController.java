@@ -36,6 +36,7 @@ public class BaseController {
     public static NewQuest nq = new NewQuest();
     public static NewCompletedQuest ncq = new NewCompletedQuest();
     public static Map<String, Object> model = new HashMap<String, Object>();
+    public static double[] result;
 
     @RequestMapping("/getSurveyData/")
     @ResponseBody
@@ -57,7 +58,7 @@ public class BaseController {
     @ResponseBody
     Map<String, Object> getDataToScroll(){
         System.out.println("##########################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2 jestem w base w getDataScrol");
-        model.put("listToScroll", quest.getListToScroll());
+        model.put("listToScroll", quest.getListToScrollFromMatrixes());
 
 
         return model;
@@ -68,6 +69,23 @@ public class BaseController {
     public void setAllData(@RequestBody String items){
 
         System.out.println("--------------ITEEEEEEEEEEEEEEEEEEEEEM: " + items);
+        Gson gson = new Gson();
+//
+//        // zwiera dane z formularza step 1-3
+        CompleteData cd = gson.fromJson(items, CompleteData.class);
+        System.out.println("            DANE Z obiektu cd: " + cd.getItems());
+
+        quest.setListToScroll(cd.getItems());
+        System.out.println("            DANE Z KLASY: " + quest.getListToScroll());
+        quest.setValueInMaps(); //wszystkie mapy w matrixes są już uzupełnione, przepisane do macierzy i wektory wyliczone
+        // teraz trzeba przepisac je do macierzy
+        quest.printAllMaps();
+        result = quest.countResult();
+        System.out.println("=============================================================");
+        System.out.println("=============================================================");
+        System.out.println("========================== WYNIK ============================");
+        System.out.println(Arrays.toString(result));
+
     }
 
 
@@ -92,12 +110,7 @@ public class BaseController {
         quest.makeQuestionnaire();
 
         System.out.println("LISTA DO SUWAKOW: ");
-        System.out.println(quest.getListToScroll());
-//
-//        nq.setLists();
-//        System.out.println("CATEGORIES: " + Arrays.toString(nq.getCategoriesList().toArray()));
-//        System.out.println("VARIANTS:   " + Arrays.toString(nq.getVariantsList().toArray()));
-//        // getSurveyData(nq);
+        System.out.println(quest.getListToScrollFromMatrixes());
 
     }
 

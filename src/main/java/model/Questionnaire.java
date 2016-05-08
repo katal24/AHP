@@ -12,6 +12,9 @@ import java.util.*;
 
 public class Questionnaire {
 
+    LinkedList<Pair> listToScroll;
+    LinkedList<double[]> eigenVectors;
+
     public Questionnaire(NewQuest nq){
         categoriesList = nq.getCategoriesList();
         variantsList = nq.getVariantsList();
@@ -35,6 +38,11 @@ public class Questionnaire {
     List<String> variantsList;
 
 
+    public void printAllMaps(){
+        for(PriorityMatrix matrix : matrixes){
+            System.out.println(matrix.map);
+        }
+    }
     public void makeQuestionnaire(){
 
         //categoriesString = new LinkedList<String>();
@@ -82,9 +90,6 @@ public class Questionnaire {
         for(PriorityMatrix pm : matrixes){
             System.out.println(pm.mapToFil);
         }
-
-
-
 //        mainMatrix = new double[variantsNumber][variantsNumber];
 //
 //        mainMatrix[0] = new double[]{1, 1./3, 5, 3, 0.5};
@@ -121,12 +126,59 @@ public class Questionnaire {
 //        Matrix B = new Matrix(mainMatrix);
 //        System.out.println("B: " + Arrays.deepToString(B.eig().getV().getArray()));
 //        System.out.println("B: " + Arrays.toString(B.eig().getRealEigenvalues()));
-
-
     }
 
-    public LinkedList<Pair> getListToScroll(){
-        LinkedList<Pair> listToScroll = new LinkedList<Pair>();
+    public void setValueInMaps(){
+        eigenVectors = new LinkedList<double[]>();
+        for(PriorityMatrix matrix : matrixes){
+            for(Pair pair : listToScroll){
+                matrix.setValueInMap(pair);
+                matrix.convertValueInMap();
+            }
+            matrix.fillArray();
+            System.out.println(Arrays.deepToString(matrix.mainMatrix));
+            double[] temp = matrix.countEigenVector();
+            eigenVectors.add(temp);
+        }
+    }
+
+    public double[] countResult(){
+        double[] result = new double[eigenVectors.getFirst().length];
+
+        for(int i=1; i<eigenVectors.size(); i++){
+
+            System.out.println("Przed mnozeniem: " + Arrays.toString(eigenVectors.get(i)));
+            for(int k=0; k<eigenVectors.getFirst().length; k++){
+                eigenVectors.get(i)[k] = eigenVectors.get(i)[k] * eigenVectors.getFirst()[i-1];
+            }
+
+//            for(double element : eigenVectors.get(i)){
+//                element = element * eigenVectors.get(0)[i-1];
+//
+//            }
+            System.out.println("Po mnozeniu: " + Arrays.toString(eigenVectors.get(i)));
+
+        }
+
+        for(double[] v : eigenVectors.subList(1,eigenVectors.size())){
+            result = addVectors(result,v);
+        }
+
+        return result;
+    }
+
+    public double[] addVectors(double[] v1, double[] v2){
+        double[] result = new double[v1.length];
+
+        for(int i=0; i< v1.length; i++){
+            result[i] = v1[i] + v2[i];
+        }
+
+        return result;
+    }
+
+    public LinkedList<Pair> getListToScrollFromMatrixes(){
+        listToScroll= new LinkedList<Pair>();
 
         for(PriorityMatrix matrix : matrixes){
             listToScroll.addAll(matrix.getMapToFillAsList());
@@ -135,7 +187,16 @@ public class Questionnaire {
         return listToScroll;
     }
 
-//    *Lista cech, które są dla użytkownika ważne przy wyborze
+
+    public LinkedList<Pair> getListToScroll() {
+        return listToScroll;
+    }
+
+    public void setListToScroll(LinkedList<Pair> listToScroll) {
+        this.listToScroll = listToScroll;
+    }
+
+    //    *Lista cech, które są dla użytkownika ważne przy wyborze
     //  private Criteria criteria;
 
     //Macierz z wartosciami ważności cech (kryteriów wyboru)

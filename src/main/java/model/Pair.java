@@ -9,20 +9,21 @@ public class Pair {
     private String s1,s2;
     private int x,y;
     boolean first;
-    private double value = 0.0;
+    int value;
 
-    public Pair(String name, String s1, String s2, int x, int y) {
+    public Pair(String name, String s1, String s2, int x, int y, int value) {
         this.name = name;
         this.s1 = s1;
         this.s2 = s2;
         this.x = x;
         this.y = y;
         if(x<y) first = true;
+        this.value = value;
     }
 
     @Override
     public String toString() {
-        return "(" + name + ":: " + s1 +"," + s2 + ":" + x + "," + y + ")";
+        return "(" + name + ":: " + s1 +"," + s2 + ":" + x + "," + y + "::" + value + ")";
     }
 
     @Override
@@ -34,6 +35,7 @@ public class Pair {
 
         if (x != pair.x) return false;
         if (y != pair.y) return false;
+        if (first != pair.first) return false;
         if (name != null ? !name.equals(pair.name) : pair.name != null) return false;
         if (s1 != null ? !s1.equals(pair.s1) : pair.s1 != null) return false;
         return !(s2 != null ? !s2.equals(pair.s2) : pair.s2 != null);
@@ -49,11 +51,11 @@ public class Pair {
         return result;
     }
 
-    public double getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(int value) {
         this.value = value;
     }
 

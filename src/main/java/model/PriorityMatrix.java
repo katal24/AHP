@@ -26,8 +26,45 @@ public class PriorityMatrix {
     public LinkedList<Pair> getMapToFillAsList(){
         return new LinkedList<Pair>(mapToFil.keySet());
     }
+    double temp;
+
+    public void setValueInMap(Pair p){
+        for(Map.Entry<Pair, Double> entry : map.entrySet()){
+            if(entry.getKey().getS1().equals(p.getS1()) && entry.getKey().getS2().equals(p.getS2())){
+                // moze lepiej usunac stare entry i dac nowe????
+                temp = (double) p.getValue();
+                if(temp >= 0){
+                    temp++;
+                } else{
+                    temp--;
+                    temp = temp*(-1);
+                    temp = 1/temp;
+                }
+                entry.setValue(temp);
+            }
+            else if(entry.getKey().getS1().equals(p.getS2()) && entry.getKey().getS2().equals(p.getS1())){
+                // moze lepiej usunac stare entry i dac nowe????
+
+                temp = (double) p.getValue()*(-1);
+                if(temp >= 0){
+                    temp++;
+                } else{
+                    temp --;
+                    temp = temp*(-1);
+                    temp = 1/temp;
+                }
+                entry.setValue(temp);
+               // entry.setValue((double) p.getValue()*(-1));
+            }
+        }
+    }
+
 
     public void fillMap(){
+
+    }
+
+    public void convertValueInMap() {
 
     }
     //    * Wektor, w ktorym zapisane sa proprytety cech
@@ -50,13 +87,13 @@ public class PriorityMatrix {
         for(int i = 0; i<this.size; i++){
             for(int j = 0; j<this.size; j++){
                 if(i==j) {
-                    map.put(new Pair(name, variants.get(i),variants.get(j),i,j), 1.0);
+                    map.put(new Pair(name, variants.get(i),variants.get(j),i,j,0), 1.0);
                 }
                 else {
                     if(i<j){
-                        mapToFil.put(new Pair(name, variants.get(i), variants.get(j), i, j), 0.0);
+                        mapToFil.put(new Pair(name, variants.get(i), variants.get(j), i, j,0), 0.0);
                     }
-                    map.put(new Pair(name, variants.get(i), variants.get(j), i, j), 0.0);
+                    map.put(new Pair(name, variants.get(i), variants.get(j), i, j,0), 0.0);
                 }
             }
         }
@@ -87,6 +124,15 @@ public class PriorityMatrix {
        // to powyżej jest do zmiany, ostatecznie ma wygladac tak: matrix = new Matrix(size, size);
     }
 
+    public void fillArray(){
+        for(Pair p : map.keySet()){
+            mainMatrix[p.getX()][p.getY()] = map.get(p);
+        }
+
+
+
+        matrix = new Matrix(mainMatrix);
+    }
 
     public double getFactor() {
         return factor;
@@ -114,14 +160,16 @@ public class PriorityMatrix {
     }
 
 
-    public void countEigenVector(){
+    public double[] countEigenVector(){
 
         double[] tempMainPriority = matrix.eig().getV().transpose().getArray()[0];
+
 
         mainPriority = normaliseArray(tempMainPriority);
         System.out.println("Wektor wag: " + Arrays.toString(mainPriority));
         double sumka = sumArray(mainPriority);
         System.out.println(sumka);
+        return mainPriority;
         //print2Vectors(variants.getVariants().get(0).getCriteria(), mainPriority);
     }
 
@@ -134,6 +182,10 @@ public class PriorityMatrix {
     }
 
     public double[] normaliseArray(double[] array){
+        for(int i=0; i<array.length; i++){
+            if(array[i] < 0 ) array[i] = -array[i];
+        }
+
         double sum = sumArray(array);
         for(int i=0; i<array.length; i++){
             array[i] = (double) Math.round(Math.abs(array[i])/sum * 1000d) / 1000d;
@@ -147,6 +199,7 @@ public class PriorityMatrix {
             System.out.println(properties.get(i+1) + "   " + values[i]);
         }
     }
+
 
 }
 
