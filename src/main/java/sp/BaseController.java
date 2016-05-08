@@ -14,9 +14,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 //import org.codehaus.jackson.map.ObjectMapper;
 
@@ -37,6 +35,7 @@ public class BaseController {
     public static NewCompletedQuest ncq = new NewCompletedQuest();
     public static Map<String, Object> model = new HashMap<String, Object>();
     public static double[] result;
+    public static LinkedList<Result> resultList;
 
     @RequestMapping("/getSurveyData/")
     @ResponseBody
@@ -86,8 +85,24 @@ public class BaseController {
         System.out.println("========================== WYNIK ============================");
         System.out.println(Arrays.toString(result));
 
+
+
     }
 
+    @RequestMapping("/getResult")
+    @ResponseBody
+    Map<String, Object> getResult(){
+        resultList = new LinkedList<Result>();
+        for(int i=0; i<result.length; i++){
+            resultList.add(new Result(nq.getVariantsList().get(i),result[i]));
+        }
+
+        Collections.sort(resultList);
+        System.out.println("Posortowane: " + resultList);
+        model.put("resultList", resultList);
+
+        return model;
+    }
 
 
     @RequestMapping(value = "/setCompletedData", method = RequestMethod.POST)//, headers = "content-type=application/x-www-form-urlencoded")
