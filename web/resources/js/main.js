@@ -210,7 +210,7 @@ myApp.controller('completeDataController', function($scope, $http) {
 
 
     $scope.setAllData = function () {
-
+        
         var items = {
             items: $scope.model.listToScroll
         };
@@ -227,22 +227,5 @@ myApp.controller('completeDataController', function($scope, $http) {
         });
 
     };
-    
-    
-    
-    
-    //
-    //var items = {
-    //    items: $scope.items
-    //};
-    //
-    //$http.post('setAllData/', items).success(function (data) {
-    //
-    //console.log("przesylasz suwaki");
-    //
-    //}).error(function (data) {
-    //    console.log("Setting up account failed");
-    //
-    //});
 
 });
