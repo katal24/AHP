@@ -6,6 +6,9 @@ myApp.config(function($routeProvider) {
     }).when('/login', {
         templateUrl : 'resources/view/login.html',
         controller : 'loginController'
+    }).when('/resultSurvey', {
+        templateUrl : 'resources/view/resultSurvey.html',
+        controller : 'resultSurveyController'
     }).when('/createSurvey', {
         templateUrl : 'resources/view/createSurvey.html',
         controller : 'createSurveyController'
@@ -35,6 +38,19 @@ myApp.controller('AppController',['$scope', function($s) {
 myApp.controller('homeController', function($scope) {
     $scope.message = 'Sign up!';
 });
+
+
+myApp.controller('resultSurveyController', function($scope) {
+    $scope.message = 'Sign up!';
+
+    $http.get('getResult').success(function (data) {
+        $scope.model = data;
+    });
+
+
+});
+
+
 myApp.controller('loginController', function($rootScope, $scope, $http, $location, $route) {
 
     $scope.tab = function (route) {
