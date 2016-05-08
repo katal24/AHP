@@ -42,11 +42,10 @@ myApp.controller('homeController', function($scope) {
 
 myApp.controller('resultSurveyController', function($scope, $http) {
 
-    $scope.getResult = function () {
-        $http.get('getResult/').success(function (data) {
-            $scope.model = data;
-        });
-    }
+    $http.get('getResult/').success(function (data) {
+        $scope.model = data;
+    });
+
 
 });
 
@@ -171,7 +170,7 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
             // $rootScope.errorEditProfile = true;
 
         });
-        
+
     };
 
     $scope.completeData = function () {
@@ -212,8 +211,8 @@ myApp.controller('userPanelController', function($scope) {
 });
 
 myApp.controller('completeDataController', function($scope, $http) {
-    
-    
+
+
     $scope.message = 'Your Panel';
 
     $http.get('getDataToScroll').success(function (data) {
@@ -226,7 +225,7 @@ myApp.controller('completeDataController', function($scope, $http) {
 
 
     $scope.setAllData = function () {
-        
+
         var items = {
             items: $scope.model.listToScroll
         };
@@ -236,16 +235,12 @@ myApp.controller('completeDataController', function($scope, $http) {
         $http.post('setAllData/', items).success(function (data) {
 
             console.log(items);
-            
+
             console.log("udalo sie w suwakach");
         }).error(function (data) {
             console.log("Setting up account failed");
         });
 
-
-       
-
     };
 
 });
-

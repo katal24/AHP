@@ -9,7 +9,7 @@ public class Result implements Comparable{
 
     public Result(String variant, double result) {
         this.variant = variant;
-        this.result = result;
+        this.result = (double)Math.round(result * 100 *100d) / 100d;
     }
 
     @Override
