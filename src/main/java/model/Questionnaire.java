@@ -36,6 +36,7 @@ public class Questionnaire {
 
     List<String> categoriesList;
     List<String> variantsList;
+    double errorFactor;
 
 
     public void printAllMaps(){
@@ -86,6 +87,8 @@ public class Questionnaire {
             macierz.countEigenVector();
         }
 
+
+
         System.out.println("POROWNANIA DO SUWAKOW WSZYSTKIE: ");
         for(PriorityMatrix pm : matrixes){
             System.out.println(pm.mapToFil);
@@ -128,7 +131,7 @@ public class Questionnaire {
 //        System.out.println("B: " + Arrays.toString(B.eig().getRealEigenvalues()));
     }
 
-    public void setValueInMaps(){
+    public double setValueInMaps(){
         eigenVectors = new LinkedList<double[]>();
         for(PriorityMatrix matrix : matrixes){
             for(Pair pair : listToScroll){
@@ -140,6 +143,24 @@ public class Questionnaire {
             double[] temp = matrix.countEigenVector();
             eigenVectors.add(temp);
         }
+
+        //LICZY ŚREDNI WSPÓŁCZYNNIK NIESPÓJNOŚCI
+        double error = matrixes.get(0).countErrorFactor();
+        System.out.print("LICZE NIESPOJNOSC!");
+
+        int n = BaseController.nq.getCategoriesList().size()-1;
+        errorFactor = (error - n)/(n-1);
+
+        System.out.println("SREDNI WSPOLCZYNNIK NIESPOLNOSCI WYNOSI: " + errorFactor);
+
+        if(errorFactor > 0.1){
+            System.out.println("NIESPÓJNOŚĆ NIESPÓJNOŚĆ NIESPÓJNOŚĆ !!! WYPEŁNIJŻE PORZĄDNIE TE ANKIETE!!!!!!!!!!!!!!!!!!");
+        } else{
+            System.out.println("ANKIETA SPOJNA");
+
+        }
+
+        return errorFactor;
     }
 
     public double[] countResult(){
