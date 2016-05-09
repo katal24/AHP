@@ -159,6 +159,21 @@ public class PriorityMatrix {
         mainMatrix[4] = new double[]{2, 0.5, 6, 0.5, 1};
     }
 
+    public double countErrorFactor(){
+        double[] errorFactors = matrix.eig().getRealEigenvalues();
+        System.out.println(Arrays.toString(errorFactors));
+        double errorFactor = -10.0;
+
+        for(double d : errorFactors){
+            if(d>errorFactor){
+                errorFactor = d;
+            }
+        }
+
+        System.out.println("MAX WARTOSC WLASNA: " + errorFactor);
+
+        return errorFactor;
+    }
 
     public double[] countEigenVector(){
 

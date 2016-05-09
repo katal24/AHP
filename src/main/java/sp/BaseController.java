@@ -76,15 +76,19 @@ public class BaseController {
 
         quest.setListToScroll(cd.getItems());
         System.out.println("            DANE Z KLASY: " + quest.getListToScroll());
-        quest.setValueInMaps(); //wszystkie mapy w matrixes są już uzupełnione, przepisane do macierzy i wektory wyliczone
-        // teraz trzeba przepisac je do macierzy
-        quest.printAllMaps();
-        result = quest.countResult();
-        System.out.println("=============================================================");
-        System.out.println("=============================================================");
-        System.out.println("========================== WYNIK ============================");
-        System.out.println(Arrays.toString(result));
+        double errorFactor = quest.setValueInMaps(); //wszystkie mapy w matrixes są już uzupełnione, przepisane do macierzy i wektory wyliczone
 
+        if(errorFactor > 0.1){
+            //cos trzeba zrobic
+        } else {
+            quest.printAllMaps();
+            // zapisuje rezultat do listy
+            result = quest.countResult();
+            System.out.println("=============================================================");
+            System.out.println("=============================================================");
+            System.out.println("========================== WYNIK ============================");
+            System.out.println(Arrays.toString(result));
+        }
 
 
     }
