@@ -7,13 +7,13 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="" >link</a>
+                    <a href="" ></a>
                 </li>
                 <li>
-                    <a href="" >link</a>
+                    <a href="#/" >Home Page</a>
                 </li>
                 <li>
-                    <a href="" >link</a>
+                    <a href="#/completeData">Complete Data</a>
                 </li>
 
             </ul>
@@ -23,7 +23,7 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-           The Best variant is: {{ model.resultList[0].variant}}
+           <h4>The best choice is:</h4> <h3>{{ model.resultList[0].variant}}</h3>
 
             <div data-ng-repeat="element in model.resultList track by $index">
                 <!--<div data-ng-repeat="item in items">-->
