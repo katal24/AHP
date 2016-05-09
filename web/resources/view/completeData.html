@@ -1,49 +1,74 @@
-<div id="ng-app" data-ng-app="app">
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
+<div ng-app="hello" xmlns="http://www.w3.org/1999/html">
 
 
-    <h3>{{model.nazwa}}</h3>
+    <div id="wrapper">
 
-    <div class="jumbotron">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a>MAKE DECISION</a>
+                </li>
+                <li>
+                    <a href="#/createSurvey">Back to editing</a>
+                </li>
+                <li>
+                    <a href="#/" >Home page</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <h3>{{model.nazwa}}
+                <button type="submit" class="btn btn-success btn-circle btn-xl" data-ng-click="setAllData()"><a href="#/resultSurvey"><i class="glyphicon glyphicon-ok icon white"></i></a></button>
+            </h3>
 
 
-    <div data-ng-repeat="element in model.listToScroll track by $index">
-        <!--<div data-ng-repeat="item in items">-->
-        <h4>nazwa jakas {{element.name}}</h4>
-        <h5>{{element.s1}}</h5>
-        <h6>{{element.s2}}</h6>
-        <div data-ng-controller="AppController">
 
-            <div class="container" style="margin-top: 100px;">
-                <section class="row">
-                    <div class="col-md-6 col-md-offset-3">
-                        <p>{{element.value[$index]}}</p>
-                        <div data-range-slider
-                             data-floor="-8"
-                             data-ceiling="8"
-                             data-step="1"
-                             data-precision="1"
-                             data-highlight="center"
-                             data-ng-model="element.value"></div>
+            <hr class="style3">
+
+                <div data-ng-repeat="element in model.listToScroll track by $index">
+                    <!--<div data-ng-repeat="item in items">-->
+                    <h4>nazwa jakas {{element.name}}</h4>
+
+                    <div data-ng-controller="AppController">
+
+                        <div class="container" style="margin-top: 100px;">
+                            <section class="row">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <h5>{{element.s1}}</h5>
+                                    <h6>{{element.s2}}</h6>
+                                    <p>{{element.value[$index]}}</p>
+                                    <div data-range-slider
+                                         data-floor="-8"
+                                         data-ceiling="8"
+                                         data-step="1"
+                                         data-precision="1"
+                                         data-highlight="center"
+                                         data-ng-model="element.value"></div>
+                                </div>
+                            </section>
+
+                        </div>
+
                     </div>
-                </section>
+                    <hr class="style3">
+                </div>
 
+            <div class="col-sm-offset-4 col-sm-8">
+                <button type="submit" class="buttonDark buttonGreen" data-ng-click="setAllData()"><span><a href="#/resultSurvey"> GET ANSWER</a></span></button>
+            </div>
+            <br/>
             </div>
 
-                <!--jakis tam mkomentarz-->
-            </div>
+
+
 
         </div>
-    </div>
-
-
-    <button type="submit" class="buttonDark buttonGreen" data-ng-click="setAllData()"><span><a href="#/resultSurvey"> GET ANSWER</a></span></button>
-
-
-
+    <!-- /#page-content-wrapper -->
+</div>
 
 </div>

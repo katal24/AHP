@@ -27,6 +27,14 @@
     <script src="${pageContext.request.contextPath}/resources/js/angular-range-slider.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/controllers.js"></script>
 
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+
+
+    <script src = "http://cdn.zingchart.com/zingchart.min.js" ></script>
+    <script src = "http://cdn.zingchart.com/angular/zingchart-angularjs.js" ></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <title>Questionnaire</title>
 </head>

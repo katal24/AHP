@@ -46,6 +46,7 @@ myApp.controller('resultSurveyController', function($scope, $http) {
         $scope.model = data;
     });
 
+    
 
 });
 
@@ -237,9 +238,11 @@ myApp.controller('completeDataController', function($scope, $http) {
             console.log(items);
 
             console.log("udalo sie w suwakach");
+            
         }).error(function (data) {
             console.log("Setting up account failed");
         });
+        
 
     };
 

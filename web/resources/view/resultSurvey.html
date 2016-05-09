@@ -23,7 +23,6 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-
            The Best variant is: {{ model.resultList[0].variant}}
 
             <div data-ng-repeat="element in model.resultList track by $index">
@@ -31,6 +30,7 @@
                 <h2>{{$index}}. {{element.variant}}: {{element.result}} %</h2>
 
             </div>
+
 
         </div>
 
