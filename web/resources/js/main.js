@@ -40,17 +40,19 @@ myApp.controller('homeController', function($scope) {
 });
 
 
-myApp.controller('resultSurveyController', function($scope, $http) {
+myApp.controller('resultSurveyController', function($scope, $http, $window) {
 
     $http.get('getResult/').success(function (data) {
-        if(data.error==0){
-            alert("Niewlasciwe dane");
-        } else {
+        //if(data.error==0){
+        //    alert("Niewlasciwe dane");
+        //} else {
             $scope.model = data;
-        }
+        //}
 
     }).error(function (data) {
-        alert('error');
+        location.reload();
+        alert('Wprowadzone dane są niespójne. \n Określ prioryetery jeszcze raz!');
+        $window.location.href = '#/completeData';
      //   console.log("Setting up account failed");
         // $rootScope.errorEditProfile = true;
 
