@@ -54,7 +54,7 @@ public class PriorityMatrix {
                     temp = 1/temp;
                 }
                 entry.setValue(temp);
-               // entry.setValue((double) p.getValue()*(-1));
+                // entry.setValue((double) p.getValue()*(-1));
             }
         }
     }
@@ -73,7 +73,6 @@ public class PriorityMatrix {
     //    *Wspolczynnik niespojnosci
     private double mainFactor;
 
-
     PriorityMatrix(String name, List<String> variants){
         this.name = name;
 
@@ -86,15 +85,28 @@ public class PriorityMatrix {
 
         for(int i = 0; i<this.size; i++){
             for(int j = 0; j<this.size; j++){
-                if(i==j) {
+                if(i==j || (variants.get(i).equals(variants.get(j)))) {
                     map.put(new Pair(name, variants.get(i),variants.get(j),i,j,0), 1.0);
                 }
-                else {
-                    if(i<j){
-                        mapToFil.put(new Pair(name, variants.get(i), variants.get(j), i, j,0), 0.0);
+                else{
+                    if (i < j) {
+                        if (!variants.get(i).equals(variants.get(j))) {
+                            Pair p = new Pair(name, variants.get(i), variants.get(j), i, j, 0);
+                            Pair p2 = new Pair(name, variants.get(i), variants.get(j), j, i, 0);
+
+                            if(!isInMapToFIll(p,p2)) {
+                                mapToFil.put(p, 0.0);
+                            }
+                        }
                     }
-                    map.put(new Pair(name, variants.get(i), variants.get(j), i, j,0), 0.0);
+                    map.put(new Pair(name, variants.get(i), variants.get(j), i, j, 0), 0.0);
                 }
+            }
+        }
+
+        for(int i=0; i<mapToFil.size(); i++){
+            for(int j=0; j<mapToFil.size(); j++){
+
             }
         }
 
@@ -107,21 +119,22 @@ public class PriorityMatrix {
             System.out.println(p + " : " + mapToFil.get(p));
         }
 
-
-        // teraz uzytkownik uzupelnia mape !!!
-
-
-
         // uzupenianie macierzy matrix musi sie robic na podstawie mapy
         for(Pair p : map.keySet()){
             mainMatrix[p.getX()][p.getY()] = map.get(p);
         }
 
-
-
         matrix = new Matrix(mainMatrix);
+        // to powyżej jest do zmiany, ostatecznie ma wygladac tak: matrix = new Matrix(size, size);
+    }
 
-       // to powyżej jest do zmiany, ostatecznie ma wygladac tak: matrix = new Matrix(size, size);
+    public boolean isInMapToFIll(Pair p, Pair p2){
+        if(mapToFil.containsKey(p) || mapToFil.containsKey(p2)) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public void fillArray(){

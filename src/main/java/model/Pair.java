@@ -33,9 +33,8 @@ public class Pair {
 
         Pair pair = (Pair) o;
 
-        if (x != pair.x) return false;
-        if (y != pair.y) return false;
         if (first != pair.first) return false;
+        if (value != pair.value) return false;
         if (name != null ? !name.equals(pair.name) : pair.name != null) return false;
         if (s1 != null ? !s1.equals(pair.s1) : pair.s1 != null) return false;
         return !(s2 != null ? !s2.equals(pair.s2) : pair.s2 != null);

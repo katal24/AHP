@@ -43,10 +43,21 @@ myApp.controller('homeController', function($scope) {
 myApp.controller('resultSurveyController', function($scope, $http) {
 
     $http.get('getResult/').success(function (data) {
-        $scope.model = data;
+        if(data.error==0){
+            alert("Niewlasciwe dane");
+        } else {
+            $scope.model = data;
+        }
+
+    }).error(function (data) {
+        alert('error');
+     //   console.log("Setting up account failed");
+        // $rootScope.errorEditProfile = true;
+
     });
 
-    
+
+
 
 });
 
@@ -220,10 +231,7 @@ myApp.controller('completeDataController', function($scope, $http) {
        $scope.model = data;
     });
 
-    //$scope.items=[{id: 'id1'}];
-
     $scope.items=[];
-
 
     $scope.setAllData = function () {
 
@@ -242,8 +250,6 @@ myApp.controller('completeDataController', function($scope, $http) {
         }).error(function (data) {
             console.log("Setting up account failed");
         });
-        
-
     };
 
 });

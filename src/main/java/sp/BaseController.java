@@ -36,6 +36,7 @@ public class BaseController {
     public static Map<String, Object> model = new HashMap<String, Object>();
     public static double[] result;
     public static LinkedList<Result> resultList;
+    double errorFactor;
 
     @RequestMapping("/getSurveyData/")
     @ResponseBody
@@ -76,11 +77,9 @@ public class BaseController {
 
         quest.setListToScroll(cd.getItems());
         System.out.println("            DANE Z KLASY: " + quest.getListToScroll());
-        double errorFactor = quest.setValueInMaps(); //wszystkie mapy w matrixes są już uzupełnione, przepisane do macierzy i wektory wyliczone
+        errorFactor = quest.setValueInMaps(); //wszystkie mapy w matrixes są już uzupełnione, przepisane do macierzy i wektory wyliczone
 
-        if(errorFactor > 0.1){
-            //cos trzeba zrobic
-        } else {
+
             quest.printAllMaps();
             // zapisuje rezultat do listy
             result = quest.countResult();
@@ -88,7 +87,7 @@ public class BaseController {
             System.out.println("=============================================================");
             System.out.println("========================== WYNIK ============================");
             System.out.println(Arrays.toString(result));
-        }
+
 
 
     }
@@ -96,6 +95,10 @@ public class BaseController {
     @RequestMapping("/getResult")
     @ResponseBody
     Map<String, Object> getResult(){
+        if(errorFactor > 0.1){
+            model.put("eroor", 1);
+        }
+
         resultList = new LinkedList<Result>();
         for(int i=0; i<result.length; i++){
             resultList.add(new Result(nq.getVariantsList().get(i),result[i]));
@@ -104,7 +107,7 @@ public class BaseController {
         Collections.sort(resultList);
         System.out.println("Posortowane: " + resultList);
         model.put("resultList", resultList);
-
+        model.put("eroor", 0);
         return model;
     }
 

@@ -149,6 +149,8 @@ public class Questionnaire {
         System.out.print("LICZE NIESPOJNOSC!");
 
         int n = BaseController.nq.getCategoriesList().size()-1;
+        System.out.println("MAX LAMBDA: " + error);
+        System.out.println("WYMIAR n: " + n);
         errorFactor = (error - n)/(n-1);
 
         System.out.println("SREDNI WSPOLCZYNNIK NIESPOLNOSCI WYNOSI: " + errorFactor);
