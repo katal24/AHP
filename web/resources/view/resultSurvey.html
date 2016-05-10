@@ -27,7 +27,13 @@
 
             <div data-ng-repeat="element in model.resultList track by $index">
                 <!--<div data-ng-repeat="item in items">-->
-                <h2>{{$index}}. {{element.variant}}: {{element.result}} %</h2>
+                <h2>{{$index +1}}. {{element.variant}}: {{element.result}} %</h2>
+
+
+
+                <!--<div class="chart">-->
+                    <!--<div> {{element.result}}-->
+                <!--</div>-->
 
             </div>
 
