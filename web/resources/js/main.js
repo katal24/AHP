@@ -207,6 +207,7 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
             console.log("Setting up account failed");
             // $rootScope.errorEditProfile = true;
 
+
         });
 
 
