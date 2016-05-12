@@ -1,0 +1,23 @@
+<component name="libraryTable">
+  <library name="org.hibernate:hibernate-entitymanager:3.2.0.ga" type="repository">
+    <properties maven-id="org.hibernate:hibernate-entitymanager:3.2.0.ga" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-entitymanager/3.2.0.ga/hibernate-entitymanager-3.2.0.ga.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-annotations/3.2.0.ga/hibernate-annotations-3.2.0.ga.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate/3.2.0.ga/hibernate-3.2.0.ga.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/sf/ehcache/ehcache/1.2/ehcache-1.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/commons-collections/commons-collections/2.1.1/commons-collections-2.1.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/asm/asm-attrs/1.5.3/asm-attrs-1.5.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/antlr/antlr/2.7.6/antlr-2.7.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/cglib/cglib/2.1_3/cglib-2.1_3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/asm/asm/1.5.3/asm-1.5.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/javax/persistence/persistence-api/1.0/persistence-api-1.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/jboss/javassist/3.3.ga/javassist-3.3.ga.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/jboss/jboss-archive-browsing/5.0.0alpha-200607201-119/jboss-archive-browsing-5.0.0alpha-200607201-119.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

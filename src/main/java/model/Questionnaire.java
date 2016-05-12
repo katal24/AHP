@@ -203,6 +203,11 @@ public class Questionnaire {
     public LinkedList<Pair> getListToScrollFromMatrixes(){
         listToScroll= new LinkedList<Pair>();
 
+        System.out.println("................................-WYPEŁNIONE TABLICE:");
+        for(PriorityMatrix matrix : matrixes){
+            System.out.println(Arrays.deepToString(matrix.mainMatrix));
+        }
+
         for(PriorityMatrix matrix : matrixes){
             listToScroll.addAll(matrix.getMapToFillAsList());
         }

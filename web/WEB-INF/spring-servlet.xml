@@ -32,6 +32,24 @@
 
 	</bean>
 
+	<!--<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">-->
+		<!--&lt;!&ndash;<property name="dataSource" ref="dataSource"/>&ndash;&gt;-->
+		<!--<property name="configLocation" value="/WEB-INF/hibernate.cfg.xml"></property>-->
+
+	<!--</bean>-->
+
+	<!--<bean id="jndiDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">-->
+		<!--<property name="jndiName" value="java:jboss/testDS" />-->
+	<!--</bean>-->
+
+	<!--<bean id="sessionFactory"-->
+		  <!--class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">-->
+		<!--<property name="dataSource" ref="jndiDataSource" />-->
+		<!--<property name="packagesToScan" value="com.theqa.model">-->
+		<!--</property>-->
+	<!--</bean>-->
+
+
 	<!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
 		<!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
 		<!--<property name="url" value="jdbc:mysql://mysql.agh.edu.pl:3306/talaga2" />-->

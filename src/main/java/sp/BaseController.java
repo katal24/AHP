@@ -2,6 +2,7 @@ package sp;
 
 
 import com.google.gson.Gson;
+import model.DB;
 import model.Questionnaire;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
@@ -99,6 +100,7 @@ public class BaseController {
     Map<String, Object> getResult(){
         if(errorFactor > 0.1){
             model.put("eroor", new Integer(1));
+
         }
 
         resultList = new LinkedList<Result>();
@@ -180,6 +182,12 @@ public class BaseController {
         System.out.println("               jestem w index");
 
         System.out.println("            iiiiiindeeeeeeeeeeeeeeeeeeeexxxxxxxxxxxxxxxxxxxx");
+        DB db = new DB();
+        try {
+            db.main();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "index";
     }
 
