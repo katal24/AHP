@@ -36,6 +36,7 @@ public class DB {
         return ourSessionFactory.openSession();
     }
 
+    public
 
     public static void main() throws Exception {
         System.out.println("jestem w main w DB");

@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by dawid on 12.05.16.
@@ -109,6 +110,24 @@ public class SurveysEntity {
         this.name = name;
         this.categories = categories;
         this.variants = variants;
+    }
+
+    public SurveysEntity(String type, String owner, String name, List<String> categories, List<String> variants) {
+        this.type = type;
+        this.owner = owner;
+        this.name = name;
+
+        StringBuilder sbcat = new StringBuilder();
+        for(String c : categories){
+            sbcat.append(c+" ");
+        }
+        this.categories = sbcat.toString().substring(1,sbcat.length()-1);
+
+        StringBuilder sbvar = new StringBuilder();
+        for(String v : variants){
+            sbcat.append(v+" ");
+        }
+        this.variants = sbvar.toString().substring(1,sbvar.length()-1);
     }
 
     public SurveysEntity() {

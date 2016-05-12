@@ -22,15 +22,13 @@ import java.util.*;
 /**
  * Created by dawid on 02.04.16.
  */
-///@RequestMapping("/")
-//@EnableWebMvc
-//@ComponentScan(basePackageClasses = BaseController.class)
-//@Configuration
-    @EnableWebMvc
+
+@EnableWebMvc
 @EnableAutoConfiguration
 @Controller
 public class BaseController {
 
+    String user = "Dawid";
     public static Questionnaire quest;
     public static NewQuest nq = new NewQuest();
     public static NewCompletedQuest ncq = new NewCompletedQuest();
@@ -121,10 +119,7 @@ public class BaseController {
     public void setCompletedData(@RequestBody String cs) throws ClassNotFoundException, SQLException, IOException {
 
         // cs to JSON zawierajacay dane z formularza (step 1-3)
-
         System.out.println("        JEST W BASE COMPLETE ------------------------  " + cs);
-        //nq.listas(cs)
-        //nq.deletefirsvariant();
         Gson gson = new Gson();
 //
 //        // zwiera dane z formularza step 1-3
@@ -145,7 +140,6 @@ public class BaseController {
     public void setSurveysData(@RequestBody String cs) throws ClassNotFoundException, SQLException, IOException {
 
         // cs to JSON zawierajacay dane z formularza (step 1-3)
-
         System.out.println("        JEEEEEEEEEEEEEEST W BASE ------------------------  " + cs);
 
         Gson gson = new Gson();
@@ -156,8 +150,6 @@ public class BaseController {
         nq.setLists();
         System.out.println("CATEGORIES: " + Arrays.toString(nq.getCategoriesList().toArray()));
         System.out.println("VARIANTS:   " + Arrays.toString(nq.getVariantsList().toArray()));
-
-       // getSurveyData(nq);
 
     }
 
@@ -205,27 +197,4 @@ public class BaseController {
         model.addAttribute("powitanie", "Mile powitanie? NIEEEEEEE");
         return "witaj";
     }
-
-
-
-//    @Autowired
-//    private Inquiry inquiry;        // chcemy miec obiekt Inquiry i miec go dostepnego pod nazwa inquiry
-//
-//    @RequestMapping("/metoda")
-//    public static String metoda(){
-//        return "glowny";
-//    }
-//
-//    // metoda ustawia atrybut, ktory bedzie dostepny z poziomu widoku:  ${message}
-//    @RequestMapping("/przyklad/model")
-//    public String przykladModelu(Model model){
-//        model.addAttribute("message", "To jest super inormacja przekazana z widoku");
-//        return "glowny";
-//    }
-
-//    @RequestMapping("/main")
-//    public static void main(String[] args){
-//        //SpringApplication.run(BaseController.class, args);
-//     //   metoda();
-//    }
 }
