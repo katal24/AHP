@@ -104,7 +104,6 @@ public class SurveysEntity {
     }
 
     public SurveysEntity(String type, String owner, String name, String categories, String variants) {
-
         this.type = type;
         this.owner = owner;
         this.name = name;
@@ -113,5 +112,17 @@ public class SurveysEntity {
     }
 
     public SurveysEntity() {
+    }
+
+    @Override
+    public String toString() {
+        return "SurveysEntity{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", owner='" + owner + '\'' +
+                ", name='" + name + '\'' +
+                ", categories='" + categories + '\'' +
+                ", variants='" + variants + '\'' +
+                '}';
     }
 }

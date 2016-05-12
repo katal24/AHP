@@ -1,13 +1,14 @@
 package model;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by dawid on 11.05.16.
@@ -40,14 +41,51 @@ public class DB {
         System.out.println("jestem w main w DB");
         final Session session = getSession();
 
-        SurveysEntity survey = new SurveysEntity("a","b","c","d","e");
-
+        SurveysEntity survey = new SurveysEntity("Q","W","E","R","T");
+// zapis do bazy
         session.beginTransaction();
         session.save(survey);
         session.getTransaction().commit();
+//        session.close();
+
+
+        //odczyt z bazy przez id
+        Transaction tx = session.getTransaction();
+        survey = (SurveysEntity) session.get(SurveysEntity.class, 1);
+        String variants = survey.getVariants();
+
+
+
+        //odczyt poprzez select CAŁEJ TABELI
+        Query query = session.createQuery("FROM SurveysEntity");
+
+
+        List list = query.list();
+
+        for (Iterator iterator =
+             list.iterator(); iterator.hasNext();){
+            System.out.println("===================================");
+            SurveysEntity survey1 = (SurveysEntity) iterator.next();
+            System.out.print(survey1);
+
+        }
+
+
+        //ODCZYT PRZEZ SELECT KONKRETNEJ WARTOSCI LUB WIERSZA
+        Query query3 = session.createSQLQuery("SELECT categories from surveys where name='c'");
+        String survey3 = (String) query3.list().get(1);
+        System.out.println("WZIALEM CATEGOIRE Z BAZY I WYGLADAJA ONE TAK: " + survey3);
+     //   Query query3 = session.createSQLQuery("SELECT categories from SurveysEntity where name='c'");
+
+
+
+        // odczyt wybranoego elementu
+
+//        for(SurveysEntity s : list){
+//            System.out.println(s.toString());
+//        }
         session.close();
 
-        System.out.println("Zapisalem do bazy");
 //        try {
 //            System.out.println("querying all the managed entities...");
 //            final Map metadataMap = session.getSessionFactory().getAllClassMetadata();
