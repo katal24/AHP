@@ -50,9 +50,9 @@ myApp.controller('resultSurveyController', function($scope, $http, $window) {
         //}
 
     }).error(function (data) {
-        location.reload();
-        alert('Wprowadzone dane są niespójne. \n Określ prioryetery jeszcze raz!');
-        $window.location.href = '#/completeData';
+      //  location.reload();
+      //  alert('Wprowadzone dane są niespójne. \n Określ prioryetery jeszcze raz!');
+     //   $window.location.href = '#/completeData';
      //   console.log("Setting up account failed");
         // $rootScope.errorEditProfile = true;
 
@@ -158,6 +158,7 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
 
         var cs = {
             surveyName: $scope.s.surveyName,
+            access: $scope.s.access,
           //  surveyName2: $scope.s.surveyName
             categories: $scope.categories,
             variants: $scope.variants
@@ -219,6 +220,8 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
 
 });
 myApp.controller('newAccountController', function($scope) {
+
+
     $scope.message = 'New Account';
 });
 myApp.controller('userPanelController', function($scope) {

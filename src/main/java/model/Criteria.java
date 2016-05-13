@@ -11,21 +11,12 @@ public class Criteria {
     // Lista zawierajaca kryteria wyboru
     private List<String> criteria; // = new LinkedList<String>();
 
-    public void recznie(){
-        criteria.add("cena");
-        criteria.add("bateria");
-        criteria.add("ekran");
-        criteria.add("pamiec");
-        criteria.add("aparat");
-    }
-
     public void addSth(String sth){
         criteria.add(sth);
     }
 
     public Criteria(List<String> list){
         criteria = new ArrayList<String>();
-
         for(String s : list){
             criteria.add(s);
         }

@@ -1,6 +1,9 @@
 package sp;
 
+import model.SurveysEntity;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by dawid on 02.05.16.
@@ -11,6 +14,7 @@ public class NewQuest {
     private ArrayList<Item> categories;
     private ArrayList<Item> variants;
 
+    private String access = "public";
     private ArrayList<String> categoriesList;
     private ArrayList<String> variantsList;
 
@@ -26,8 +30,30 @@ public class NewQuest {
             variantsList.add(i.getName());
         }
     }
-    
-    
+
+    public NewQuest(){}
+
+    public NewQuest(SurveysEntity survey) {
+        this.surveyName = survey.getName();
+        this.access = survey.getType();
+
+        categoriesList = makeListFromString(survey.getCategories());
+        variantsList = makeListFromString(survey.getVariants());
+    }
+
+    public ArrayList<String> makeListFromString(String categoriesFromBase){
+        String[] arrayString = categoriesFromBase.split(" ; ");
+        return new ArrayList<String>(Arrays.asList(arrayString));
+
+    }
+
+    public String getAccess() {
+        return access;
+    }
+
+    public void setAccess(String access) {
+        this.access = access;
+    }
 
     public ArrayList<String> getCategoriesList() {
         return categoriesList;

@@ -4,6 +4,7 @@ package sp;
 import com.google.gson.Gson;
 import model.DB;
 import model.Questionnaire;
+import model.SurveysEntity;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,28 +30,28 @@ import java.util.*;
 public class BaseController {
 
     String user = "Dawid";
-    public static Questionnaire quest;
+    public Questionnaire quest;
     public static NewQuest nq = new NewQuest();
     public static NewCompletedQuest ncq = new NewCompletedQuest();
-    public static Map<String, Object> model = new HashMap<String, Object>();
-    public static double[] result;
-    public static LinkedList<Result> resultList;
+    public Map<String, Object> model = new HashMap<String, Object>();
+    public double[] result;
+    public LinkedList<Result> resultList;
     double errorFactor;
+    DB dbConnection;
 
     @RequestMapping("/getSurveyData/")
     @ResponseBody
     Map<String, Object> getSurveyData() throws SQLException {
-    System.out.println("         GET DATY   YYYYYYYYYYYYYYYYY");
-
-
-
+        System.out.println("         GET DATY   YYYYYYYYYYYYYYYYY");
         System.out.println("         NAZWA : " + nq.getSurveyName());
         model.put("nazwa", nq.getSurveyName());
         model.put("categories", nq.getCategoriesList());
         model.put("variants", nq.getVariantsList());
         model.put("ileVar", nq.getVariantsList().size());
+        model.put("dostep", nq.getAccess());
 
-       return model;
+
+        return model;
     }
 
     @RequestMapping("/getDataToScroll")
@@ -58,8 +59,6 @@ public class BaseController {
     Map<String, Object> getDataToScroll(){
         System.out.println("##########################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2 jestem w base w getDataScrol");
         model.put("listToScroll", quest.getListToScrollFromMatrixes());
-
-
         return model;
     }
 
@@ -76,11 +75,11 @@ public class BaseController {
 
         quest.setListToScroll(cd.getItems());
         System.out.println("            DANE Z KLASY: " + quest.getListToScroll());
-        errorFactor = quest.setValueInMaps(); //wszystkie mapy w matrixes są już uzupełnione, przepisane do macierzy i wektory wyliczone
+      //  errorFactor = quest.setValueInMaps(); //wszystkie mapy w matrixes są już uzupełnione, przepisane do macierzy i wektory wyliczone
 
-        if(errorFactor > 0.1){
+      //  if(errorFactor > 0.1){
             //cos trzeba zrobic
-        } else {
+       // } else {
             quest.printAllMaps();
             // zapisuje rezultat do listy
             result = quest.countResult();
@@ -88,18 +87,15 @@ public class BaseController {
             System.out.println("=============================================================");
             System.out.println("========================== WYNIK ============================");
             System.out.println(Arrays.toString(result));
-        }
-
-
+       // }
     }
 
     @RequestMapping("/getResult")
     @ResponseBody
     Map<String, Object> getResult(){
-        if(errorFactor > 0.1){
-            model.put("eroor", new Integer(1));
-
-        }
+       // if(errorFactor > 0.1){
+       //     model.put("eroor", new Integer(1));
+       // }
 
         resultList = new LinkedList<Result>();
         for(int i=0; i<result.length; i++){
@@ -109,16 +105,11 @@ public class BaseController {
         Collections.sort(resultList);
         System.out.println("Posortowane: " + resultList);
         model.put("resultList", resultList);
-        model.put("eroor", new Integer(0));
+       // model.put("eroor", new Integer(0));
         return model;
     }
 
-
-    @RequestMapping(value = "/setCompletedData", method = RequestMethod.POST)//, headers = "content-type=application/x-www-form-urlencoded")
-    @ResponseBody
-    public void setCompletedData(@RequestBody String cs) throws ClassNotFoundException, SQLException, IOException {
-
-        // cs to JSON zawierajacay dane z formularza (step 1-3)
+    public void completeSutvey(String cs){
         System.out.println("        JEST W BASE COMPLETE ------------------------  " + cs);
         Gson gson = new Gson();
 //
@@ -132,11 +123,39 @@ public class BaseController {
 
         System.out.println("LISTA DO SUWAKOW: ");
         System.out.println(quest.getListToScrollFromMatrixes());
-
     }
 
+    @RequestMapping(value = "/setCompletedData", method = RequestMethod.POST)//, headers = "content-type=application/x-www-form-urlencoded")
+    @ResponseBody
+    public void setCompletedData(@RequestBody String cs) throws ClassNotFoundException, SQLException, IOException {
+
+        // wpisanie ankiety do bazy danych
+
+        dbConnection = new DB();
+        SurveysEntity surveysEntity = new SurveysEntity(nq.getAccess(), user, nq.getSurveyName(), nq.getCategoriesList(), nq.getVariantsList(), cs);
+        dbConnection.saveSurvay(surveysEntity);
+//
+//               // cs to JSON zawierajacay dane z formularza (step 1-3)
+        completeSutvey(cs);
+    }
+
+    // pobiera nazwe ankiety i zwraca dane z bazy i tworzy questionnaire
+    @RequestMapping(value = "/setCompletedDataFromBase", method=RequestMethod.POST)
+    @ResponseBody
+    public void setCompletedDataFromBase(@RequestBody String name){
+
+        //pobranie z bazy
+        dbConnection = new DB();
+        SurveysEntity survey = dbConnection.getSurveyForName("kamil");
+        String cs1 = survey.getCompleted();
+        nq = new NewQuest(survey);
+        //stworzenie ankiety
+        completeSutvey(cs1);
+    }
+
+
     @RequestMapping(value = "/setSurveysData", method = RequestMethod.POST)//, headers = "content-type=application/x-www-form-urlencoded")
-   @ResponseBody
+    @ResponseBody
     public void setSurveysData(@RequestBody String cs) throws ClassNotFoundException, SQLException, IOException {
 
         // cs to JSON zawierajacay dane z formularza (step 1-3)
@@ -174,12 +193,15 @@ public class BaseController {
         System.out.println("               jestem w index");
 
         System.out.println("            iiiiiindeeeeeeeeeeeeeeeeeeeexxxxxxxxxxxxxxxxxxxx");
-        DB db = new DB();
-        try {
-            db.main();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+//        dbConnection = new DB();
+//
+//        ArrayList<SurveysEntity> publicSurveys = dbConnection.getOwnerSurvey(user);
+//
+//        for(SurveysEntity s : publicSurveys){
+//            System.out.println(s);
+//        }
+
         return "index";
     }
 
@@ -190,11 +212,4 @@ public class BaseController {
     }
 
 
-
-
-    @RequestMapping("/witaj")
-    public String przyklad(Model model) {
-        model.addAttribute("powitanie", "Mile powitanie? NIEEEEEEE");
-        return "witaj";
-    }
 }

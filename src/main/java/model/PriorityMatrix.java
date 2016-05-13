@@ -18,9 +18,16 @@ public class PriorityMatrix {
     Matrix matrix;
     double factor;
     String[] priority;
-    String[] concrete;
+    //macierz z wartosciami
     double[][] mainMatrix;
+    //mapa wszystkich porowanan
+
+    //    * Wektor, w ktorym zapisane sa proprytety cech
+    private double[] mainPriority;
+
+
     Map<Pair,Double> map = new LinkedHashMap<Pair, Double>();
+    //mapa porownan, ktore maja byc pokazane w suwakach
     public Map<Pair,Double> mapToFil = new LinkedHashMap<Pair, Double>();
 
     public LinkedList<Pair> getMapToFillAsList(){
@@ -60,18 +67,10 @@ public class PriorityMatrix {
     }
 
 
-    public void fillMap(){
-
-    }
 
     public void convertValueInMap() {
 
     }
-    //    * Wektor, w ktorym zapisane sa proprytety cech
-    private double[] mainPriority;
-
-    //    *Wspolczynnik niespojnosci
-    private double mainFactor;
 
     PriorityMatrix(String name, List<String> variants){
         this.name = name;

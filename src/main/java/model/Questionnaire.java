@@ -14,29 +14,34 @@ public class Questionnaire {
 
     LinkedList<Pair> listToScroll;
     LinkedList<double[]> eigenVectors;
+    private int id;
+    private String type, owner, name, problem, properties, summary;
+    //    *Lista wariantów, z których użytkownik chce wybrać najlepszy
+    private Variants variants; // = new LinkedList<Criteria>();
+    PriorityMatrix macierz;
+    List<PriorityMatrix> matrixes;
+    String[][] allProperties;
+    List<String> categoriesList;
+    List<String> variantsList;
+    double errorFactor;
+    //Macierz z wartosciami ważności cech (kryteriów wyboru)
+    private double[][] mainMatrix;
+
+    //    * Wektor, w ktorym zapisane sa proprytety cech
+    private double[] mainPriority;
+
+    //    *Wspolczynnik niespojnosci
+    private double mainFactor;
+
+    private int propertiesNumber;
+    private int variantsNumber;
 
     public Questionnaire(NewQuest nq){
         categoriesList = nq.getCategoriesList();
         variantsList = nq.getVariantsList();
-
-
     }
 
     public Questionnaire(){}
-
-    private int id;
-    private String type, owner, name, problem, properties, summary;
-
-    //    *Lista wariantów, z których użytkownik chce wybrać najlepszy
-    private Variants variants; // = new LinkedList<Criteria>();
-
-    PriorityMatrix macierz;
-    List<PriorityMatrix> matrixes;
-    String[][] allProperties;
-
-    List<String> categoriesList;
-    List<String> variantsList;
-    double errorFactor;
 
 
     public void printAllMaps(){
@@ -55,9 +60,9 @@ public class Questionnaire {
         nullVawiant.add(0,"Nazwa");
 
         variants.addVariant(new Criteria(nullVawiant));
-       // variants.addVariant(new Criteria("Nazwa", "Cena", "Bateria", "Ekran", "Pamiec", "Aparat"));
+        // variants.addVariant(new Criteria("Nazwa", "Cena", "Bateria", "Ekran", "Pamiec", "Aparat"));
         for(int i=0; i<BaseController.nq.getVariantsList().size(); i++){
-          //  System.out.println(BaseController.ncq.getCompletedVariant(i));
+            //  System.out.println(BaseController.ncq.getCompletedVariant(i));
             ArrayList<String> oneVariant = new ArrayList<String>(BaseController.ncq.getCompletedVariant(i));
             oneVariant.add(0, BaseController.nq.getVariantsList().get(i));
             variants.addVariant(new Criteria(oneVariant));
@@ -74,10 +79,6 @@ public class Questionnaire {
         matrixes = new LinkedList<PriorityMatrix>();
 
         matrixes.add(new PriorityMatrix("PRIORYTETY", BaseController.nq.getCategoriesList().subList(1,BaseController.nq.getCategoriesList().size())));
-        //macierz = new PriorityMatrix(5);
-        //macierz = new PriorityMatrix("Cena", "Bateria", "Ekran", "Pamiec", "Aparat");
-        //macierz.countEigenVector();
-
 
         // wypisuje kazdy z kazdym i liczy wektor wlasny
         for(String[] s : Arrays.copyOfRange(allProperties,1,allProperties.length)){
@@ -88,47 +89,11 @@ public class Questionnaire {
         }
 
 
-
         System.out.println("POROWNANIA DO SUWAKOW WSZYSTKIE: ");
         for(PriorityMatrix pm : matrixes){
             System.out.println(pm.mapToFil);
         }
-//        mainMatrix = new double[variantsNumber][variantsNumber];
-//
-//        mainMatrix[0] = new double[]{1, 1./3, 5, 3, 0.5};
-//        mainMatrix[1] = new double[]{3, 1, 5, 4, 2};
-//        mainMatrix[2] = new double[]{0.2, 0.2, 1, 1./3, 1./6};
-//        mainMatrix[3] = new double[]{1./3, 0.25, 3, 1, 2};
-//        mainMatrix[4] = new double[]{2, 0.5, 6, 0.5, 1};
-//
-//        Matrix A = new Matrix(mainMatrix);
-//
-//        System.out.println("");
-//        double[] tempMainPriority = A.eig().getV().transpose().getArray()[0];
-//
-//        mainPriority = normaliseArray(tempMainPriority);
-//        System.out.println("Wektor wag: " + Arrays.toString(mainPriority));
-//        double sumka = sumArray(mainPriority);
-//        System.out.println(sumka);
-//        print2Vectors(variants.getVariants().get(0).getCriteria(), mainPriority);
-//
 
-
-//        System.out.println("A: " + Arrays.toString(A.eig().getRealEigenvalues()));
-//        System.out.println("A: " + Arrays.deepToString(A.eig().getD().getArray()));
-//        System.out.println("A: " + Arrays.toString(A.eig().getImagEigenvalues()));
-//
-//
-//        mainMatrix[0] = new double[]{1, 3, 0.2, 1./3, 2};
-//        mainMatrix[1] = new double[]{1./3, 1, 0.2, 0.25, 0.5};
-//        mainMatrix[2] = new double[]{5, 5, 1, 3, 6};
-//        mainMatrix[3] = new double[]{3, 4, 1./3, 1, 1./2};
-//        mainMatrix[4] = new double[]{0.5, 2, 1./6, 2, 1};
-//
-//
-//        Matrix B = new Matrix(mainMatrix);
-//        System.out.println("B: " + Arrays.deepToString(B.eig().getV().getArray()));
-//        System.out.println("B: " + Arrays.toString(B.eig().getRealEigenvalues()));
     }
 
     public double setValueInMaps(){
@@ -136,7 +101,7 @@ public class Questionnaire {
         for(PriorityMatrix matrix : matrixes){
             for(Pair pair : listToScroll){
                 matrix.setValueInMap(pair);
-                matrix.convertValueInMap();
+                matrix.convertValueInMap(); // ta funkcja jest PUSTA !!!
             }
             matrix.fillArray();
             System.out.println(Arrays.deepToString(matrix.mainMatrix));
@@ -166,19 +131,15 @@ public class Questionnaire {
     }
 
     public double[] countResult(){
-        double[] result = new double[eigenVectors.getFirst().length];
+        setValueInMaps();
+        double[] result = new double[eigenVectors.get(1).length];
 
         for(int i=1; i<eigenVectors.size(); i++){
 
             System.out.println("Przed mnozeniem: " + Arrays.toString(eigenVectors.get(i)));
-            for(int k=0; k<eigenVectors.getFirst().length; k++){
+            for(int k=0; k<eigenVectors.get(i).length; k++){
                 eigenVectors.get(i)[k] = eigenVectors.get(i)[k] * eigenVectors.getFirst()[i-1];
             }
-
-//            for(double element : eigenVectors.get(i)){
-//                element = element * eigenVectors.get(0)[i-1];
-//
-//            }
             System.out.println("Po mnozeniu: " + Arrays.toString(eigenVectors.get(i)));
 
         }
@@ -205,12 +166,13 @@ public class Questionnaire {
 
         System.out.println("................................-WYPEŁNIONE TABLICE:");
         for(PriorityMatrix matrix : matrixes){
-            System.out.println(Arrays.deepToString(matrix.mainMatrix));
-        }
-
-        for(PriorityMatrix matrix : matrixes){
             listToScroll.addAll(matrix.getMapToFillAsList());
+
+           // System.out.println(Arrays.deepToString(matrix.mainMatrix));
         }
+//
+//        for(PriorityMatrix matrix : matrixes){
+//        }
 
         return listToScroll;
     }
@@ -224,28 +186,16 @@ public class Questionnaire {
         this.listToScroll = listToScroll;
     }
 
-    //    *Lista cech, które są dla użytkownika ważne przy wyborze
-    //  private Criteria criteria;
 
-    //Macierz z wartosciami ważności cech (kryteriów wyboru)
-    private double[][] mainMatrix;
 
-    //    * Wektor, w ktorym zapisane sa proprytety cech
-    private double[] mainPriority;
 
-    //    *Wspolczynnik niespojnosci
-    private double mainFactor;
-
-    private int propertiesNumber;
-    private int variantsNumber;
-
-public double sumArray(double[] array){
-    double sum=0;
-    for(double d : array){
-        sum += d;
+    public double sumArray(double[] array){
+        double sum=0;
+        for(double d : array){
+            sum += d;
+        }
+        return sum;
     }
-    return sum;
-}
 
     public double[] normaliseArray(double[] array){
         double sum = sumArray(array);

@@ -13,10 +13,10 @@
                     <a href="" ng-click="showmeSurveyname=true; showmeCategories=false; showmeVariants=false; showmeData=false">Step 1. Create your survey</a>
                 </li>
                 <!--<li>-->
-                    <!--<a href="" ng-click="showmeCategories=true; showmeSurveyname=false; showmeVariants=false; showmeData=false" >Step 2. Categories</a>-->
+                <!--<a href="" ng-click="showmeCategories=true; showmeSurveyname=false; showmeVariants=false; showmeData=false" >Step 2. Categories</a>-->
                 <!--</li>-->
                 <!--<li>-->
-                    <!--<a href="" ng-click="showmeVariants=true; showmeSurveyname=false; showmeCategories=false; showmeData=false">Step 3. Variants</a>-->
+                <!--<a href="" ng-click="showmeVariants=true; showmeSurveyname=false; showmeCategories=false; showmeData=false">Step 3. Variants</a>-->
                 <!--</li>-->
                 <li>
                     <a href="" ng-click="showmeData=true; showmeSurveyname=false; showmeCategories=false; showmeVariants=false">Step 2. Complete data</a>
@@ -38,50 +38,58 @@
                             <button type="submit" class="btn btn-success btn-circle btn-xl" data-ng-click="getSurveydata(); showmeData=true; showmeSurveyname=false; showmeCategories=false; showmeVariants=false"><i class="glyphicon glyphicon-ok"></i></button>
                         </div>
 
-                    <label for="surveyName" class="col-sm-2 control-label">survey name *</label>
-                    <div class="col-sm-8">
+                        <label for="surveyName" class="col-sm-2 control-label">survey name *</label>
+                        <div class="col-sm-8">
 
-                        <input type="text" class="form-control" id="surveyName" placeholder="e.g. Which car should I take?" name="surveyName" ng-model="s.surveyName">
+                            <input type="text" class="form-control" id="surveyName" placeholder="e.g. Which car should I take?" name="surveyName" ng-model="s.surveyName">
 
 
 
-                    </div>
+                        </div>
 
-                    <div class="col-sm-6 categoryDiv">
+                        <label for="access" class="col-sm-2 control-label">access *</label>
+                        <div class="col-sm-8">
 
-                    <fieldset  data-ng-repeat="category in categories">
-                        <label class="col-sm-3 control-label">category *</label>
-                        <div class="col-sm-5">
-                            <div class="input-group">
-                            <input type="text" class="form-control" ng-model="category.name" name="" placeholder="e.g. price">
-                                <span class="input-group-btn"></span>
-                            <button class="remove" ng-show="$last" ng-click="removeCategory()">-</button>
-                                </span>
+                            <input type="text" class="form-control" id="access" placeholder="e.g. public" name="access" ng-model="s.access">
+                        </div>
+
+
+
+                        <div class="col-sm-6 categoryDiv">
+
+                            <fieldset  data-ng-repeat="category in categories">
+                                <label class="col-sm-3 control-label">category *</label>
+                                <div class="col-sm-5">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" ng-model="category.name" name="" placeholder="e.g. price">
+                                        <span class="input-group-btn"></span>
+                                        <button class="remove" ng-show="$last" ng-click="removeCategory()">-</button>
+                                        </span>
+                                    </div>
                                 </div>
+                            </fieldset>
+
+
+                            <div class="col-sm-5"><button class="buttonDark addFields" ng-click="addNewCategory()"><span><a>ADD CATEGORY</a></span></button></div>
                         </div>
-                    </fieldset>
-
-
-                        <div class="col-sm-5"><button class="buttonDark addFields" ng-click="addNewCategory()"><span><a>ADD CATEGORY</a></span></button></div>
-                        </div>
 
 
 
-                    <div class="col-sm-6 variantDiv">
+                        <div class="col-sm-6 variantDiv">
 
-                        <fieldset  data-ng-repeat="variant in variants">
-                            <label class="col-sm-3 control-label">variant *</label>
-                            <div class="col-sm-5">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" ng-model="variant.name" name="" placeholder="e.g. Fiat">
+                            <fieldset  data-ng-repeat="variant in variants">
+                                <label class="col-sm-3 control-label">variant *</label>
+                                <div class="col-sm-5">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" ng-model="variant.name" name="" placeholder="e.g. Fiat">
                                         <span class="input-group-btn">
                                         <button class="remove" ng-show="$last" ng-click="removeVariant()">-</button>
                                         </span>
+                                    </div>
                                 </div>
-                            </div>
-                        </fieldset>
-                        <button class="buttonDark addFields" ng-click="addNewVariant()"><span><a>ADD VARIANT</a></span></button>
-                    </div>
+                            </fieldset>
+                            <button class="buttonDark addFields" ng-click="addNewVariant()"><span><a>ADD VARIANT</a></span></button>
+                        </div>
 
 
 
@@ -118,7 +126,7 @@
                         </div>
 
                         <!--<div class="col-sm-offset-4 col-sm-8">-->
-                            <!--<button class="buttonDark buttonGreen" data-ng-click="completeData()"><span><a href="#/completeData">COMPLETE</a></span></button>-->
+                        <!--<button class="buttonDark buttonGreen" data-ng-click="completeData()"><span><a href="#/completeData">COMPLETE</a></span></button>-->
                         <!--</div>-->
                     </div>
                 </div>
