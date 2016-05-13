@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import model.DB;
 import model.Questionnaire;
 import model.SurveysEntity;
+import model.User;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +31,7 @@ import java.util.*;
 public class BaseController {
 
     String user = "Dawid";
+    User user1;
     public Questionnaire quest;
     public static NewQuest nq = new NewQuest();
     public static NewCompletedQuest ncq = new NewCompletedQuest();
@@ -38,6 +40,7 @@ public class BaseController {
     public LinkedList<Result> resultList;
     double errorFactor;
     DB dbConnection;
+    boolean logged;
 
     @RequestMapping("/getSurveyData/")
     @ResponseBody
@@ -170,6 +173,42 @@ public class BaseController {
         System.out.println("CATEGORIES: " + Arrays.toString(nq.getCategoriesList().toArray()));
         System.out.println("VARIANTS:   " + Arrays.toString(nq.getVariantsList().toArray()));
 
+    }
+
+
+    @RequestMapping(value = "/addNewAccount", method = RequestMethod.POST)
+    @ResponseBody
+    public void addNewAccount(@RequestBody String newAcc){
+
+        Gson gson = new Gson();
+        User user2 = gson.fromJson(newAcc, User.class);
+
+        dbConnection = new DB();
+        dbConnection.saveUser(user2);
+    }
+
+    @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
+    @ResponseBody
+    public void loginUser(@RequestBody String loginUser){
+
+        Gson gson = new Gson();
+        user1 = gson.fromJson(loginUser, User.class);
+
+        dbConnection = new DB();
+        logged = dbConnection.exists(user1);
+
+        System.out.println("TAKI USER JEST W BAZIE: " + logged);
+    }
+
+    @RequestMapping("/getloggedUser")
+    @ResponseBody
+    Map<String, Object> getloggedUser(){
+
+        if(logged){
+            model.put("zalogowany", logged);
+        }
+
+        return model;
     }
 
 

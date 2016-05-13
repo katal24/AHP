@@ -38,6 +38,16 @@ public class DB {
         return ourSessionFactory.openSession();
     }
 
+    public boolean exists(User user){
+        System.out.println("Sprawdzam czy jest taki user");
+        final Session session = getSession();
+        session.beginTransaction();
+        Query query = session.createQuery("select 1 from User u where u.username = :name and u.password = :pass").setString("name", user.getUsername()).setString("pass", user.getPassword());
+
+        return (query.uniqueResult() != null);
+
+    }
+
     public void saveSurvay(SurveysEntity survey){
         System.out.println("ZAPISUJE DO BAZY");
         final Session session = getSession();
@@ -46,6 +56,17 @@ public class DB {
         session.getTransaction().commit();
         session.close();
         System.out.println("ZAPISALEM DO BAZY");
+
+    }
+
+    public void saveUser(User user){
+        System.out.println("ZAPISUJE DO BAZY usera");
+        final Session session = getSession();
+        session.beginTransaction();
+        session.save(user);
+        session.getTransaction().commit();
+        session.close();
+        System.out.println("ZAPISALEM DO BAZY nowego usera");
 
     }
 
@@ -60,7 +81,6 @@ public class DB {
         System.out.println("POBRALEM Z BAZY publiczne");
 
         return list;
-
     }
 
     public ArrayList<SurveysEntity> getOwnerSurvey(String user){

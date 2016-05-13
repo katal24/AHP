@@ -63,68 +63,67 @@ myApp.controller('resultSurveyController', function($scope, $http, $window) {
 
 });
 
+myApp.controller('newAccountController', function($scope,$window,$http) {
 
-myApp.controller('loginController', function($rootScope, $scope, $http, $location, $route) {
+    console.log('jestem w newaccountcontroler');
+    $scope.setNewAcc = function () {
+        var newAcc = {
+            username: $scope.credentials.username,
+            password: $scope.credentials.password
+        };
 
-    $scope.tab = function (route) {
-        return $route.current && route === $route.current.controller;
-    };
+        console.log('zrobilem var');
 
-    var authenticate = function (credentials, callback) {
+        $http.post('addNewAccount', newAcc).success(function (data){
+            console.log('jestem w sukcesie');
 
-        var headers = credentials ? {
-            authorization: "Basic "
-            + btoa(credentials.username + ":"
-                + credentials.password)
-        } : {};
+            $window.location.href = '#/login';
+        }).error(function (data){
+            console.log('jestem w errorze');
 
-        $http.get('/user', {headers: headers}).success(function (data) {
-            //mapowanie user zwraca Principal a on ma getName()
-            if (data.name) {
-                $rootScope.authenticated = true;
-                $rootScope.loggedUser = credentials.username;
-
-            } else {
-                $rootScope.authenticated = false;
-            }
-            callback && callback($rootScope.authenticated);
-        }).error(function () {
-            $rootScope.authenticated = false;
-            callback && callback(false);
+            $window.location.reload();
         });
+    }
 
-    };
+    $scope.message = 'New Account';
+});
 
-    //proboje samo bez wysylania fomularza jesli juz mamy to ciastko a jedynie odswiezylismy
-    authenticate();
+myApp.controller('loginController', function($rootScope, $scope, $http, $window) {
 
-    $scope.credentials = {};
-    $scope.login = function () {
-        authenticate($scope.credentials, function (authenticated) {
-            if (authenticated) {
-                console.log("Login succeeded");
-                $location.path("/");
-                $scope.error = false;
-                $rootScope.authenticated = true;
+    console.log('jestem w login controller');
+    $scope.loginUser = function () {
+        var user = {
+            username: $scope.credentials.username,
+            password: $scope.credentials.password
+        };
+
+        console.log('zrobilem var');
+
+        $http.post('loginUser', user).success(function (){
+            console.log('jestem w sukcesie przy logowaniu');
+
+
+            $http.get('getloggedUser').success(function (data) {
+                $scope.loged = data;
+
+
+            if($scope.loged.zalogowany === true) {
+
+                $window.location.href = '#';
             } else {
-                console.log("Login failed");
-                $location.path("/login");
-                $scope.error = true;
-                $rootScope.authenticated = false;
+                alert('Niewlasciwy login lub haslo');
             }
-        })
-    };
-
-    $scope.logout = function () {
-        $http.post('logout', {}).success(function () {
-            $rootScope.authenticated = false;
-            $location.path("/");
-        }).error(function (data) {"Logout failed";
-            $rootScope.authenticated = false;
+            });
+        }).error(function (data){
+            console.log('jestem w errorze przy logowaniu');
+          //  alert('Niewlasciwy login lub haslo');
+            //$window.location.reload();
         });
     }
 
 });
+
+
 myApp.controller('createSurveyController', function($scope, $window, $http) {
     $scope.message = 'Create survey';
 
@@ -219,11 +218,7 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
 
 
 });
-myApp.controller('newAccountController', function($scope) {
 
-
-    $scope.message = 'New Account';
-});
 myApp.controller('userPanelController', function($scope) {
     $scope.message = 'Your Panel';
 });
@@ -257,5 +252,84 @@ myApp.controller('completeDataController', function($scope, $http) {
             console.log("Setting up account failed");
         });
     };
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+myApp.controller('loginController1', function($rootScope, $scope, $http, $location, $route) {
+
+    $scope.tab = function (route) {
+        return $route.current && route === $route.current.controller;
+    };
+
+    var authenticate = function (credentials, callback) {
+
+        var headers = credentials ? {
+            authorization: "Basic "
+            + btoa(credentials.username + ":"
+                + credentials.password)
+        } : {};
+
+        $http.get('/user', {headers: headers}).success(function (data) {
+            //mapowanie user zwraca Principal a on ma getName()
+            if (data.name) {
+                $rootScope.authenticated = true;
+                $rootScope.loggedUser = credentials.username;
+
+            } else {
+                $rootScope.authenticated = false;
+            }
+            callback && callback($rootScope.authenticated);
+        }).error(function () {
+            $rootScope.authenticated = false;
+            callback && callback(false);
+        });
+
+    };
+
+    //proboje samo bez wysylania fomularza jesli juz mamy to ciastko a jedynie odswiezylismy
+    authenticate();
+
+    $scope.credentials = {};
+    $scope.login = function () {
+        authenticate($scope.credentials, function (authenticated) {
+            if (authenticated) {
+                console.log("Login succeeded");
+                $location.path("/");
+                $scope.error = false;
+                $rootScope.authenticated = true;
+            } else {
+                console.log("Login failed");
+                $location.path("/login");
+                $scope.error = true;
+                $rootScope.authenticated = false;
+            }
+        })
+    };
+
+    $scope.logout = function () {
+        $http.post('logout', {}).success(function () {
+            $rootScope.authenticated = false;
+            $location.path("/");
+        }).error(function (data) {"Logout failed";
+            $rootScope.authenticated = false;
+        });
+    }
 
 });
