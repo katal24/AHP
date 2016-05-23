@@ -61,11 +61,11 @@
             <version>2.6.2</version>
         </dependency>
 
-        <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate</artifactId>
-        <version>3.5.4-Final</version>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.hibernate</groupId>-->
+        <!--<artifactId>hibernate</artifactId>-->
+        <!--<version>3.5.4-Final</version>-->
+        <!--</dependency>-->
 
         <!--<dependency>-->
             <!--<groupId>javassist</groupId>-->

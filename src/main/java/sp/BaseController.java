@@ -61,6 +61,8 @@ public class BaseController {
     @ResponseBody
     Map<String, Object> getDataToScroll(){
         System.out.println("##########################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2 jestem w base w getDataScrol");
+     //   model.put("listToScroll",0);
+
         model.put("listToScroll", quest.getListToScrollFromMatrixes());
         return model;
     }
@@ -133,7 +135,7 @@ public class BaseController {
     public void setCompletedData(@RequestBody String cs) throws ClassNotFoundException, SQLException, IOException {
 
         // wpisanie ankiety do bazy danych
-
+//
         dbConnection = new DB();
         SurveysEntity surveysEntity = new SurveysEntity(nq.getAccess(), user, nq.getSurveyName(), nq.getCategoriesList(), nq.getVariantsList(), cs);
         dbConnection.saveSurvay(surveysEntity);
