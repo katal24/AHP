@@ -151,11 +151,37 @@ public class BaseController {
 
         //pobranie z bazy
         dbConnection = new DB();
-        SurveysEntity survey = dbConnection.getSurveyForName("kamil");
+        SurveysEntity survey = dbConnection.getSurveyForName(name);
         String cs1 = survey.getCompleted();
         nq = new NewQuest(survey);
         //stworzenie ankiety
         completeSutvey(cs1);
+    }
+
+
+    // pobiera nazwy publicznych ankiet z bazy i zapisuje do modelu
+    @RequestMapping(value = "/getPublicNamesFromBase")
+    @ResponseBody
+    Map<String, Object> getPublicNamesFromBase(){
+
+        //pobranie z bazy
+        dbConnection = new DB();
+        ArrayList<String> namesList = dbConnection.getNamePublicSurvey();
+        model.put("publicNamesSurveys", namesList);
+        return model;
+    }
+
+
+    // pobiera nazwy publicznych ankiet z bazy i zapisuje do modelu
+    @RequestMapping(value = "/getOwnerNamesFromBase")
+    @ResponseBody
+    Map<String, Object> getOwnerNamesFromBase(){
+
+        //pobranie z bazy
+        dbConnection = new DB();
+        ArrayList<String> namesList = dbConnection.getNameOwnerSurvey((String) model.get("zalogowany"));
+        model.put("ownerNamesSurveys", namesList);
+        return model;
     }
 
 

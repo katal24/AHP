@@ -84,6 +84,33 @@ public class DB {
         return list;
     }
 
+    public ArrayList<String> getNamePublicSurvey(){
+        final Session session = getSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("SELECT name from surveys where type='public'");
+        ArrayList<String> namesList = (ArrayList<String>) query.list();
+        session.close();
+
+        System.out.println("POBRAŁEM Z BAZU LISTE NAZW ANKIET PUBLICZNYCH");
+
+        return namesList;
+    }
+
+
+    public ArrayList<String> getNameOwnerSurvey(String user){
+        final Session session = getSession();
+        session.beginTransaction();
+
+        Query query = session.createSQLQuery("SELECT name from surveys where owner='"+user+"'");
+        ArrayList<String> namesList = (ArrayList<String>) query.list();
+        session.close();
+        System.out.println("POBRALEM Z BAZY NAZWY ANKIET dla danego usera");
+
+        return namesList;
+    }
+
+
     public ArrayList<SurveysEntity> getOwnerSurvey(String user){
         System.out.println("bede pobieral z BAZY dla danego usera");
         final Session session = getSession();
