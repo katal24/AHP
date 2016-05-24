@@ -88,7 +88,7 @@ public class DB {
         final Session session = getSession();
         session.beginTransaction();
 
-        Query query = session.createQuery("SELECT name from surveys where type='public'");
+        Query query = session.createSQLQuery("SELECT name from surveys where type='public'");
         ArrayList<String> namesList = (ArrayList<String>) query.list();
         session.close();
 

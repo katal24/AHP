@@ -12,6 +12,12 @@ myApp.config(function($routeProvider) {
     }).when('/createSurvey', {
         templateUrl : 'resources/view/createSurvey.html',
         controller : 'createSurveyController'
+    }).when('/surveysList', {
+        templateUrl : 'resources/view/surveysList.html',
+        controller : 'surveysListController'
+    }).when('/ownerSurveyList', {
+        templateUrl : 'resources/view/ownerSurveyList.html',
+        controller : 'ownerSurveysListController'
     }).when('/newAccount', {
         templateUrl : 'resources/view/newAccount.html',
         controller : 'newAccountController'
@@ -31,7 +37,7 @@ myApp.controller('AppController',['$scope', function($s) {
         value : 5
     }];
 
-    
+
 }]);
 
 
@@ -61,7 +67,40 @@ myApp.controller('resultSurveyController', function($scope, $http, $window) {
 
 
 
+
+
 });
+
+
+
+// pobiera nazwy publicznych ankiet
+myApp.controller('surveysListController', function($scope, $http, $window) {
+
+    $http.get('getPublicNamesFromBase/').success(function (data) {
+
+        $scope.model = data;
+
+    }).error(function (data) {
+
+    });
+
+});
+
+
+// pobiera nazwy ANKIET ZALOGOWANEGO USERA
+myApp.controller('ownerSurveysListController', function($scope, $http, $window) {
+
+    console.log('jestem w ownersyerveycontroler');
+    $http.get('getOwnerNamesFromBase/').success(function (data) {
+
+        $scope.model = data;
+
+    }).error(function (data) {
+
+    });
+
+});
+
 
 myApp.controller('newAccountController', function($scope,$window,$http) {
 
@@ -247,7 +286,7 @@ myApp.controller('completeDataController', function($scope, $http) {
             console.log(items);
 
             console.log("udalo sie w suwakach");
-            
+
         }).error(function (data) {
             console.log("Setting up account failed");
         });

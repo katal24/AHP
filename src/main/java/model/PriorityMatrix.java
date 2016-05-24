@@ -103,17 +103,6 @@ public class PriorityMatrix {
             }
         }
 
-//        for(Map.Entry<Pair, Double> p : mapToFil.entrySet()) {
-//
-//            for(Map.Entry<Pair, Double> p2 : mapToFil.entrySet()){
-//                if((p.getKey().getS1().equals(p2.getKey().getS1())) && (p.getKey().getS2().equals((p.getKey().getS2())))) {
-//                    System.out.println("            U S U W A M Z maptofil    ---------------");
-//                    mapToFil.remove(p2);
-//                }
-//            }
-//        }
-
-
 
         for (Pair p : map.keySet()) {
             System.out.println(p + " : " + map.get(p));

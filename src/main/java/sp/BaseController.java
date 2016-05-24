@@ -137,7 +137,7 @@ public class BaseController {
         // wpisanie ankiety do bazy danych
 //
         dbConnection = new DB();
-        SurveysEntity surveysEntity = new SurveysEntity(nq.getAccess(), user, nq.getSurveyName(), nq.getCategoriesList(), nq.getVariantsList(), cs);
+        SurveysEntity surveysEntity = new SurveysEntity(nq.getAccess(), user1.getUsername(), nq.getSurveyName(), nq.getCategoriesList(), nq.getVariantsList(), cs);
         dbConnection.saveSurvay(surveysEntity);
 //
 //               // cs to JSON zawierajacay dane z formularza (step 1-3)
@@ -176,10 +176,11 @@ public class BaseController {
     @RequestMapping(value = "/getOwnerNamesFromBase")
     @ResponseBody
     Map<String, Object> getOwnerNamesFromBase(){
+        System.out.println("Jestem w pobieraniu nazw dl azalogowanego");
 
         //pobranie z bazy
         dbConnection = new DB();
-        ArrayList<String> namesList = dbConnection.getNameOwnerSurvey((String) model.get("zalogowany"));
+        ArrayList<String> namesList = dbConnection.getNameOwnerSurvey(user1.getUsername());
         model.put("ownerNamesSurveys", namesList);
         return model;
     }
