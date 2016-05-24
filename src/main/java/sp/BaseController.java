@@ -61,9 +61,9 @@ public class BaseController {
     @ResponseBody
     Map<String, Object> getDataToScroll(){
         System.out.println("##########################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2 jestem w base w getDataScrol");
-     //   model.put("listToScroll",0);
+        model.put("listToScroll",0);
 
-        model.put("listToScroll", quest.getListToScrollFromMatrixes());
+     //   model.put("listToScroll", quest.getListToScrollFromMatrixes());
         return model;
     }
 
@@ -149,6 +149,7 @@ public class BaseController {
     @ResponseBody
     public void setCompletedDataFromBase(@RequestBody String name){
 
+        System.out.println("publiczne survejki");
         //pobranie z bazy
         dbConnection = new DB();
         SurveysEntity survey = dbConnection.getSurveyForName(name);

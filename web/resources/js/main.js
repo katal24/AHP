@@ -30,6 +30,8 @@ myApp.config(function($routeProvider) {
     });
 });
 
+
+
 myApp.controller('AppController',['$scope', function($s) {
 
     $s.items = [{
@@ -44,6 +46,8 @@ myApp.controller('AppController',['$scope', function($s) {
 myApp.controller('homeController', function($scope) {
     $scope.message = 'Sign up!';
 });
+
+
 
 
 myApp.controller('resultSurveyController', function($scope, $http, $window) {
@@ -83,6 +87,27 @@ myApp.controller('surveysListController', function($scope, $http, $window) {
     }).error(function (data) {
 
     });
+
+    $scope.getPublicSurvey = function (a) {
+
+        $http.post('setCompletedDataFromBase/', a).success(function() {
+
+            console.log("post opublicznej");
+            //   $window.location.href = '#/completeData';
+            //  $window.location.href = '#/setSurveysData';
+
+        }).error(function () {
+            console.log("Setting up account failed dhfdjkpublicznej");
+            // $rootScope.errorEditProfile = true;
+
+
+        });
+
+
+    }
+
+
+ 
 
 });
 
@@ -266,6 +291,10 @@ myApp.controller('completeDataController', function($scope, $http) {
 
 
     $scope.message = 'Your Panel';
+
+
+
+   
 
     $http.get('getDataToScroll').success(function (data) {
        $scope.model = data;
