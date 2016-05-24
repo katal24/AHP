@@ -93,7 +93,7 @@ myApp.controller('surveysListController', function($scope, $http, $window) {
         $http.post('setCompletedDataFromBase/', a).success(function() {
 
             console.log("post opublicznej");
-            //   $window.location.href = '#/completeData';
+           // $window.location.href = '#/completeData';
             //  $window.location.href = '#/setSurveysData';
 
         }).error(function () {
@@ -103,7 +103,7 @@ myApp.controller('surveysListController', function($scope, $http, $window) {
 
         });
 
-
+        $window.location.href = '#/completeData';
     }
 
 
@@ -123,6 +123,26 @@ myApp.controller('ownerSurveysListController', function($scope, $http, $window) 
     }).error(function (data) {
 
     });
+    
+    $scope.getOwnerSurvey = function (a) {
+
+        $http.post('setCompletedDataFromBase/', a).success(function() {
+
+            console.log("post opublicznej");
+            // $window.location.href = '#/completeData';
+            //  $window.location.href = '#/setSurveysData';
+
+        }).error(function () {
+            console.log("Setting up account failed dhfdjkpublicznej");
+            // $rootScope.errorEditProfile = true;
+
+
+        });
+
+        $window.location.href = '#/completeData';
+    }
+
+
 
 });
 

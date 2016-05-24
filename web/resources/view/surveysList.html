@@ -28,10 +28,10 @@
 
             <div data-ng-repeat="element in model.publicNamesSurveys track by $index">
                 <!--<div data-ng-repeat="item in items">-->
-                <h2>
-                    <a href="#/completeData" data-ng-click="getPublicSurvey(element)">{{$index +1}}.  {{element}}</a>
+
+                    <h2 data-ng-click="getPublicSurvey(element)">{{$index +1}}.  {{element}}</h2>
                     <!--<button class="buttonDark buttonGreen"><a href="#/createSurvey">FILL</a></span></button>-->
-                </h2>
+
 
 
 

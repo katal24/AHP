@@ -61,9 +61,10 @@ public class BaseController {
     @ResponseBody
     Map<String, Object> getDataToScroll(){
         System.out.println("##########################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2 jestem w base w getDataScrol");
-        model.put("listToScroll",0);
+      //  model.put("listToScroll",0);
 
-     //   model.put("listToScroll", quest.getListToScrollFromMatrixes());
+       model.put("listToScroll", quest.getListToScrollFromMatrixes());
+        model.put("nazwa",quest.getName());
         return model;
     }
 
