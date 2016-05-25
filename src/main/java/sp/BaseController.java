@@ -136,10 +136,10 @@ public class BaseController {
     public void setCompletedData(@RequestBody String cs) throws ClassNotFoundException, SQLException, IOException {
 
         // wpisanie ankiety do bazy danych
-//
-        dbConnection = new DB();
-        SurveysEntity surveysEntity = new SurveysEntity(nq.getAccess(), user1.getUsername(), nq.getSurveyName(), nq.getCategoriesList(), nq.getVariantsList(), cs);
-        dbConnection.saveSurvay(surveysEntity);
+// TO ZAKOMENTOWYJE!!!!!!!!!!!!!!!!
+//        dbConnection = new DB();
+//        SurveysEntity surveysEntity = new SurveysEntity(nq.getAccess(), user1.getUsername(), nq.getSurveyName(), nq.getCategoriesList(), nq.getVariantsList(), cs);
+//        dbConnection.saveSurvay(surveysEntity);
 //
 //               // cs to JSON zawierajacay dane z formularza (step 1-3)
         completeSutvey(cs);
