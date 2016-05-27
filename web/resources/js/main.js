@@ -156,7 +156,7 @@ myApp.controller('newAccountController', function($scope,$window,$http) {
             password: $scope.credentials.password
         };
 
-        console.log('zrobilem var');
+        console.log('register');
 
         $http.post('addNewAccount', newAcc).success(function (data){
             console.log('jestem w sukcesie');
@@ -167,6 +167,8 @@ myApp.controller('newAccountController', function($scope,$window,$http) {
 
             $window.location.reload();
         });
+
+        $window.location.href = '#/';
     }
 
     $scope.message = 'New Account';
@@ -203,6 +205,7 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $window)
           //  alert('Niewlasciwy login lub haslo');
             //$window.location.reload();
         });
+        $window.location.href = '#/createSurvey';
     }
 
 });
