@@ -36,6 +36,8 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+
+
     <title>Questionnaire</title>
 </head>
 
@@ -44,6 +46,7 @@
 <div class="logo navbar-fixed-top">
     <a href="#/"><img src="${pageContext.request.contextPath}/resources/images/whitelogo.png"></a>
     <li><a class="login-button-nav" href="#/login" ng-show="!authenticated">login</a></li>
+    <li><a class="login-button-nav" href="#/home" ng-show="authenticated">logout</a></li>
 </div>
 
 

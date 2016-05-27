@@ -30,9 +30,11 @@
 
             <hr class="style3">
 
-                <div data-ng-repeat="element in model.listToScroll track by $index">
+                <div  id="box{{$index}}" data-ng-repeat="element in model.listToScroll track by $index">
                     <!--<div data-ng-repeat="item in items">-->
-                    <h4>{{element.name}}</h4>
+                    <h4>{{element.name}}
+                        <button ng-click="go('#box' + ($index + 1))">go to next box</button></h4>
+
 
                     <div data-ng-controller="AppController">
 
@@ -52,11 +54,10 @@
                                 </div>
                             </section>
 
+
                         </div>
 
                     </div>
-
-
 
                     <hr class="style3">
                 </div>

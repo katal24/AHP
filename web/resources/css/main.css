@@ -85,7 +85,6 @@ body {
         left: 100px;
         right: 100px;
         top: 150px;
-        color: white;
         text-align: center;
 
     }
@@ -95,7 +94,6 @@ body {
         left: 100px;
         right: 100px;
         top: 225px;
-        color: white;
         bottom: 0px;
         text-align: center;
         letter-spacing:-.1rem;
@@ -109,7 +107,7 @@ body {
         left: 100px;
         right: 100px;
         top: 125px;
-        color: white;
+
         text-align: center;
 
     }
@@ -119,7 +117,6 @@ body {
         left: 100px;
         right: 100px;
         top: 200px;
-        color: white;
         bottom: 0px;
         text-align: center;
         letter-spacing:-.1rem;
@@ -134,7 +131,6 @@ body {
         left: 100px;
         right: 100px;
         top: 125px;
-        color: white;
         text-align: center;
 
     }
@@ -143,7 +139,6 @@ body {
         left: 100px;
         right: 100px;
         top: 225px;
-        color: white;
         bottom: 0px;
         text-align: center;
         font-size: 15px;
@@ -685,3 +680,9 @@ p {
     color: white;
 }
 
+.box {
+    background: #eee;
+    padding:20px;
+    height: 100px;
+    margin: 20px 0;
+}

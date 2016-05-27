@@ -1,4 +1,4 @@
-var myApp = angular.module('hello', [ 'ngRoute', 'angularRangeSlider' ]);
+var myApp = angular.module('hello', [ 'ngRoute', 'angularRangeSlider']);
 myApp.config(function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl : 'resources/view/home.html',
@@ -312,14 +312,15 @@ myApp.controller('completeDataController', function($scope, $http) {
 
     $scope.message = 'Your Panel';
 
-
-
-   
-
     $http.get('getDataToScroll').success(function (data) {
        $scope.model = data;
     });
 
+    $scope.go = function(targetId){
+        var destination = $(targetId).offset().top;
+        $('html, body').animate({scrollTop: destination}, 300);
+    };
+    
     $scope.items=[];
 
     $scope.setAllData = function () {
