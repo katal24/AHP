@@ -249,9 +249,19 @@ h6{
     text-decoration: none;
 
 }
+.addCatandVar {
+    background-color: #383f50;
+    width: 150px;
+    color: #FFFFFF;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 15px;
+}
+
+
 
 .addFields {
-    width: 200px;
+    width: 50px;
     font-size: 15px;
     color: #FFFFFF;
     text-decoration: none;
@@ -295,6 +305,7 @@ h6{
     transition: all 0.5s ease;
     background-color: #f3f5f9;
     height: 100%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #wrapper.toggled {
@@ -514,3 +525,12 @@ fieldset{
     margin: 20px 0;
 }
 
+.entry:not(:first-of-type)
+{
+    margin-top: 10px;
+}
+
+.glyphicon
+{
+    font-size: 12px;
+}

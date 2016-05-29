@@ -49,7 +49,7 @@
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
     <script src="${pageContext.request.contextPath}/resources/js/index.js"></script>
-
+    <script src="${pageContext.request.contextPath}/resources/js/dynamicInput.js"></script>
 
 
     <title>Questionnaire</title>

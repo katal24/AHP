@@ -214,6 +214,20 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $window)
 myApp.controller('createSurveyController', function($scope, $window, $http) {
     $scope.message = 'Create survey';
 
+    // $scope.categories = [{id: 'category1'}, {id: 'category2'}];
+    //
+    // $scope.addInputCategory = function() {
+    //     $scope.categories.push({name:''});
+    // };
+    //
+    // $scope.variants = [{id: 'variant1'}, {id: 'variant2'}];
+    // $scope.addInputVariant = function() {
+    //     $scope.variants.push({name:''});
+    // };
+    //
+    //
+    //
+
     $scope.categories = [{id: 'category1'}, {id: 'category2'}];
 
     $scope.addNewCategory = function() {
