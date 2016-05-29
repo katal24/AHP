@@ -454,10 +454,10 @@
 
 /* Container  big*/
 .containerSurvey {
-  top:50px;
+  top:10px;
   font-family: 'RobotoDraft', 'Roboto', sans-serif;
   position: relative;
-  max-width: 800px;
+  max-width: 900px;
   width: 100%;
   margin: 0 auto 100px;
 

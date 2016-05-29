@@ -1,28 +1,40 @@
 <div ng-app="hello" xmlns="http://www.w3.org/1999/html">
 
     <div id="wrapper">
-
-        <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="" ng-click="showmeSurveyname=false; showmeCategories=false; showmeVariants=false; showmeData=false">WELCOME</a>
-                </li>
-                <li>
-                    <a href="" ng-click="showmeSurveyname=true; showmeCategories=false; showmeVariants=false; showmeData=false">Step 1. Create your survey</a>
-                </li>
-                <!--<li>-->
-                <!--<a href="" ng-click="showmeCategories=true; showmeSurveyname=false; showmeVariants=false; showmeData=false" >Step 2. Categories</a>-->
-                <!--</li>-->
-                <!--<li>-->
-                <!--<a href="" ng-click="showmeVariants=true; showmeSurveyname=false; showmeCategories=false; showmeData=false">Step 3. Variants</a>-->
-                <!--</li>-->
-                <li>
-                    <a href="" ng-click="showmeData=true; showmeSurveyname=false; showmeCategories=false; showmeVariants=false">Step 2. Complete data</a>
-                </li>
-            </ul>
+            <i ng-click="showmeSurveyname=true; showmeCategories=false; showmeVariants=false; showmeData=false" class="material-icons">add</i>
+            <i class="material-icons" data-ng-click="goToPublicSurveys()">explore</i>
+            <!--<i  class="material-icons">attach_file</i>-->
+            <!--<i class="material-icons">settings</i>-->
+            <i class="material-icons"  data-ng-click="goToHome()">refresh</i>
+            <!--<i class="material-icons">search</i>-->
+
+            <!--<i class="material-icons">public</i>-->
+            <!--<i class="material-icons">autorenew</i>-->
         </div>
-        <!-- /#sidebar-wrapper -->
+
+
+        <!--&lt;!&ndash; Sidebar &ndash;&gt;-->
+        <!--<div id="sidebar-wrapper">-->
+            <!--<ul class="sidebar-nav">-->
+                <!--<li class="sidebar-brand">-->
+                    <!--<a href="" ng-click="showmeSurveyname=false; showmeCategories=false; showmeVariants=false; showmeData=false">WELCOME</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="" ng-click="showmeSurveyname=true; showmeCategories=false; showmeVariants=false; showmeData=false">Step 1. Create your survey</a>-->
+                <!--</li>-->
+                <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<a href="" ng-click="showmeCategories=true; showmeSurveyname=false; showmeVariants=false; showmeData=false" >Step 2. Categories</a>&ndash;&gt;-->
+                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<a href="" ng-click="showmeVariants=true; showmeSurveyname=false; showmeCategories=false; showmeData=false">Step 3. Variants</a>&ndash;&gt;-->
+                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--<li>-->
+                    <!--<a href="" ng-click="showmeData=true; showmeSurveyname=false; showmeCategories=false; showmeVariants=false">Step 2. Complete data</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; /#sidebar-wrapper &ndash;&gt;-->
 
 
 
@@ -54,7 +66,7 @@
                             <fieldset  data-ng-repeat="category in categories">
                                 <input type="text"  id="cat" ng-model="category.name" name="" placeholder="e.g. price">
                                 <div class="bar"></div>
-                                <label for="cat">Category </label>
+                                <label for="cat">Categories </label>
                                 <button class="buttonDark addFields" ng-show="$last" ng-click="removeCategory()">-</button>
                             </fieldset>
                           <button class="buttonDark addFields" ng-click="addNewCategory()">+ </button>
@@ -66,7 +78,7 @@
                             <fieldset  data-ng-repeat="variant in variants">
                                 <input type="text" id="var" ng-model="variant.name" name="" placeholder="e.g. Fiat">
                                 <div class="bar"></div>
-                                <label for="var">Variant</label>
+                                <label for="var">Variants</label>
                                 <button class="buttonDark addFields" ng-show="$last" ng-click="removeVariant()">- </button>
                             </fieldset>
                             <button class="buttonDark addFields" ng-click="addNewVariant()">+</button>
@@ -87,7 +99,56 @@
             <!--surveyName-->
 
 
-            <div ng-show="showmeData">
+            <div class="form-group" ng-show="showmeData">
+
+
+
+
+                <div class="containerSurvey">
+                    <div class="card"></div>
+                    <div class="card">
+
+                        <h1 class="title">{{surveyData.nazwa}}</h1>
+
+                        <div class="input-container">
+                            <div data-ng-repeat="variant in variants">
+                                <h4>{{variant.name}}</h4>
+                                <div class="bar"></div>
+
+                                <div data-ng-repeat="y in surveyData.categories track by $index">
+
+
+                                        <h4 class="col-sm-2 control-label">{{y}} *</h4>
+
+                                            <input type="text"  placeholder="e.g. red, black, $13000" name="" ng-model="variant.value[$index]">                                        </div>
+                                <div class="bar"></div>
+
+
+                            </div>
+
+                            </div>
+                        <div class="button-container">
+                            <button ng-click="showmeSurveyname=true; showmeCategories=false; showmeVariants=false; showmeData=false"><span>Back</span></button>
+                            <button data-ng-click="completeData()"><span>Next</span></button>
+                        </div>
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
                 <form class="form-horizontal">
                     <div class="row">
                 <div class="form-group">
@@ -115,6 +176,7 @@
                 </div>
                 </form>
             </div>
+        </div>
             <!--complete-->
 
         </div>

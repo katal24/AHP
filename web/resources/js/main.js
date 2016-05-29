@@ -45,6 +45,9 @@ myApp.controller('AppController',['$scope', function($s) {
 
 myApp.controller('homeController', function($scope) {
     $scope.message = 'Sign up!';
+
+  
+    
 });
 
 
@@ -195,7 +198,7 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $window)
 
             if($scope.loged.zalogowany === true) {
 
-                $window.location.href = '#';
+                $window.location.href = '#/createSurvey';
             } else {
                 alert('Niewlasciwy login lub haslo');
             }
@@ -227,6 +230,14 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
     //
     //
     //
+    $scope.goToPublicSurveys  = function() {
+        $window.location.href = '#/surveysList';
+    }
+
+    $scope.goToHome  = function() {
+        $window.location.href = '#/';
+    }
+
 
     $scope.categories = [{id: 'category1'}, {id: 'category2'}];
 
@@ -312,6 +323,8 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
 
 
         });
+
+        $window.location.href = '#/completeData';
 
 
     }
