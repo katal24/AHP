@@ -137,9 +137,9 @@ public class BaseController {
 
         // wpisanie ankiety do bazy danych
 // TO ZAKOMENTOWYJE!!!!!!!!!!!!!!!!
-//        dbConnection = new DB();
-//        SurveysEntity surveysEntity = new SurveysEntity(nq.getAccess(), user1.getUsername(), nq.getSurveyName(), nq.getCategoriesList(), nq.getVariantsList(), cs);
-//        dbConnection.saveSurvay(surveysEntity);
+        dbConnection = new DB();
+        SurveysEntity surveysEntity = new SurveysEntity(nq.getAccess(), user1.getUsername(), nq.getSurveyName(), nq.getCategoriesList(), nq.getVariantsList(), cs);
+        dbConnection.saveSurvay(surveysEntity);
 //
 //               // cs to JSON zawierajacay dane z formularza (step 1-3)
         completeSutvey(cs);
