@@ -39,6 +39,7 @@ myApp.controller('AppController',['$scope', function($s) {
         value : 5
     }];
 
+ 
 
 }]);
 
@@ -110,7 +111,20 @@ myApp.controller('surveysListController', function($scope, $http, $window) {
     }
 
 
- 
+    $scope.goToPublicSurveys  = function() {
+        $window.location.href = '#/surveysList';
+    }
+
+    $scope.goToHome  = function() {
+        $window.location.href = '#/';
+    }
+
+    $scope.goToCreateSurvey = function() {
+        $window.location.href = '#/createSurvey';
+    }
+
+
+
 
 });
 

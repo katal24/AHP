@@ -5,38 +5,35 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="" ></a>
-                </li>
-                <li>
-                    <a href="#/" >Home Page</a>
-                </li>
-                <li>
-                    <a href="#/completeData">Complete Data</a>
-                </li>
-
-            </ul>
+            <i ng-click="goToCreateSurvey()" showmeData=false" class="material-icons">add</i>
+            <i class="material-icons" data-ng-click="goToPublicSurveys()">explore</i>
+            <i class="material-icons"  data-ng-click="goToHome()">refresh</i>
         </div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-            <h4>Public surveys:</h4>
-            <!--<h3>{{ model.resultList[0].variant}}</h3>-->
-
-            <div data-ng-repeat="element in model.publicNamesSurveys track by $index">
-                <!--<div data-ng-repeat="item in items">-->
-
-                    <h2 data-ng-click="getPublicSurvey(element)">{{$index +1}}.  {{element}}</h2>
-                    <!--<button class="buttonDark buttonGreen"><a href="#/createSurvey">FILL</a></span></button>-->
 
 
+            <div class="containerSurvey">
+                <div class="card"></div>
+                <div class="card">
+                    <h1 class="title">Public surveys</h1>
+                    <div data-ng-repeat="element in model.publicNamesSurveys track by $index">
+                        <!--<div data-ng-repeat="item in items">-->
+
+                        <h2 data-ng-click="getPublicSurvey(element)">{{$index +1}}.  {{element}}</h2>
+                        <!--<button class="buttonDark buttonGreen"><a href="#/createSurvey">FILL</a></span></button>-->
 
 
 
-            </div>
+
+
+                    </div>
+                    </div>
+                </div>
+
 
 
         </div>
