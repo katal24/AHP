@@ -5,18 +5,17 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a>MAKE DECISION</a>
-                </li>
-                <li>
-                    <a href="#/createSurvey">Back to editing</a>
-                </li>
-                <li>
-                    <a href="#/" >Home page</a>
-                </li>
-            </ul>
+            <i ng-click="showmeSurveyname=true; showmeCategories=false; showmeVariants=false; showmeData=false" class="material-icons">add</i>
+            <i class="material-icons" data-ng-click="goToPublicSurveys()">explore</i>
+            <!--<i  class="material-icons">attach_file</i>-->
+            <!--<i class="material-icons">settings</i>-->
+            <i class="material-icons"  data-ng-click="goToHome()">refresh</i>
+            <!--<i class="material-icons">search</i>-->
+
+            <!--<i class="material-icons">public</i>-->
+            <!--<i class="material-icons">autorenew</i>-->
         </div>
+
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->

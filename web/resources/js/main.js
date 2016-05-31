@@ -43,8 +43,16 @@ myApp.controller('AppController',['$scope', function($s) {
 }]);
 
 
-myApp.controller('homeController', function($scope) {
+myApp.controller('homeController', function($scope, $http) {
     $scope.message = 'Sign up!';
+
+    if ($scope.authenticated) {
+        $http.get('/getResources/').success(function (data) {
+
+            $scope.greeting = data;
+
+
+        })} ;
 
   
     

@@ -5,37 +5,41 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="" ></a>
-                </li>
-                <li>
-                    <a href="#/" >Home Page</a>
-                </li>
-                <li>
-                    <a href="#/completeData">Complete Data</a>
-                </li>
+            <i ng-click="showmeSurveyname=true; showmeCategories=false; showmeVariants=false; showmeData=false" class="material-icons">add</i>
+            <i class="material-icons" data-ng-click="goToPublicSurveys()">explore</i>
+            <!--<i  class="material-icons">attach_file</i>-->
+            <!--<i class="material-icons">settings</i>-->
+            <i class="material-icons"  data-ng-click="goToHome()">refresh</i>
+            <!--<i class="material-icons">search</i>-->
 
-            </ul>
+            <!--<i class="material-icons">public</i>-->
+            <!--<i class="material-icons">autorenew</i>-->
         </div>
+
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-           <h4>The best choice is:</h4> <h3>{{ model.resultList[0].variant}}</h3>
 
-            <div data-ng-repeat="element in model.resultList track by $index">
-                <!--<div data-ng-repeat="item in items">-->
-                <h2>{{$index +1}}. {{element.variant}}: {{element.result}} %</h2>
+            <div class="containerSurvey">
+                <div class="card"></div>
+                <div class="card">
+                    <h1 class="title">The best choice is <div class="result">{{ model.resultList[0].variant}}</div></h1>
 
+                        <div class="input-container">
+                            <div data-ng-repeat="element in model.resultList track by $index">
 
+                                <div class ="listSurveys">{{$index +1}}. {{element.variant}}: {{element.result}} %</div>
 
-                <!--<div class="chart">-->
-                    <!--<div> {{element.result}}-->
-                <!--</div>-->
+                            </div>
+                        </div>
+                </div>
 
             </div>
+
+
+
 
 
         </div>

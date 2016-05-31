@@ -57,9 +57,10 @@
 
 <body ng-app="hello">
 
-<div class="logo navbar-fixed-top">
+<div class="logo navbar-fixed-top" data-ng-controller="loginController">
     <a href="#/"><img src="${pageContext.request.contextPath}/resources/images/whitelogo.png"></a>
     <li><a class="login-button-nav" href="#/login" ng-show="!authenticated">login</a></li>
+    <li><a  ng-show="authenticated">logged as {{username.credentials}}</a></li>
     <li><a class="login-button-nav" href="#/home" ng-show="authenticated">logout</a></li>
 </div>
 
