@@ -38,8 +38,7 @@ myApp.controller('AppController',['$scope', function($s) {
         name  : 'First Item',
         value : 5
     }];
-
- 
+    
 
 }]);
 
@@ -244,6 +243,21 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
     //
     //
     //
+
+
+    $scope.cards = [
+        {"cardItem": [{"keys": "Hello"}]},
+        {"cardItem": [{"keys": "Hello 2"}]},
+        {"cardItem": [{"keys": "Hello 3"}]},
+        {"cardItem": [{"keys": "Hello 4"}]},
+        {"cardItem": [{"keys": "Hello 5"}]}
+    ];
+
+    $scope.index = 1;
+
+
+
+
     $scope.goToPublicSurveys  = function() {
         $window.location.href = '#/surveysList';
     }
@@ -354,12 +368,36 @@ myApp.controller('userPanelController', function($scope) {
 myApp.controller('completeDataController', function($scope, $http) {
 
 
+
+  
+
+
     $scope.message = 'Your Panel';
 
     $http.get('getDataToScroll').success(function (data) {
        $scope.model = data;
+
+
+        $scope.index2 = 0;
+
+        $scope.complaints = $scope.model.listToScroll[0];
+
+        $scope.getNext = function (){
+            $scope.index2 = $scope.index2 + 1;
+            $scope.complaints = $scope.model.listToScroll[$scope.index2];
+        }
+
+        $scope.getPrevious = function (){
+            $scope.index2 = $scope.index2 - 1;
+            $scope.complaints = $scope.model.listToScroll[$scope.index2];
+
+        }
+
+
+
     });
 
+    
     $scope.go = function(targetId){
         var destination = $(targetId).offset().top;
         $('html, body').animate({scrollTop: destination}, 300);
@@ -385,6 +423,11 @@ myApp.controller('completeDataController', function($scope, $http) {
             console.log("Setting up account failed");
         });
     };
+
+
+
+
+
 
 });
 

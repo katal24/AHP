@@ -105,6 +105,27 @@
   font-weight: 600;
   text-transform: uppercase;
 }
+
+.card .variant {
+  color: #9d9d9d;
+  font-size: 40px;
+  font-family: 'RobotoDraft', 'Roboto', sans-serif;
+  font-weight: 300;
+  line-height: 60px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+
+.card .category {
+  font-size: 25px;
+  font-family: 'RobotoDraft', 'Roboto', sans-serif;
+  color: #757575;
+  font-weight: 300;
+  line-height: 60px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+
 .card .input-container {
   position: relative;
   margin: 0 60px 50px;
@@ -122,6 +143,8 @@
   font-weight: 400;
 }
 
+
+
 .card .input-container fieldset input{
 
   outline: none;
@@ -132,21 +155,26 @@
   height: 60px;
   border: 0;
   color: #212121;
+  font-family: 'RobotoDraft', 'Roboto', sans-serif;
   font-size: 24px;
-  font-weight: 400;
+
 
 }
 
+
 .card .input-container input:focus ~ label {
   color: #9d9d9d;
-  -webkit-transform: translate(-12%, -50%) scale(0.75);
-          transform: translate(-12%, -50%) scale(0.75);
+  font-family: 'RobotoDraft', 'Roboto', sans-serif;
+  font-weight: 300;
+  line-height: 60px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
 }
 
 .card .input-container fieldset input:focus ~ label {
   color: #9d9d9d;
-  -webkit-transform: translate(-12%, -50%) scale(0.75);
-  transform: translate(-12%, -50%) scale(0.75);
+  /*-webkit-transform: translate(-12%, -50%) scale(0.75);*/
+  /*transform: translate(-12%, -50%) scale(0.75);*/
 }
 
 
@@ -168,8 +196,22 @@
 
 .card .input-container fieldset input:valid ~ label {
   color: #9d9d9d;
-  -webkit-transform: translate(-12%, -50%) scale(0.75);
-  transform: translate(-12%, -50%) scale(0.75);
+
+  /*font-weight: 300;*/
+  /*line-height: 60px;*/
+  /*-webkit-transition: 0.2s ease;*/
+  /*transition: 0.2s ease;*/
+  /*font-family: 'RobotoDraft', 'Roboto', sans-serif;*/
+
+  /*-webkit-transform: translate(-12%, -50%) scale(0.75);*/
+  /*transform: translate(-12%, -50%) scale(0.75);*/
+  font-family: 'RobotoDraft', 'Roboto', sans-serif;
+  color: #757575;
+  font-weight: 300;
+  line-height: 60px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+font-size: 30px;
 }
 
 
@@ -183,6 +225,7 @@
   line-height: 60px;
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
+
 }
 
 .card .input-container fieldset label {
@@ -394,6 +437,9 @@
   font-size: 58px;
   font-weight: 400;
 }
+
+
+
 .card.alt .title .close:before {
   content: '\00d7';
 }

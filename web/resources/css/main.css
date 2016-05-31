@@ -483,16 +483,6 @@ fieldset{
 }
 
 
-.categoryDiv{
-
-    padding-top: 10px;
-
-}
-.variantDiv{
-
-    padding-top: 10px;
-
-}​
 
 .btn-circle.btn-xl {
     width: 70px;
@@ -509,14 +499,6 @@ fieldset{
 }
 
 
-.chart div {
-    font: 10px sans-serif;
-    background-color: deeppink;
-    text-align: right;
-    padding: 3px;
-    margin: 1px;
-    color: white;
-}
 
 .box {
     background: #eee;
@@ -524,17 +506,6 @@ fieldset{
     height: 100px;
     margin: 20px 0;
 }
-
-.entry:not(:first-of-type)
-{
-    margin-top: 10px;
-}
-
-.glyphicon
-{
-    font-size: 12px;
-}
-
 
 
 .main-wrapper {
@@ -813,3 +784,17 @@ p {
     opacity:1;
 }
 
+.listSurveys {
+    font-size: 25px;
+    font-family: 'RobotoDraft', 'Roboto', sans-serif;
+    color: #757575;
+    font-weight: 300;
+    line-height: 60px;
+    -webkit-transition: 0.2s ease;
+    transition: 0.2s ease;
+}
+
+.listSurveys:hover {
+    color: #383f50;
+    font-weight: 400;
+}

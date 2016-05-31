@@ -11,10 +11,8 @@
 
             <!--<i class="material-icons">public</i>-->
             <!--<i class="material-icons">autorenew</i>-->
-
-
-
         </div>
+
 
 
 
@@ -68,7 +66,7 @@
 
                         <div class="input-container">
                             <fieldset  data-ng-repeat="category in categories">
-                                <input type="text"  id="cat" ng-model="category.name" name="" placeholder="e.g. price">
+                               <input type="text"  id="cat" ng-model="category.name" name="" placeholder="e.g. price">
                                 <div class="bar"></div>
                                 <label for="cat">Categories </label>
                                 <button class="buttonDark addFields" ng-show="$last" ng-click="removeCategory()">-</button>
@@ -88,7 +86,6 @@
                             <button class="buttonDark addFields" ng-click="addNewVariant()">+</button>
 
                         </div>
-                        <!--&#45;&#45;-->
 
 
                         <div class="button-container">
@@ -106,79 +103,64 @@
             <div class="form-group" ng-show="showmeData">
 
 
-
-
                 <div class="containerSurvey">
                     <div class="card"></div>
                     <div class="card">
-
                         <h1 class="title">{{surveyData.nazwa}}</h1>
-
                         <div class="input-container">
-                            <div data-ng-repeat="variant in variants">
-                                <h4>{{variant.name}}</h4>
+                            <div class="kont" data-ng-repeat="variant in variants">
                                 <div class="bar"></div>
-
+                                <h2 class="variant">{{variant.name}}</h2>
                                 <div data-ng-repeat="y in surveyData.categories track by $index">
-
-
-                                        <h4 class="col-sm-2 control-label">{{y}} *</h4>
-
-                                            <input type="text"  placeholder="e.g. red, black, $13000" name="" ng-model="variant.value[$index]">                                        </div>
-                                <div class="bar"></div>
-
-
+                                    <div class ="category">{{y}} *</div>
+                                    <div class="bar"></div>
+                                    <input class="filling"type="text"  placeholder="e.g. red, black, $13000" name="" ng-model="variant.value[$index]">
+                                </div>
                             </div>
 
-                            </div>
+                        </div>
                         <div class="button-container">
                             <button ng-click="showmeSurveyname=true; showmeCategories=false; showmeVariants=false; showmeData=false"><span>Back</span></button>
                             <button data-ng-click="completeData()"><span>Next</span></button>
                         </div>
-                        </div>
-
-
-
-
-
-                    </div>
-
-
-
-
-
-
-
-
-
-
-
-                <form class="form-horizontal">
-                    <div class="row">
-                <div class="form-group">
-                    <h3>{{surveyData.nazwa}}
-                        <button class="btn btn-success btn-circle btn-xl " data-ng-click="completeData()"><a href="#/completeData"><i class="glyphicon glyphicon-ok"></i></a></button>
-                    </h3>
-                    <hr class="style3">
-                    <div data-ng-repeat="variant in variants">
-                        <h4>{{variant.name}}</h4>
-
-                        <div data-ng-repeat="y in surveyData.categories track by $index">
-
-                            <div class="form-group">
-                                <label for="surveyName" class="col-sm-2 control-label">{{y}} *</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" placeholder="e.g. red, black, $13000" name="" ng-model="variant.value[$index]">                                        </div>
-
-                            </div>
-                        </div>
-                        <br>
-                        <hr class="style3">
-                        <br>
                     </div>
                 </div>
-                </div>
-                </form>
+
+
+
+
+
+
+
+
+
+
+                <!--<form class="form-horizontal">-->
+                    <!--<div class="row">-->
+                <!--<div class="form-group">-->
+                    <!--<h3>{{surveyData.nazwa}}-->
+                        <!--<button class="btn btn-success btn-circle btn-xl " data-ng-click="completeData()"><a href="#/completeData"><i class="glyphicon glyphicon-ok"></i></a></button>-->
+                    <!--</h3>-->
+                    <!--<hr class="style3">-->
+                    <!--<div data-ng-repeat="variant in variants">-->
+                        <!--<h4>{{variant.name}}</h4>-->
+
+                        <!--<div data-ng-repeat="y in surveyData.categories track by $index">-->
+
+                            <!--<div class="form-group">-->
+                                <!--<label for="surveyName" class="col-sm-2 control-label">{{y}} *</label>-->
+                                <!--<div class="col-sm-8">-->
+                                    <!--<input type="text" class="form-control" placeholder="e.g. red, black, $13000" name="" ng-model="variant.value[$index]">                                        </div>-->
+
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<br>-->
+                        <!--<hr class="style3">-->
+                        <!--<br>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</form>-->
             </div>
         </div>
             <!--complete-->

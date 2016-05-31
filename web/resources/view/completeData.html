@@ -25,51 +25,45 @@
             <h3>{{model.nazwa}}
                 <button type="submit" class="btn btn-success btn-circle btn-xl" data-ng-click="setAllData()"><a href="#/resultSurvey"><i class="glyphicon glyphicon-ok icon white"></i></a></button>
             </h3>
-
-
-
-            <hr class="style3">
+                <hr class="style3">
 
                 <div  id="box{{$index}}" data-ng-repeat="element in model.listToScroll track by $index">
                     <!--<div data-ng-repeat="item in items">-->
-                    <h4>{{element.name}}
+                    <h4>{{complaints.name}}
                         <button ng-click="go('#box' + ($index + 1))">go to next box</button></h4>
 
-
-                    <div data-ng-controller="AppController">
-
-                        <div class="container" style="margin-top: 100px;">
-                            <section class="row">
-                                <div class="col-md-6 col-md-offset-3">
-                                    <h5>{{element.s1}}</h5>
-                                    <h6>{{element.s2}}</h6>
-                                    <p>{{element.value[$index]}}</p>
-                                    <div data-range-slider
-                                         data-floor="-8"
-                                         data-ceiling="8"
-                                         data-step="1"
-                                         data-precision="1"
-                                         data-highlight="center"
-                                         data-ng-model="element.value"></div>
+                    <div class="col-md-2-4">
+                        <ul>
+                            <li class="clearfix">
+                                <div class="pull-left">
+                                    <div data-ng-controller="AppController">
+                                        <div class="container" style="margin-top: 100px;">
+                                            <section class="row">
+                                                <div class="col-md-6 col-md-offset-3">
+                                                    <h5> {{complaints.s1}}</h5>
+                                                    <h6>{{complaints.s2}}</h6>
+                                                    <p>{{complaints.value[$index]}}</p>
+                                                    <div data-range-slider
+                                                         data-floor="-8"
+                                                         data-ceiling="8"
+                                                         data-step="1"
+                                                         data-precision="1"
+                                                         data-highlight="center"
+                                                         data-ng-model="complaints.value"></div>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </div>
                                 </div>
-                            </section>
+                            </li>
+                        </ul>
+                        <button type="button" class="btn btn-pre" ng-disabled="index2==0" ng-click="getPrevious()">Previous</button>
 
-
-                        </div>
-
+                        <button type="button" class="btn btn-pre" ng-disabled="index2==items.length -1" ng-click="getNext()">Next</button>
                     </div>
 
                     <hr class="style3">
                 </div>
-
-            <!--<div class="col-sm-offset-4 col-sm-8">-->
-                <!--<button type="submit" class="buttonDark buttonGreen" data-ng-click="setAllData()"><span><a href="#/resultSurvey"> GET ANSWER</a></span></button>-->
-            <!--</div>-->
-            <!--<br/>-->
-
-            </div>
-
-
 
 
         </div>
