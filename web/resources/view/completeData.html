@@ -21,9 +21,12 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-            <h3>{{model.nazwa}}
+            <div class="containerSurvey">
+                <div class="card"></div>
+                <div class="card">
+            <div class="title">{{model.nazwa}}
                 <button type="submit" class="btn btn-success btn-circle btn-xl" data-ng-click="setAllData()"><a href="#/resultSurvey"><i class="glyphicon glyphicon-ok icon white"></i></a></button>
-            </h3>
+            </div>
                 <hr class="style3">
 
                 <div  id="box{{$index}}" data-ng-repeat="element in model.listToScroll track by $index">
@@ -54,14 +57,16 @@
                                 </div>
                             </li>
                         </ul>
-                        <button type="button" class="btn btn-pre" ng-disabled="index2==0" ng-click="getPrevious()">Previous</button>
+                        <div class="button-container">
+                        <button  ng-disabled="index2==0" ng-click="getPrevious()">BACK</button>
 
-                        <button type="button" class="btn btn-pre" ng-disabled="index2==model.listToScroll.length -1" ng-click="getNext()">Next</button>
+                        <button  ng-disabled="index2==model.listToScroll.length -1" ng-click="getNext()">NEXT</button>
+                        </div>
                     </div>
 
-                    <hr class="style3">
                 </div>
-
+</div>
+            </div>
 
         </div>
     <!-- /#page-content-wrapper -->
