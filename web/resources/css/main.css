@@ -798,3 +798,12 @@ p {
     color: #383f50;
     font-weight: 400;
 }
+
+.goCenter {
+    text-align: center;
+
+}
+
+.k {
+    position: absolute;
+}

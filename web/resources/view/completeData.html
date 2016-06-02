@@ -25,24 +25,27 @@
                 <div class="card"></div>
                 <div class="card">
             <div class="title">{{model.nazwa}}
+
                 <button type="submit" class="btn btn-success btn-circle btn-xl" data-ng-click="setAllData()"><a href="#/resultSurvey"><i class="glyphicon glyphicon-ok icon white"></i></a></button>
             </div>
-                <hr class="style3">
 
-                <div  id="box{{$index}}" data-ng-repeat="element in model.listToScroll track by $index">
+
+                <div >
+
                     <!--<div data-ng-repeat="item in items">-->
-                    <h4>{{complaints.name}}
-                    <div class="col-md-2-4">
-                        <ul>
-                            <li class="clearfix">
+
+                    <div class ="listSurveys goCenter">{{complaints.name}}</div>
+
+
                                 <div class="pull-left">
                                     <div data-ng-controller="AppController">
-                                        <div class="container" style="margin-top: 100px;">
+                                        <div class="container" style="margin-top: 100px; text-align: center;" data-ng-repeat="element in model.listToScroll track by $index">
                                             <section class="row">
-                                                <div class="col-md-6 col-md-offset-3">
-                                                    <h5> {{complaints.s1}}</h5>
-                                                    <h6>{{complaints.s2}}</h6>
-                                                    <p>{{complaints.value[$index2]}}</p>
+                                                <div class="goCenter">
+                                                <div class="col-md-6 col-md-offset-3 ">
+                                                    <h5> 11{{complaints.s1}}</h5>
+                                                    <h6>22{{complaints.s2}}</h6>
+                                                    <p> 33{{element.value[$index]}}</p>
                                                     <div data-range-slider
                                                          data-floor="-8"
                                                          data-ceiling="8"
@@ -51,23 +54,24 @@
                                                          data-highlight="center"
                                                          data-ng-model="complaints.value"></div>
                                                 </div>
+                                                </div>
                                             </section>
                                         </div>
                                     </div>
                                 </div>
-                            </li>
-                        </ul>
+
                         <div class="button-container">
                         <button  ng-disabled="index2==0" ng-click="getPrevious()">BACK</button>
 
                         <button  ng-disabled="index2==model.listToScroll.length -1" ng-click="getNext()">NEXT</button>
                         </div>
-                    </div>
+
 
                 </div>
 </div>
             </div>
-
+            {{model}}
+            {{model.publicNamesSurveys}}
         </div>
     <!-- /#page-content-wrapper -->
 </div>

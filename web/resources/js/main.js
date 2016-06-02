@@ -252,18 +252,18 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
     //
     //
 
-
-    $scope.cards = [
-        {"cardItem": [{"keys": "Hello"}]},
-        {"cardItem": [{"keys": "Hello 2"}]},
-        {"cardItem": [{"keys": "Hello 3"}]},
-        {"cardItem": [{"keys": "Hello 4"}]},
-        {"cardItem": [{"keys": "Hello 5"}]}
-    ];
-
-    $scope.index = 1;
-
-
+    //
+    // $scope.cards = [
+    //     {"cardItem": [{"keys": "Hello"}]},
+    //     {"cardItem": [{"keys": "Hello 2"}]},
+    //     {"cardItem": [{"keys": "Hello 3"}]},
+    //     {"cardItem": [{"keys": "Hello 4"}]},
+    //     {"cardItem": [{"keys": "Hello 5"}]}
+    // ];
+    //
+    // $scope.index = 1;
+    //
+    //
 
 
     $scope.goToPublicSurveys  = function() {
@@ -374,13 +374,18 @@ myApp.controller('userPanelController', function($scope) {
 });
 
 myApp.controller('completeDataController', function($scope, $http) {
-
-
-
-  
-
-
+    
     $scope.message = 'Your Panel';
+
+    $scope.goToPublicSurveys  = function() {
+        $window.location.href = '#/surveysList';
+    }
+
+    $scope.goToHome  = function() {
+        $window.location.href = '#/';
+    }
+
+
 
     $http.get('getDataToScroll').success(function (data) {
        $scope.model = data;
