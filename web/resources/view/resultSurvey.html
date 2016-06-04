@@ -1,14 +1,15 @@
-<div id="ng-app" data-ng-app="app">
+<div id="ng-app" data-ng-app="app" >
 
 
     <div id="wrapper">
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <i ng-click="showmeSurveyname=true; showmeCategories=false; showmeVariants=false; showmeData=false" class="material-icons">add</i>
-            <i class="material-icons" data-ng-click="goToPublicSurveys()">explore</i>
+            <i ng-click="goToCreateSurvey()" class="material-icons">add</i>
+            <i class="material-icons" data-ng-click="goToPublicSurveys()">public</i>
+            <i class="material-icons" data-ng-click="goToOwnerSurveys()">settings</i>
             <!--<i  class="material-icons">attach_file</i>-->
-            <!--<i class="material-icons">settings</i>-->
+
             <i class="material-icons"  data-ng-click="goToHome()">refresh</i>
             <!--<i class="material-icons">search</i>-->
 
@@ -20,7 +21,14 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
+             tutaj fjurzjon<div ><fusioncharts
+                width="600"
+                height="400"
+                type="column2d"
+                datasource="{{model}}"
+        ></fusioncharts>
 
+        </div>
 
             <div class="containerSurvey">
                 <div class="card"></div>
@@ -31,6 +39,8 @@
                             <div data-ng-repeat="element in model.resultList track by $index">
 
                                 <div class ="listSurveys">{{$index +1}}. {{element.variant}}: {{element.result}} %</div>
+
+
 
                             </div>
                         </div>

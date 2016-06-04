@@ -5,9 +5,16 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <i ng-click="goToCreateSurvey()" showmeData=false" class="material-icons">add</i>
-            <i class="material-icons" data-ng-click="goToPublicSurveys()">explore</i>
+            <i ng-click="goToCreateSurvey()" class="material-icons">add</i>
+            <i class="material-icons" data-ng-click="goToPublicSurveys()">public</i>
+            <i class="material-icons" data-ng-click="goToOwnerSurveys()">settings</i>
+            <!--<i  class="material-icons">attach_file</i>-->
+
             <i class="material-icons"  data-ng-click="goToHome()">refresh</i>
+            <!--<i class="material-icons">search</i>-->
+
+            <!--<i class="material-icons">public</i>-->
+            <!--<i class="material-icons">autorenew</i>-->
         </div>
         <!-- /#sidebar-wrapper -->
 
@@ -24,7 +31,7 @@
                         <!--<div data-ng-repeat="item in items">-->
                         <div class="input-container">
                         <div class="bar"></div>
-                        <div class ="listSurveys goCenter" data-ng-click="getPublicSurvey(element)">{{$index +1}}.  {{element}}</h2>
+                        <div class ="listSurveys" data-ng-click="getPublicSurvey(element)">{{$index +1}}.  {{element}}</h2>
                         <!--<button class="buttonDark buttonGreen"><a href="#/createSurvey">FILL</a></span></button>-->
 
                         </div>

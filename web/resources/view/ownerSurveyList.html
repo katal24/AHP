@@ -5,36 +5,51 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="" ></a>
-                </li>
-                <li>
-                    <a href="#/" >Home Page</a>
-                </li>
-                <li>
-                    <a href="#/completeData">Complete Data</a>
-                </li>
+            <i ng-click="goToCreateSurvey()" class="material-icons">add</i>
+            <i class="material-icons" data-ng-click="goToPublicSurveys()">public</i>
+            <i class="material-icons" data-ng-click="goToOwnerSurveys()">settings</i>
+            <!--<i  class="material-icons">attach_file</i>-->
 
-            </ul>
+            <i class="material-icons"  data-ng-click="goToHome()">refresh</i>
+            <!--<i class="material-icons">search</i>-->
+
+            <!--<i class="material-icons">public</i>-->
+            <!--<i class="material-icons">autorenew</i>-->
         </div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-            <h4>Your surveys:</h4>
-            <!--<h3>{{ model.resultList[0].variant}}</h3>-->
 
-            <div data-ng-repeat="element in model.ownerNamesSurveys track by $index">
-                <!--<div data-ng-repeat="item in items">-->
-                <h2 data-ng-click="getOwnerSurvey(element)">{{$index +1}}.  {{element}}</h2>
+            <div class="containerSurvey">
+                <div class="card"></div>
+                <div class="card">
+                    <h1 class="title">Private surveys</h1>
+                    <div data-ng-repeat="element in model.ownerNamesSurveys track by $index">
+                        <!--<div data-ng-repeat="item in items">-->
+                        <div class="input-container">
+                            <div class="bar"></div>
+                            <div class ="listSurveys " data-ng-click="getOwnerSurvey(element)">{{$index +1}}.  {{element}}</h2>
+                                <!--<button class="buttonDark buttonGreen"><a href="#/createSurvey">FILL</a></span></button>-->
+
+                            </div>
 
 
+
+                        </div>
+                    </div>
+                </div>
 
 
 
             </div>
+
+
+
+
+
+
 
 
         </div>

@@ -1,4 +1,4 @@
-var myApp = angular.module('hello', [ 'ngRoute', 'angularRangeSlider']);
+var myApp = angular.module('hello', [ 'ngRoute', 'angularRangeSlider', 'ng-fusioncharts']);
 myApp.config(function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl : 'resources/view/home.html',
@@ -62,6 +62,57 @@ myApp.controller('homeController', function($scope, $http) {
 
 
 myApp.controller('resultSurveyController', function($scope, $http, $window) {
+
+    $scope.goToPublicSurveys  = function() {
+        $window.location.href = '#/surveysList';
+    }
+
+    $scope.goToHome  = function() {
+        $window.location.href = '#/';
+    }
+
+    $scope.goToCreateSurvey = function() {
+        $window.location.href = '#/createSurvey';
+    }
+
+
+    $scope.goToOwnerSurveys  = function() {
+        $window.location.href = '#/ownerSurveyList';
+    }
+
+
+
+
+
+
+    $scope.myDataSource = {
+        chart: {
+            caption: "Harry's SuperMart",
+            subCaption: "Top 5 stores in last month by revenue",
+            numberPrefix: "$",
+            theme: "ocean"
+        },
+        data:[{
+            label: "Bakersfield Central",
+            value: "880000"
+        },
+            {
+                label: "Garden Groove harbour",
+                value: "730000"
+            },
+            {
+                label: "Los Angeles Topanga",
+                value: "590000"
+            },
+            {
+                label: "Compton-Rancho Dom",
+                value: "520000"
+            },
+            {
+                label: "Daly City Serramonte",
+                value: "330000"
+            }]
+    };
 
     $http.get('getResult2/').success(function (data) {
 
@@ -129,6 +180,13 @@ myApp.controller('surveysListController', function($scope, $http, $window) {
     }
 
 
+    $scope.goToOwnerSurveys  = function() {
+        $window.location.href = '#/ownerSurveyList';
+    }
+
+
+
+
 
 
 });
@@ -136,6 +194,25 @@ myApp.controller('surveysListController', function($scope, $http, $window) {
 
 // pobiera nazwy ANKIET ZALOGOWANEGO USERA
 myApp.controller('ownerSurveysListController', function($scope, $http, $window) {
+
+
+    $scope.goToPublicSurveys  = function() {
+        $window.location.href = '#/surveysList';
+    }
+
+    $scope.goToHome  = function() {
+        $window.location.href = '#/';
+    }
+
+    $scope.goToCreateSurvey = function() {
+        $window.location.href = '#/createSurvey';
+    }
+
+
+    $scope.goToOwnerSurveys  = function() {
+        $window.location.href = '#/ownerSurveyList';
+    }
+
 
     console.log('jestem w ownersyerveycontroler');
     $http.get('getOwnerNamesFromBase/').success(function (data) {
@@ -236,34 +313,6 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $window)
 myApp.controller('createSurveyController', function($scope, $window, $http) {
     $scope.message = 'Create survey';
 
-    // $scope.categories = [{id: 'category1'}, {id: 'category2'}];
-    //
-    // $scope.addInputCategory = function() {
-    //     $scope.categories.push({name:''});
-    // };
-    //
-    // $scope.variants = [{id: 'variant1'}, {id: 'variant2'}];
-    // $scope.addInputVariant = function() {
-    //     $scope.variants.push({name:''});
-    // };
-    //
-    //
-    //
-
-    //
-    // $scope.cards = [
-    //     {"cardItem": [{"keys": "Hello"}]},
-    //     {"cardItem": [{"keys": "Hello 2"}]},
-    //     {"cardItem": [{"keys": "Hello 3"}]},
-    //     {"cardItem": [{"keys": "Hello 4"}]},
-    //     {"cardItem": [{"keys": "Hello 5"}]}
-    // ];
-    //
-    // $scope.index = 1;
-    //
-    //
-
-
     $scope.goToPublicSurveys  = function() {
         $window.location.href = '#/surveysList';
     }
@@ -271,6 +320,17 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
     $scope.goToHome  = function() {
         $window.location.href = '#/';
     }
+
+    $scope.goToCreateSurvey = function() {
+        $window.location.href = '#/createSurvey';
+    }
+
+
+    $scope.goToOwnerSurveys  = function() {
+        $window.location.href = '#/ownerSurveyList';
+    }
+
+
 
 
     $scope.categories = [{id: 'category1'}, {id: 'category2'}];
@@ -343,13 +403,8 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
 
         $http.post('setCompletedData/', cs).success(function (data) {
 
-            //  console.log(cs.surveyName);
-            // $rootScope.errorEditProfile = false;
-            // $rootScope.EditProfileOK = true;
-            //$window.location.href = '#/completeData';
             console.log("udalo sie w complee.post");
-            //   $window.location.href = '#/completeData';
-            //  $window.location.href = '#/setSurveysData';
+
 
         }).error(function (data) {
             console.log("Setting up account failed");
@@ -382,6 +437,17 @@ myApp.controller('completeDataController', function($scope, $http, $window) {
     $scope.goToHome  = function() {
         $window.location.href = '#/';
     }
+
+    $scope.goToCreateSurvey = function() {
+        $window.location.href = '#/createSurvey';
+    }
+
+
+    $scope.goToOwnerSurveys  = function() {
+        $window.location.href = '#/ownerSurveyList';
+    }
+
+
 
 
 
@@ -497,14 +563,7 @@ myApp.controller('completeDataController', function($scope, $http, $window) {
 
         }
     });
-
-
-
-    $scope.go = function(targetId){
-        var destination = $(targetId).offset().top;
-        $('html, body').animate({scrollTop: destination}, 300);
-    };
-
+    
     $scope.items=[];
 
     $scope.setAllData = function () {
