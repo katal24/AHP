@@ -91,9 +91,9 @@ public class PriorityMatrix {
                     if (i < j) {
                         if (!variants.get(i).equals(variants.get(j))) {
                             Pair p = new Pair(name, variants.get(i), variants.get(j), i, j, 0);
-                            Pair p2 = new Pair(name, variants.get(i), variants.get(j), j, i, 0);
+//                            Pair p2 = new Pair(name, variants.get(i), variants.get(j), j, i, 0);
 
-                            if(!isInMapToFIll(p,p2)) {
+                            if(!isInMapToFIll(p)) {
                                 mapToFil.put(p, 0.0);
                             }
                         }
@@ -122,13 +122,20 @@ public class PriorityMatrix {
         // to powyżej jest do zmiany, ostatecznie ma wygladac tak: matrix = new Matrix(size, size);
     }
 
-    public boolean isInMapToFIll(Pair p, Pair p2){
-        if(mapToFil.containsKey(p) || mapToFil.containsKey(p2)) {
-            return true;
+    public boolean isInMapToFIll(Pair p){
+        for(Pair klucz : mapToFil.keySet()){
+            if(klucz.getS1().equals(p.getS1()) && klucz.getS2().equals(p.getS2())){
+                return true;
+            }
         }
-        else{
-            return false;
-        }
+        return false;
+
+//        if(mapToFil.containsKey(p) || mapToFil.containsKey(p2)) {
+//            return true;
+//        }
+//        else{
+//            return false;
+//        }
     }
 
     public void fillArray(){
@@ -184,14 +191,55 @@ public class PriorityMatrix {
 
     public double[] countEigenVector(){
 
-        double[] tempMainPriority = matrix.eig().getV().transpose().getArray()[0];
+        mainPriority = new double[matrix.getArray().length];
+        // ZMIENIAM SPOSOB LICZENIA WEKTOROW
+//        double[] tempMainPriority = matrix.eig().getV().transpose().getArray()[0];
+        double[][] tempMainPriority2 = matrix.eig().getV().getArray();
+//
+//
+//        System.out.println(Arrays.deepToString(matrix.getArray()));
+//        System.out.println("Wektor wag przed normalizacja: " + Arrays.toString(tempMainPriority));
+//        System.out.println("cala: " + Arrays.deepToString(tempMainPriority2));
+//
+//
+//        mainPriority = normaliseArray(tempMainPriority);
+//        System.out.println("Wektor wag: " + Arrays.toString(mainPriority));
+//        double sumka = sumArray(mainPriority);
+//        System.out.println(sumka);
+//        return mainPriority;
+        double[] tempMainPriority = new double[mainPriority.length];
+        int counter = 0;
+
+//        for(double [] row : matrix.getArray()){
+//            double sum = 0;
+//            for(double element : row){
+//                sum += element;
+//            }
+//            double avg = sum/row.length;
+//            tempMainPriority[counter] = avg;
+//            counter++;
+//        }
+
+        for(double [] row : matrix.getArray()){
+            double sum = 1;
+            for(double element : row){
+                sum *= element;
+            }
+            double avg = Math.pow(sum, 1.0/row.length);
+            tempMainPriority[counter] = avg;
+            counter++;
+        }
 
 
         mainPriority = normaliseArray(tempMainPriority);
+
+        System.out.println("cala: " + Arrays.deepToString(tempMainPriority2));
+        System.out.println("Wektor wag przed normalizacja: " + Arrays.toString(tempMainPriority));
         System.out.println("Wektor wag: " + Arrays.toString(mainPriority));
-        double sumka = sumArray(mainPriority);
-        System.out.println(sumka);
         return mainPriority;
+
+
+
         //print2Vectors(variants.getVariants().get(0).getCriteria(), mainPriority);
     }
 

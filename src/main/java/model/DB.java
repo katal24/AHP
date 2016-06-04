@@ -42,8 +42,14 @@ public class DB {
     public boolean exists(User user){
         System.out.println("Sprawdzam czy jest taki user");
         final Session session = getSession();
+
         session.beginTransaction();
+        System.out.println("list: ------------------------: " );
+
         Query query = session.createQuery("select 1 from User u where u.username = :name and u.password = :pass").setString("name", user.getUsername()).setString("pass", user.getPassword());
+        System.out.println("list: ------------------------: " );
+        System.out.println("list: ------------------------: ");//query.list().get(0)!=null);
+        System.out.println("list: ------------------------: " );//+ query.list().get(0)!=null);
 
         return (query.uniqueResult() != null);
 

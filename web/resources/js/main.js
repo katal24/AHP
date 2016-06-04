@@ -38,7 +38,7 @@ myApp.controller('AppController',['$scope', function($s) {
         name  : 'First Item',
         value : 5
     }];
-    
+
 
 }]);
 
@@ -54,8 +54,8 @@ myApp.controller('homeController', function($scope, $http) {
 
         })} ;
 
-  
-    
+
+
 });
 
 
@@ -63,18 +63,16 @@ myApp.controller('homeController', function($scope, $http) {
 
 myApp.controller('resultSurveyController', function($scope, $http, $window) {
 
-    $http.get('getResult/').success(function (data) {
-        //if(data.error==0){
-        //    alert("Niewlasciwe dane");
-        //} else {
+    $http.get('getResult2/').success(function (data) {
+
             $scope.model = data;
-        //}
+
 
     }).error(function (data) {
-      //  location.reload();
-      //  alert('Wprowadzone dane są niespójne. \n Określ prioryetery jeszcze raz!');
-     //   $window.location.href = '#/completeData';
-     //   console.log("Setting up account failed");
+        //  location.reload();
+        //  alert('Wprowadzone dane są niespójne. \n Określ prioryetery jeszcze raz!');
+        //   $window.location.href = '#/completeData';
+        //   console.log("Setting up account failed");
         // $rootScope.errorEditProfile = true;
 
     });
@@ -104,7 +102,7 @@ myApp.controller('surveysListController', function($scope, $http, $window) {
         $http.post('setCompletedDataFromBase/', a).success(function() {
 
             console.log("post opublicznej");
-           // $window.location.href = '#/completeData';
+            // $window.location.href = '#/completeData';
             //  $window.location.href = '#/setSurveysData';
 
         }).error(function () {
@@ -147,7 +145,7 @@ myApp.controller('ownerSurveysListController', function($scope, $http, $window) 
     }).error(function (data) {
 
     });
-    
+
     $scope.getOwnerSurvey = function (a) {
 
         $http.post('setCompletedDataFromBase/', a).success(function() {
@@ -192,7 +190,7 @@ myApp.controller('newAccountController', function($scope,$window,$http) {
             $window.location.reload();
         });
 
-        $window.location.href = '#/';
+        //$window.location.href = '#/';
     }
 
     $scope.message = 'New Account';
@@ -217,19 +215,19 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $window)
                 $scope.loged = data;
 
 
-            if($scope.loged.zalogowany === true) {
+                if($scope.loged.zalogowany === true) {
 
-                $window.location.href = '#/createSurvey';
-            } else {
-                alert('Niewlasciwy login lub haslo');
-            }
+                    $window.location.href = '#/createSurvey';
+                } else {
+                    alert('Niewlasciwy login lub haslo');
+                }
             });
         }).error(function (data){
             console.log('jestem w errorze przy logowaniu');
-          //  alert('Niewlasciwy login lub haslo');
+            //  alert('Niewlasciwy login lub haslo');
             //$window.location.reload();
         });
-        $window.location.href = '#/createSurvey';
+        //$window.location.href = '#/createSurvey';
     }
 
 });
@@ -306,7 +304,7 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
         var cs = {
             surveyName: $scope.s.surveyName,
             access: $scope.s.access,
-          //  surveyName2: $scope.s.surveyName
+            //  surveyName2: $scope.s.surveyName
             categories: $scope.categories,
             variants: $scope.variants
         };
@@ -319,7 +317,7 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
             // $rootScope.errorEditProfile = false;
             // $rootScope.EditProfileOK = true;
             console.log("udalo sie w http.post");
-          //   $window.location.href = '#/completeData';
+            //   $window.location.href = '#/completeData';
             //  $window.location.href = '#/setSurveysData';
             $http.get('getSurveyData/').success(function (data) {
                 console.log("get daty w MAINNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
@@ -345,10 +343,10 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
 
         $http.post('setCompletedData/', cs).success(function (data) {
 
-          //  console.log(cs.surveyName);
+            //  console.log(cs.surveyName);
             // $rootScope.errorEditProfile = false;
             // $rootScope.EditProfileOK = true;
-           //$window.location.href = '#/completeData';
+            //$window.location.href = '#/completeData';
             console.log("udalo sie w complee.post");
             //   $window.location.href = '#/completeData';
             //  $window.location.href = '#/setSurveysData';
@@ -373,8 +371,8 @@ myApp.controller('userPanelController', function($scope) {
     $scope.message = 'Your Panel';
 });
 
-myApp.controller('completeDataController', function($scope, $http) {
-    
+myApp.controller('completeDataController', function($scope, $http, $window) {
+
     $scope.message = 'Your Panel';
 
     $scope.goToPublicSurveys  = function() {
@@ -388,16 +386,109 @@ myApp.controller('completeDataController', function($scope, $http) {
 
 
     $http.get('getDataToScroll').success(function (data) {
-       $scope.model = data;
+        $scope.model = data;
 
 
         $scope.index2 = 0;
-
         $scope.complaints = $scope.model.listToScroll[0];
+        var items = {
+            items: $scope.model.listToScroll
+        };
+
+        $scope.getNext2 = function (){
+                console.log("przesylasz suwakiiiiiiiid");
+
+                $http.post('setAllData/', items).success(function (data) {
+
+                    console.log(items);
+
+                    console.log("udalo sie w suwakach");
+                    $http.get('getResult/').success(function (data) {
+
+                        $scope.datka = data.error;
+
+
+                        if(data.error==0){
+
+                            alert("Niewlasciwe dane");
+                        } else {
+                            $window.location.href = '#/resultSurvey';
+                        }
+
+                    }).error(function (data) {
+                        //  location.reload();
+                        //  alert('Wprowadzone dane są niespójne. \n Określ prioryetery jeszcze raz!');
+                        //   $window.location.href = '#/completeData';
+                        //   console.log("Setting up account failed");
+                        // $rootScope.errorEditProfile = true;
+
+                    });
+
+                }).error(function (data) {
+                    console.log("Setting up account failed");
+                });
+
+
+            //if(funckja spradzajaca niepewnosc > 0.2){
+            //    do nic; alert
+            //} else
+
+
+        }
+        //koniec
 
         $scope.getNext = function (){
-            $scope.index2 = $scope.index2 + 1;
-            $scope.complaints = $scope.model.listToScroll[$scope.index2];
+
+
+            if($scope.model.listToScroll[$scope.index2].name != $scope.model.listToScroll[$scope.index2+1].name){
+
+                //var items = {
+                //    items: $scope.model.listToScroll
+                //};
+
+                console.log("przesylasz suwakiiiiiiiid");
+
+                $http.post('setAllData/', items).success(function (data) {
+
+                    console.log(items);
+
+                    console.log("udalo sie w suwakach");
+                    $http.get('getResult/').success(function (data) {
+
+                        //$scope.modele = data;
+
+
+                        if(data.error==0){
+
+                            alert("Niewlasciwe dane");
+                        } else {
+                            $scope.index2 = $scope.index2 + 1;
+                            $scope.complaints = $scope.model.listToScroll[$scope.index2];
+                        }
+
+                    }).error(function (data) {
+                        //  location.reload();
+                        //  alert('Wprowadzone dane są niespójne. \n Określ prioryetery jeszcze raz!');
+                        //   $window.location.href = '#/completeData';
+                        //   console.log("Setting up account failed");
+                        // $rootScope.errorEditProfile = true;
+
+                    });
+
+                }).error(function (data) {
+                    console.log("Setting up account failed");
+                });
+
+               }
+            else{
+                $scope.index2 = $scope.index2 + 1;
+               $scope.complaints = $scope.model.listToScroll[$scope.index2];
+            }
+            //if(funckja spradzajaca niepewnosc > 0.2){
+            //    do nic; alert
+            //} else
+
+
         }
 
         $scope.getPrevious = function (){
@@ -405,17 +496,15 @@ myApp.controller('completeDataController', function($scope, $http) {
             $scope.complaints = $scope.model.listToScroll[$scope.index2];
 
         }
-
-
-
     });
 
-    
+
+
     $scope.go = function(targetId){
         var destination = $(targetId).offset().top;
         $('html, body').animate({scrollTop: destination}, 300);
     };
-    
+
     $scope.items=[];
 
     $scope.setAllData = function () {

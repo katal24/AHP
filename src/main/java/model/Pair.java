@@ -10,11 +10,12 @@ public class Pair {
     private int x,y;
     boolean first;
     int value;
+    boolean byloPorownanie = false;
 
     public Pair(String name, String s1, String s2, int x, int y, int value) {
         this.name = name;
-        this.s1 = s1;
-        this.s2 = s2;
+        this.s1 = s2;
+        this.s2 = s1;
         this.x = x;
         this.y = y;
         if(x<y) first = true;
@@ -49,6 +50,14 @@ public class Pair {
         result = 31 * result + x;
         result = 31 * result + y;
         return result;
+    }
+
+    public boolean isByloPorownanie() {
+        return byloPorownanie;
+    }
+
+    public void setByloPorownanie(boolean byloPorownanie) {
+        this.byloPorownanie = byloPorownanie;
     }
 
     public int getValue() {

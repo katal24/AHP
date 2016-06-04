@@ -40,7 +40,7 @@ public class BaseController {
     public LinkedList<Result> resultList;
     double errorFactor;
     DB dbConnection;
-    boolean logged;
+    public static boolean logged = false;
 
     @RequestMapping("/getSurveyData/")
     @ResponseBody
@@ -81,11 +81,11 @@ public class BaseController {
 
         quest.setListToScroll(cd.getItems());
         System.out.println("            DANE Z KLASY: " + quest.getListToScroll());
-      //  errorFactor = quest.setValueInMaps(); //wszystkie mapy w matrixes są już uzupełnione, przepisane do macierzy i wektory wyliczone
-
-      //  if(errorFactor > 0.1){
-            //cos trzeba zrobic
-       // } else {
+        errorFactor = quest.setValueInMaps(); //wszystkie mapy w matrixes są już uzupełnione, przepisane do macierzy i wektory wyliczone
+//
+//        if(errorFactor > 0.1){
+//            cos trzeba zrobic
+//        } else {
             quest.printAllMaps();
             // zapisuje rezultat do listy
             result = quest.countResult();
@@ -99,11 +99,10 @@ public class BaseController {
     @RequestMapping("/getResult")
     @ResponseBody
     Map<String, Object> getResult(){
-       // if(errorFactor > 0.1){
-       //     model.put("eroor", new Integer(1));
-       // }
+
 
         resultList = new LinkedList<Result>();
+        System.out.println("WYPISUJE RESULT W GETRESULT: " + result);
         for(int i=0; i<result.length; i++){
             resultList.add(new Result(nq.getVariantsList().get(i),result[i]));
         }
@@ -111,7 +110,19 @@ public class BaseController {
         Collections.sort(resultList);
         System.out.println("Posortowane: " + resultList);
         model.put("resultList", resultList);
-       // model.put("eroor", new Integer(0));
+        System.out.println("------------------------------------------------------------------errorfactor wynosi: " + errorFactor);
+        if(errorFactor > 0.1){
+            model.put("error", new Integer(0));
+        } else {
+            model.put("error", new Integer(1));
+        }
+        return model;
+    }
+
+    @RequestMapping("/getResult2")
+    @ResponseBody
+    Map<String, Object> getResult2(){
+        model.put("resultList", resultList);
         return model;
     }
 
@@ -227,6 +238,8 @@ public class BaseController {
 
         dbConnection = new DB();
         logged = dbConnection.exists(user1);
+        user1.setLogged(logged);
+
 
         System.out.println("TAKI USER JEST W BAZIE: " + logged);
     }
@@ -235,9 +248,9 @@ public class BaseController {
     @ResponseBody
     Map<String, Object> getloggedUser(){
 
-        if(logged){
+
             model.put("zalogowany", logged);
-        }
+
 
         return model;
     }

@@ -101,7 +101,7 @@ public class Questionnaire {
         for(PriorityMatrix matrix : matrixes){
             for(Pair pair : listToScroll){
                 matrix.setValueInMap(pair);
-                matrix.convertValueInMap(); // ta funkcja jest PUSTA !!!
+//                matrix.convertValueInMap(); // ta funkcja jest PUSTA !!!
             }
             matrix.fillArray();
             System.out.println(Arrays.deepToString(matrix.mainMatrix));
@@ -110,16 +110,29 @@ public class Questionnaire {
         }
 
         //LICZY ŚREDNI WSPÓŁCZYNNIK NIESPÓJNOŚCI
-        double error = matrixes.get(0).countErrorFactor();
+        double error = 0;
+        errorFactor = 0;
+//        = matrixes.get(0).countErrorFactor();
+        for(PriorityMatrix matrix : matrixes){
+            double temp = matrix.countErrorFactor();
+            //int n = BaseController.nq.getCategoriesList().size()-1;
+            int n=matrix.size;
+            System.out.println("MAX LAMBDA: " + temp);
+            System.out.println("WYMIAR n: " + n);
+//            errorFactor = (temp - n)/(n-1);
+            double temp2 = (temp - n)/(n-1);
+
+            if(temp2>errorFactor){
+                errorFactor=temp2;
+            }
+            System.out.println("SREDNI WSPOLCZYNNIK NIESPOLNOSCI WYNOSI: " + temp2);
+        }
         System.out.print("LICZE NIESPOJNOSC!");
 
-        int n = BaseController.nq.getCategoriesList().size()-1;
-        System.out.println("MAX LAMBDA: " + error);
-        System.out.println("WYMIAR n: " + n);
-        errorFactor = (error - n)/(n-1);
 
-        System.out.println("SREDNI WSPOLCZYNNIK NIESPOLNOSCI WYNOSI: " + errorFactor);
 
+
+        System.out.println("SREDNI MAKSYMALNY WSPOLCZYNNIK NIESPOLNOSCI WYNOSI: " + errorFactor);
         if(errorFactor > 0.1){
             System.out.println("NIESPÓJNOŚĆ NIESPÓJNOŚĆ NIESPÓJNOŚĆ !!! WYPEŁNIJŻE PORZĄDNIE TE ANKIETE!!!!!!!!!!!!!!!!!!");
         } else{
