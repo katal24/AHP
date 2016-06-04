@@ -41,13 +41,17 @@ public class BaseController {
     double errorFactor;
     DB dbConnection;
     public static boolean logged = false;
+    public String mainNazwa;
+    public boolean verification = true;
 
     @RequestMapping("/getSurveyData/")
     @ResponseBody
     Map<String, Object> getSurveyData() throws SQLException {
         System.out.println("         GET DATY   YYYYYYYYYYYYYYYYY");
         System.out.println("         NAZWA : " + nq.getSurveyName());
-        model.put("nazwa", nq.getSurveyName());
+        model.put("name", nq.getSurveyName());
+        model.put("check", nq.getCheck());
+        System.out.println("check::::::::::::::::::  " + nq.getCheck());
         model.put("categories", nq.getCategoriesList());
         model.put("variants", nq.getVariantsList());
         model.put("ileVar", nq.getVariantsList().size());
@@ -63,8 +67,10 @@ public class BaseController {
         System.out.println("##########################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2 jestem w base w getDataScrol");
       //  model.put("listToScroll",0);
 
-       model.put("listToScroll", quest.getListToScrollFromMatrixes());
-        model.put("nazwa",quest.getName());
+        model.put("listToScroll", quest.getListToScrollFromMatrixes());
+        System.out.println("nazwa z BAZY:   " + mainNazwa);
+        if(mainNazwa!=null)
+        model.put("name",mainNazwa);
         return model;
     }
 
@@ -111,7 +117,7 @@ public class BaseController {
         System.out.println("Posortowane: " + resultList);
         model.put("resultList", resultList);
         System.out.println("------------------------------------------------------------------errorfactor wynosi: " + errorFactor);
-        if(errorFactor > 0.1){
+        if(errorFactor > 0.2 && verification){
             model.put("error", new Integer(0));
         } else {
             model.put("error", new Integer(1));
@@ -149,9 +155,9 @@ public class BaseController {
         // wpisanie ankiety do bazy danych
 // TO ZAKOMENTOWYJE!!!!!!!!!!!!!!!!
         dbConnection = new DB();
-        SurveysEntity surveysEntity = new SurveysEntity(nq.getAccess(), user1.getUsername(), nq.getSurveyName(), nq.getCategoriesList(), nq.getVariantsList(), cs);
+        SurveysEntity surveysEntity = new SurveysEntity(nq.getAccess(), user1.getUsername(), nq.getSurveyName(), nq.getCategoriesList(), nq.getVariantsList(), nq.getCheck(), cs);
         dbConnection.saveSurvay(surveysEntity);
-//
+
 //               // cs to JSON zawierajacay dane z formularza (step 1-3)
         completeSutvey(cs);
     }
@@ -165,6 +171,7 @@ public class BaseController {
         //pobranie z bazy
         dbConnection = new DB();
         SurveysEntity survey = dbConnection.getSurveyForName(name);
+        mainNazwa = name;
         String cs1 = survey.getCompleted();
         nq = new NewQuest(survey);
         //stworzenie ankiety

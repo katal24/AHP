@@ -59,6 +59,7 @@ public class DB {
         System.out.println("ZAPISUJE DO BAZY");
         final Session session = getSession();
         session.beginTransaction();
+        System.out.println("zapisuje do bazy=================: " + survey);
         session.save(survey);
         session.getTransaction().commit();
         session.close();

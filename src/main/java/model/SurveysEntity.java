@@ -4,26 +4,27 @@ import javax.persistence.*;
 import java.util.List;
 
 /**
- * Created by dawid on 12.05.16.
+ * Created by dawid on 04.06.16.
  */
 @Entity
 @Table(name = "surveys", schema = "", catalog = "talaga2")
 public class SurveysEntity {
-    private int id = 0;
+    private long id;
     private String type;
     private String owner;
     private String name;
     private String categories;
     private String variants;
     private String completed;
+    private String check1;
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -87,6 +88,16 @@ public class SurveysEntity {
         this.completed = completed;
     }
 
+    @Basic
+    @Column(name = "check1")
+    public String getCheck() {
+        return check1;
+    }
+
+    public void setCheck(String check1) {
+        this.check1 = check1;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -100,35 +111,40 @@ public class SurveysEntity {
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (categories != null ? !categories.equals(that.categories) : that.categories != null) return false;
         if (variants != null ? !variants.equals(that.variants) : that.variants != null) return false;
-        return !(completed != null ? !completed.equals(that.completed) : that.completed != null);
+        if (completed != null ? !completed.equals(that.completed) : that.completed != null) return false;
+        if (check1 != null ? !check1.equals(that.check1) : that.check1 != null) return false;
 
+        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (type != null ? type.hashCode() : 0);
         result = 31 * result + (owner != null ? owner.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (categories != null ? categories.hashCode() : 0);
         result = 31 * result + (variants != null ? variants.hashCode() : 0);
         result = 31 * result + (completed != null ? completed.hashCode() : 0);
+        result = 31 * result + (check1 != null ? check1.hashCode() : 0);
         return result;
     }
 
-    public SurveysEntity(String type, String owner, String name, String categories, String variants, String completed) {
+    public SurveysEntity(String type, String owner, String name, String categories, String variants, String check, String completed) {
         this.type = type;
         this.owner = owner;
         this.name = name;
         this.categories = categories;
         this.variants = variants;
+        this.check1 = check;
         this.completed = completed;
     }
 
-    public SurveysEntity(String type, String owner, String name, List<String> categories, List<String> variants, String completed) {
+    public SurveysEntity(String type, String owner, String name, List<String> categories, List<String> variants, String check, String completed) {
         this.type = type;
         this.owner = owner;
         this.name = name;
+        this.check1 = check;
         this.completed = completed;
 
         StringBuilder sbcat = new StringBuilder();
@@ -156,6 +172,8 @@ public class SurveysEntity {
                 ", name='" + name + '\'' +
                 ", categories='" + categories + '\'' +
                 ", variants='" + variants + '\'' +
+                ", completed='" + completed + '\'' +
+                ", check1='" + check1 + '\'' +
                 '}';
     }
 }
