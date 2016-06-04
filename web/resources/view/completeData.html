@@ -25,7 +25,8 @@
             <div class="containerSurvey">
                 <div class="card"></div>
                 <div class="card">
-                    <div class="title">{{model.nazwa}}
+                    <div class="title">
+                       {{model.name}}
 
                         <button type="submit" class="btn btn-success btn-circle btn-xl" data-ng-click="getNext2()">
                             <!--<a href="#/resultSurvey">-->
@@ -45,8 +46,6 @@
                         <!--<div data-ng-repeat="item in items">-->
 
                         <div class ="listSurveys goCenter">{{complaints.name}}</div>
-
-
                         <div class="pull-left">
                             <div>
                                 <!--data-ng-controller="AppController">-->
@@ -55,9 +54,9 @@
                                     <section class="row">
                                         <div class="goCenter">
                                             <div class="col-md-6 col-md-offset-3 ">
-                                                <h5> czo {{complaints.s1}}</h5>
-                                                <h6>napis {{complaints.s2}}</h6>
-                                                <p> smieszny {{complaints.value}}</p>
+                                                <h5> {{complaints.s1}}</h5>
+                                                <h6> {{complaints.s2}}</h6>
+                                                <p>  {{complaints.value}}</p>
                                                 <div data-range-slider
                                                      data-floor="-8"
                                                      data-ceiling="8"
@@ -82,6 +81,10 @@
                 </div>
             </div>
             {{model}}
+            koniec modelu
+
+            ---
+
             {{model.publicNamesSurveys}}
         </div>
         <!-- /#page-content-wrapper -->

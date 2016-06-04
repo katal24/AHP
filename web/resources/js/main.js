@@ -364,6 +364,7 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
         var cs = {
             surveyName: $scope.s.surveyName,
             access: $scope.s.access,
+            check1: $scope.s.check1,
             //  surveyName2: $scope.s.surveyName
             categories: $scope.categories,
             variants: $scope.variants

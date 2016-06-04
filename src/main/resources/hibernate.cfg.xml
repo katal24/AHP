@@ -6,6 +6,7 @@
     <session-factory name="dataSource">
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://mysql.agh.edu.pl:3306/talaga2</property>
+        <property name="hibernate.dialect"> org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.username">talaga2</property>
         <property name="hibernate.connection.password">cjwcz84i</property>
         <!--<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>-->

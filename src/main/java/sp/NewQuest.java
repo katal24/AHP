@@ -17,6 +17,8 @@ public class NewQuest {
     private String access = "public";
     private ArrayList<String> categoriesList;
     private ArrayList<String> variantsList;
+    private String check;
+
 
     public void setLists(){
         categoriesList = new ArrayList<String>();
@@ -45,6 +47,15 @@ public class NewQuest {
         String[] arrayString = categoriesFromBase.split(" ; ");
         return new ArrayList<String>(Arrays.asList(arrayString));
 
+    }
+
+
+    public String getCheck() {
+        return check;
+    }
+
+    public void setCheck(String check) {
+        this.check = check;
     }
 
     public String getAccess() {
