@@ -497,10 +497,6 @@ myApp.controller('completeDataController', function($scope, $http, $window, $roo
                 });
 
 
-            //if(funckja spradzajaca niepewnosc > 0.2){
-            //    do nic; alert
-            //} else
-
 
         }
         //koniec

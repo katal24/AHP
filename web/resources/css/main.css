@@ -355,11 +355,18 @@ h6{
     margin: 0;
     padding: 0;
     list-style: none;
+
 }
 
 .sidebar-nav li {
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 60px;
+    -webkit-transition: 0.2s ease;
+    transition: 0.2s ease;
     text-indent: 20px;
-    line-height: 40px;
+    margin-top:20px;
+    margin-bottom: 20px;
 }
 
 .sidebar-nav li a {
@@ -392,7 +399,7 @@ h6{
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
+    color: #606573;
     background: none;
 }
 
