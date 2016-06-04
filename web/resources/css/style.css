@@ -148,6 +148,13 @@
   font-weight: 400;
 }
 
+.smallbox input[type=radio] {
+  font-size: 10px;
+  font-weight: 100;
+  line-height: 18px;
+
+}
+
 
 
 .card .input-container fieldset input{

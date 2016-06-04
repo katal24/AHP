@@ -4,12 +4,12 @@ package sp;
  * Created by dawid on 08.05.16.
  */
 public class Result implements Comparable{
-    String variant;
-    double result;
+    String label;
+    double value;
 
-    public Result(String variant, double result) {
-        this.variant = variant;
-        this.result = (double)Math.round(result * 100 *100d) / 100d;
+    public Result(String label, double value) {
+        this.label = label;
+        this.value = (double)Math.round(value * 100 *100d) / 100d;
     }
 
     @Override
@@ -17,39 +17,39 @@ public class Result implements Comparable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Result result1 = (Result) o;
+        Result value1 = (Result) o;
 
-        return Double.compare(result1.result, result) == 0;
+        return Double.compare(value1.value, value) == 0;
 
     }
 
     @Override
     public int hashCode() {
-        long temp = Double.doubleToLongBits(result);
+        long temp = Double.doubleToLongBits(value);
         return (int) (temp ^ (temp >>> 32));
     }
 
     public String getVariant() {
-        return variant;
+        return label;
     }
 
-    public void setVariant(String variant) {
-        this.variant = variant;
+    public void setVariant(String label) {
+        this.label = label;
     }
 
     public double getResult() {
-        return result;
+        return value;
     }
 
-    public void setResult(double result) {
-        this.result = result;
+    public void setResult(double value) {
+        this.value = value;
     }
 
     public int compareTo(Object o) {
-        Result result1 = (Result) o;
-        if(result1.result < this.result){
+        Result value1 = (Result) o;
+        if(value1.value < this.value){
             return -1;
-        } else if(result1.result > this.result){
+        } else if(value1.value > this.value){
             return 1;
         } else{
             return 0;

@@ -17,7 +17,7 @@ public class NewQuest {
     private String access = "public";
     private ArrayList<String> categoriesList;
     private ArrayList<String> variantsList;
-    private String check;
+    private String check1;
 
 
     public void setLists(){
@@ -51,11 +51,11 @@ public class NewQuest {
 
 
     public String getCheck() {
-        return check;
+        return check1;
     }
 
     public void setCheck(String check) {
-        this.check = check;
+        this.check1 = check;
     }
 
     public String getAccess() {

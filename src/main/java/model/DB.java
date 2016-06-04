@@ -109,7 +109,7 @@ public class DB {
         final Session session = getSession();
         session.beginTransaction();
 
-        Query query = session.createSQLQuery("SELECT name from surveys where owner='"+user+"'");
+        Query query = session.createSQLQuery("SELECT name from surveys where owner='"+user+"' and type='private'");
         ArrayList<String> namesList = (ArrayList<String>) query.list();
         session.close();
         System.out.println("POBRALEM Z BAZY NAZWY ANKIET dla danego usera");

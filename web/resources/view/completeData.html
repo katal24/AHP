@@ -5,9 +5,9 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <i ng-click="goToCreateSurvey()" class="material-icons">add</i>
+            <i ng-click="goToCreateSurvey()" ng-show="logged" class="material-icons">add</i>
             <i class="material-icons" data-ng-click="goToPublicSurveys()">public</i>
-            <i class="material-icons" data-ng-click="goToOwnerSurveys()">settings</i>
+            <i class="material-icons" ng-show="logged" data-ng-click="goToOwnerSurveys()">settings</i>
             <!--<i  class="material-icons">attach_file</i>-->
 
             <i class="material-icons"  data-ng-click="goToHome()">refresh</i>
@@ -28,7 +28,7 @@
                     <div class="title">
                        {{model.name}}
 
-                        <button type="submit" class="btn btn-success btn-circle btn-xl" data-ng-click="getNext2()">
+                        <button type="submit" ng-show="index2==model.listToScroll.length-1" class="btn btn-success btn-circle btn-xl" data-ng-click="getNext2()">
                             <!--<a href="#/resultSurvey">-->
                                 <i class="glyphicon glyphicon-ok icon white"></i>
                             <!--</a>-->
@@ -41,7 +41,7 @@
                     </div>
 
 
-                    <div >
+                    <div class="goCenter">
 
                         <!--<div data-ng-repeat="item in items">-->
 
@@ -49,11 +49,11 @@
                         <div class="pull-left">
                             <div>
                                 <!--data-ng-controller="AppController">-->
-                                <div class="container" style="margin-top: 100px; text-align: center;" >
+                                <div class="container goCenter" style="margin-top: 100px; text-align: center;" >
                                     <!--data-ng-repeat="element in model.listToScroll track by $index">-->
                                     <section class="row">
-                                        <div class="goCenter">
-                                            <div class="col-md-6 col-md-offset-3 ">
+                                        <div class="col-sm-6 goCenter">
+                                            <div>
                                                 <h5> {{complaints.s1}}</h5>
                                                 <h6> {{complaints.s2}}</h6>
                                                 <p>  {{complaints.value}}</p>
@@ -80,6 +80,11 @@
                     </div>
                 </div>
             </div>
+            validation
+            {{validationOn}}
+
+            ---
+
             {{model}}
             koniec modelu
 

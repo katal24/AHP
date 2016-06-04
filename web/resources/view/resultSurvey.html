@@ -5,9 +5,9 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <i ng-click="goToCreateSurvey()" class="material-icons">add</i>
+            <i ng-click="goToCreateSurvey()" ng-show="logged" class="material-icons">add</i>
             <i class="material-icons" data-ng-click="goToPublicSurveys()">public</i>
-            <i class="material-icons" data-ng-click="goToOwnerSurveys()">settings</i>
+            <i class="material-icons" ng-show="logged" data-ng-click="goToOwnerSurveys()">settings</i>
             <!--<i  class="material-icons">attach_file</i>-->
 
             <i class="material-icons"  data-ng-click="goToHome()">refresh</i>
@@ -21,36 +21,36 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-             tutaj fjurzffjon<div ><fusioncharts
-                width="600"
-                height="400"
-                type="column2d"
-                datasource="{{model}}"
-        ></fusioncharts>
 
-        </div>
+
 
             <div class="containerSurvey">
                 <div class="card"></div>
                 <div class="card">
-                    <h1 class="title">The best choice is <div class="result">{{ model.resultList[0].variant}}</div></h1>
+                    <h1 class="title">The best choice is <div class="result">{{ model.resultList[0].label}}</div></h1>
 
-                        <div class="input-container">
-                            <div data-ng-repeat="element in model.resultList track by $index">
+                    <div class="input-container">
 
-                                <div class ="listSurveys">{{$index +1}}. {{element.variant}}: {{element.result}} %</div>
+                        <div class="goCenter"><fusioncharts
+                                width="500"
+                                height="350"
+                                type="column3d"
+                                datasource="{{myDataSource}}"
+                        ></fusioncharts>
 
-
-
-                            </div>
                         </div>
+
+                        <div class="goCenter" data-ng-repeat="element in model.resultList track by $index">
+
+                            <div class ="listSurveys">{{$index +1}}. {{element.label}}: {{element.value}} %</div>
+
+
+
+                        </div>
+                    </div>
                 </div>
 
             </div>
-
-
-
-
 
         </div>
 
@@ -58,6 +58,6 @@
 
 
 </div>
-    <!-- /#page-content-wrapper -->
+<!-- /#page-content-wrapper -->
 </div>
 

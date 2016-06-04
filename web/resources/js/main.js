@@ -63,6 +63,7 @@ myApp.controller('homeController', function($scope, $http) {
 
 myApp.controller('resultSurveyController', function($scope, $http, $window) {
 
+
     $scope.goToPublicSurveys  = function() {
         $window.location.href = '#/surveysList';
     }
@@ -84,39 +85,25 @@ myApp.controller('resultSurveyController', function($scope, $http, $window) {
 
 
 
-
     $scope.myDataSource = {
         chart: {
-            caption: "Harry's SuperMart",
-            subCaption: "Top 5 stores in last month by revenue",
-            numberPrefix: "$",
+            caption: "",
+            //subCaption: "Top 5 stores in last month by revenue",
+            numberSuffix: "%",
             theme: "ocean"
         },
-        data:[{
-            label: "Bakersfield Central",
-            value: "880000"
-        },
-            {
-                label: "Garden Groove harbour",
-                value: "730000"
-            },
-            {
-                label: "Los Angeles Topanga",
-                value: "590000"
-            },
-            {
-                label: "Compton-Rancho Dom",
-                value: "520000"
-            },
-            {
-                label: "Daly City Serramonte",
-                value: "330000"
-            }]
+        data:
+            []
     };
+
 
     $http.get('getResult2/').success(function (data) {
 
             $scope.model = data;
+
+        $scope.myDataSource.data = $scope.model.resultList;
+
+
 
 
     }).error(function (data) {
@@ -138,7 +125,7 @@ myApp.controller('resultSurveyController', function($scope, $http, $window) {
 
 
 // pobiera nazwy publicznych ankiet
-myApp.controller('surveysListController', function($scope, $http, $window) {
+myApp.controller('surveysListController', function($scope, $http, $window, $rootScope) {
 
     $http.get('getPublicNamesFromBase/').success(function (data) {
 
@@ -148,11 +135,17 @@ myApp.controller('surveysListController', function($scope, $http, $window) {
 
     });
 
-    $scope.getPublicSurvey = function (a) {
+    $scope.getPublicSurvey = function (a, b) {
+
+        $rootScope.validationOn = b;
 
         $http.post('setCompletedDataFromBase/', a).success(function() {
 
+
+
             console.log("post opublicznej");
+
+            $window.location.href = '#/completeData';
             // $window.location.href = '#/completeData';
             //  $window.location.href = '#/setSurveysData';
 
@@ -163,7 +156,7 @@ myApp.controller('surveysListController', function($scope, $http, $window) {
 
         });
 
-        $window.location.href = '#/completeData';
+
     }
 
 
@@ -193,7 +186,7 @@ myApp.controller('surveysListController', function($scope, $http, $window) {
 
 
 // pobiera nazwy ANKIET ZALOGOWANEGO USERA
-myApp.controller('ownerSurveysListController', function($scope, $http, $window) {
+myApp.controller('ownerSurveysListController', function($scope, $http, $window, $rootScope) {
 
 
     $scope.goToPublicSurveys  = function() {
@@ -223,12 +216,14 @@ myApp.controller('ownerSurveysListController', function($scope, $http, $window) 
 
     });
 
-    $scope.getOwnerSurvey = function (a) {
+    $scope.getOwnerSurvey = function (a, b) {
+
+        $rootScope.validationOn = b;
 
         $http.post('setCompletedDataFromBase/', a).success(function() {
 
             console.log("post opublicznej");
-            // $window.location.href = '#/completeData';
+            $window.location.href = '#/completeData';
             //  $window.location.href = '#/setSurveysData';
 
         }).error(function () {
@@ -238,7 +233,6 @@ myApp.controller('ownerSurveysListController', function($scope, $http, $window) 
 
         });
 
-        $window.location.href = '#/completeData';
     }
 
 
@@ -281,6 +275,7 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $window)
             username: $scope.credentials.username,
             password: $scope.credentials.password
         };
+        $rootScope.userek =  $scope.credentials.username;
 
         console.log('zrobilem var');
 
@@ -290,13 +285,13 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $window)
 
             $http.get('getloggedUser').success(function (data) {
                 $scope.loged = data;
-
+                $rootScope.logged = data.zalogowany;
 
                 if($scope.loged.zalogowany === true) {
 
                     $window.location.href = '#/createSurvey';
                 } else {
-                    alert('Niewlasciwy login lub haslo');
+                    alert('Unknown user name or wrong password');
                 }
             });
         }).error(function (data){
@@ -307,10 +302,16 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $window)
         //$window.location.href = '#/createSurvey';
     }
 
+    $scope.logoutFoo  = function() {
+        $rootScope.logged = false;
+        $window.location.href = '#/';
+    }
+
+
 });
 
 
-myApp.controller('createSurveyController', function($scope, $window, $http) {
+myApp.controller('createSurveyController', function($scope, $window, $http, $rootScope) {
     $scope.message = 'Create survey';
 
     $scope.goToPublicSurveys  = function() {
@@ -394,17 +395,19 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
 
     };
 
-    $scope.completeData = function () {
+    $scope.completeData = function (b) {
         var cs = {
             categoriesInput: $scope.variants
         };
 
+        $rootScope.validationOn = b;
 
         console.log("Jestesmy w main.js compete");
 
         $http.post('setCompletedData/', cs).success(function (data) {
 
             console.log("udalo sie w complee.post");
+            $window.location.href = '#/completeData';
 
 
         }).error(function (data) {
@@ -414,7 +417,6 @@ myApp.controller('createSurveyController', function($scope, $window, $http) {
 
         });
 
-        $window.location.href = '#/completeData';
 
 
     }
@@ -427,7 +429,7 @@ myApp.controller('userPanelController', function($scope) {
     $scope.message = 'Your Panel';
 });
 
-myApp.controller('completeDataController', function($scope, $http, $window) {
+myApp.controller('completeDataController', function($scope, $http, $window, $rootScope) {
 
     $scope.message = 'Your Panel';
 
@@ -467,17 +469,16 @@ myApp.controller('completeDataController', function($scope, $http, $window) {
 
                 $http.post('setAllData/', items).success(function (data) {
 
-                    console.log(items);
-
                     console.log("udalo sie w suwakach");
                     $http.get('getResult/').success(function (data) {
 
                         $scope.datka = data.error;
 
 
-                        if(data.error==0){
+                        if(data.error==0 && $rootScope.validationOn=="yes"){
 
-                            alert("Niewlasciwe dane");
+                            alert("Sorry! You filled it incorrect! Please, try again :)");
+
                         } else {
                             $window.location.href = '#/resultSurvey';
                         }
@@ -506,8 +507,7 @@ myApp.controller('completeDataController', function($scope, $http, $window) {
 
         $scope.getNext = function (){
 
-
-            if($scope.model.listToScroll[$scope.index2].name != $scope.model.listToScroll[$scope.index2+1].name){
+            if(($scope.model.listToScroll[$scope.index2].name != $scope.model.listToScroll[$scope.index2+1].name) && ($rootScope.validationOn == "yes") ){
 
                 //var items = {
                 //    items: $scope.model.listToScroll
@@ -527,7 +527,7 @@ myApp.controller('completeDataController', function($scope, $http, $window) {
 
                         if(data.error==0){
 
-                            alert("Niewlasciwe dane");
+                            alert("Sorry! You filled it incorrect! Please, try again :)");
                         } else {
                             $scope.index2 = $scope.index2 + 1;
                             $scope.complaints = $scope.model.listToScroll[$scope.index2];
@@ -559,8 +559,10 @@ myApp.controller('completeDataController', function($scope, $http, $window) {
         }
 
         $scope.getPrevious = function (){
-            $scope.index2 = $scope.index2 - 1;
-            $scope.complaints = $scope.model.listToScroll[$scope.index2];
+            if($scope.model.listToScroll[$scope.index2].name == $scope.model.listToScroll[$scope.index2-1].name) {
+                $scope.index2 = $scope.index2 - 1;
+                $scope.complaints = $scope.model.listToScroll[$scope.index2];
+            }
 
         }
     });

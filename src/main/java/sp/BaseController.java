@@ -42,13 +42,19 @@ public class BaseController {
     DB dbConnection;
     public static boolean logged = false;
     public String mainNazwa;
-    public boolean verification = true;
+//    public boolean verification = true;
 
     @RequestMapping("/getSurveyData/")
     @ResponseBody
     Map<String, Object> getSurveyData() throws SQLException {
         System.out.println("         GET DATY   YYYYYYYYYYYYYYYYY");
         System.out.println("         NAZWA : " + nq.getSurveyName());
+        System.out.println("check::::::::::::::::::  " + nq.getCheck());
+//        if(nq.getCheck().equals("no")){
+//           verification =  false;
+//        } else{
+//            verification = true;
+//        }
         model.put("name", nq.getSurveyName());
         model.put("check", nq.getCheck());
         System.out.println("check::::::::::::::::::  " + nq.getCheck());
@@ -117,7 +123,7 @@ public class BaseController {
         System.out.println("Posortowane: " + resultList);
         model.put("resultList", resultList);
         System.out.println("------------------------------------------------------------------errorfactor wynosi: " + errorFactor);
-        if(errorFactor > 0.2 && verification){
+        if(errorFactor > 0.2 ){ //&& verification){
             model.put("error", new Integer(0));
         } else {
             model.put("error", new Integer(1));
