@@ -5,16 +5,23 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <i ng-click="goToCreateSurvey()" ng-show="logged" class="material-icons">add</i>
-            <i class="material-icons" data-ng-click="goToPublicSurveys()">public</i>
-            <i class="material-icons" ng-show="logged" data-ng-click="goToOwnerSurveys()">settings</i>
-            <!--<i  class="material-icons">attach_file</i>-->
-
-            <i class="material-icons"  data-ng-click="goToHome()">refresh</i>
-            <!--<i class="material-icons">search</i>-->
-
-            <!--<i class="material-icons">public</i>-->
-            <!--<i class="material-icons">autorenew</i>-->
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="" ng-click="showmeSurveyname=false; showmeCategories=false; showmeVariants=false; showmeData=false">WELCOME</a>
+                </li>
+                <li>
+                    <a href="" ng-click="goToCreateSurvey()" ng-show="logged">Create your survey</a>
+                </li>
+                <li>
+                    <a href="" data-ng-click="goToPublicSurveys()">Public surveys</a>
+                </li>
+                <li>
+                    <a href="" ng-show="logged" data-ng-click="goToOwnerSurveys()">My surveys</a>
+                </li>
+                <li>
+                    <a href="" data-ng-click="goToHome()">Home page</a>
+                </li>
+            </ul>
         </div>
 
         <!-- /#sidebar-wrapper -->
