@@ -43,8 +43,29 @@ myApp.controller('AppController',['$scope', function($s) {
 }]);
 
 
-myApp.controller('homeController', function($scope, $http) {
+myApp.controller('homeController', function($scope, $http, $window) {
     $scope.message = 'Sign up!';
+
+
+
+    $scope.goToPublicSurveys  = function() {
+        $window.location.href = '#/surveysList';
+    }
+
+    $scope.goToHome  = function() {
+        $window.location.href = '#/';
+    }
+
+    $scope.goToCreateSurvey = function() {
+        $window.location.href = '#/createSurvey';
+    }
+
+
+    $scope.goToOwnerSurveys  = function() {
+        $window.location.href = '#/ownerSurveyList';
+    }
+
+
 
     if ($scope.authenticated) {
         $http.get('/getResources/').success(function (data) {

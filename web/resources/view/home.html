@@ -1,20 +1,20 @@
 
 <div>
-    <h1 class="home-heading">
+    <h1 class="home-heading" ng-show="!logged">
         <!-- Build free online questionnaires & decide! -->
         A simple tool to help you decide!
     </h1>
 
-    <p class="home-text">
+    <p class="home-text" ng-show="!logged">
         Sign up now for FREE unlimited surveys, questions & responses.
         <br>
         <br>
 
 
-        <button class="classicButton" ng-show="!logged"><span><a href="#/newAccount">GET STARTED </a></span></button>
+        <button class="classicButton"><span><a href="#/newAccount">GET STARTED </a></span></button>
 
         <button class="classicButton violetButt"><span><a href="#/surveysList">PUBLIC SURVEYS</a></span></button>
-        <button class="classicButton violetButt" ng-show="logged"><span><a href="#/ownerSurveyList">MY SURVEYS</a></span></button>
+        <!--<button class="classicButton violetButt" ng-show="logged"><span><a href="#/ownerSurveyList">MY SURVEYS</a></span></button>-->
 
 
         <br/>
@@ -30,5 +30,224 @@
 
 
     </p>
+
+    <div id="wrapper" ng-show="logged">
+        <div id="sidebar-wrapper" >
+            <!--<i ng-click="showmeSurveyname=true; showmeCategories=false; showmeVariants=false; showmeData=false" class="material-icons">add</i>-->
+            <!--<i class="material-icons" data-ng-click="goToPublicSurveys()">public</i>-->
+            <!--<i class="material-icons" data-ng-click="goToOwnerSurveys()">settings</i>-->
+            <!--&lt;!&ndash;<i  class="material-icons">attach_file</i>&ndash;&gt;-->
+
+            <!--<i class="material-icons"  data-ng-click="goToHome()">refresh</i>-->
+            <!--&lt;!&ndash;<i class="material-icons">search</i>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<i class="material-icons">public</i>&ndash;&gt;-->
+            <!--&lt;!&ndash;<i class="material-icons">autorenew</i>&ndash;&gt;-->
+
+
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="" ng-show="logged">WELCOME, {{userek}}!</a>
+                    <a href="" ng-show="!logged">WELCOME</a>
+                </li>
+                <li>
+                    <a href="" ng-click="goToCreateSurvey()" >Create your survey</a>
+                </li>
+                <li>
+                    <a href="" data-ng-click="goToPublicSurveys()">Public surveys</a>
+                </li>
+                <li>
+                    <a href="" ng-show="logged" data-ng-click="goToOwnerSurveys()">My surveys</a>
+                </li>
+                <li>
+                    <a href="" data-ng-click="goToHome()">Home page</a>
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- /#sidebar-wrapper -->
+
+
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <div class="form-group" ng-show="showmeSurveyname">
+
+                <div class="containerSurvey">
+                    <div class="card"></div>
+                    <div class="card">
+
+                        <h1 class="title">Create your survey</h1>
+
+                        <div class="input-container">
+                            <input type="text" id="surveyName"  name="surveyName" ng-model="s.surveyName" required="required"/>
+                            <label for="surveyName">Survey name</label>
+                            <div class="bar"></div>
+                        </div>
+
+
+                        <div class="input-container">
+                            <!--<select name="access" ng-model="s.access" required="required" id="access">-->
+                            <!--<option>private</option>-->
+                            <!--<option>public</option>-->
+                            <!--</select>-->
+                            <div id="access">
+                                <br/><br/><br/>
+                                <div class="form-group col-xs-6">
+                                    <input  type="radio" id="radio1"name="nazwa" value="public" ng-model="s.access"/>
+                                    <label for="radio1">Public </label>
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <input  type="radio" id="radio2"name="nazwa" value="private" ng-model="s.access"/>
+                                    <label for="radio2">Private </label>
+                                </div>
+
+                            </div>
+                            <br/>      <br/>      <br/>
+                            <!--<input type="text" id="access" name="access" ng-model="s.access" required="required"/>-->
+                            <label for="access">Access</label>
+                            <!--<div class="bar"></div>-->
+                            <br/>      <br/>      <br/>
+                        </div>
+
+
+                        <div class="input-container">
+                            <!--<select name="access" ng-model="s.access" required="required" id="access">-->
+                            <!--<option>private</option>-->
+                            <!--<option>public</option>-->
+                            <!--</select>-->
+                            <div id="validate">
+                                <br/><br/><br/>
+                                <div class="form-group col-xs-6">
+                                    <input  type="radio" id="radio3" name="nazwa2" value="yes" ng-model="s.check1"/>
+                                    <label for="radio3">Yes </label>
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <input  type="radio" id="radio4"name="nazwa2" value="no" ng-model="s.check1"/>
+                                    <label for="radio4">No </label>
+                                </div>
+
+                            </div>
+                            <br/>      <br/>      <br/>
+                            <!--<input type="text" id="access" name="access" ng-model="s.access" required="required"/>-->
+                            <label for="validate">Validate</label>
+                            <!--<div class="bar"></div>-->
+                            <br/>      <br/>      <br/>
+                        </div>
+
+                        <!--<div class="input-container">-->
+                        <!--&lt;!&ndash;<select name="check" ng-model="s.check" required="required" id="check">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<option>yes</option>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<option>no</option>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                        <!--<input type="text" id="check1" name="check1" ng-model="s.check1" required="required"/>-->
+                        <!--<label for="check1">Validate data entered</label>-->
+                        <!--<div class="bar"></div>-->
+                        <!--</div>-->
+
+                        <div class="input-container">
+                            <fieldset  data-ng-repeat="category in categories">
+                                <input type="text"  id="cat" ng-model="category.name" name="" placeholder="e.g. price" >
+                                <div class="bar"></div>
+                                <label for="cat">Categories </label>
+                                <button class="buttonDark addFields" ng-show="$last" ng-click="removeCategory()">-</button>
+                            </fieldset>
+                            <button class="buttonDark addFields" ng-click="addNewCategory()">+ </button>
+
+
+                        </div>
+
+                        <div class="input-container">
+                            <fieldset  data-ng-repeat="variant in variants">
+                                <input type="text" id="var" ng-model="variant.name" name="" placeholder="e.g. Sony" >
+                                <div class="bar"></div>
+                                <label for="var">Variants</label>
+                                <button class="buttonDark addFields" ng-show="$last" ng-click="removeVariant()">- </button>
+                            </fieldset>
+                            <button class="buttonDark addFields" ng-click="addNewVariant()">+</button>
+
+                        </div>
+
+
+                        <div class="button-container">
+                            <button data-ng-click="getSurveydata(); showmeData=true; showmeSurveyname=false; showmeCategories=false; showmeVariants=false"><span>Next</span></button>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <!--surveyName-->
+
+
+            <div class="form-group" ng-show="showmeData">
+
+
+                <div class="containerSurvey">
+                    <div class="card"></div>
+                    <div class="card">
+                        <h1 class="title">{{surveyData.nazwa}}</h1>
+                        <div class="input-container">
+                            <div class="kont" data-ng-repeat="variant in variants">
+                                <div class="bar"></div>
+                                <h2 class="variant">{{variant.name}}</h2>
+                                <div data-ng-repeat="y in surveyData.categories track by $index">
+                                    <div class ="category">{{y}} *</div>
+                                    <div class="bar"></div>
+                                    <input class="filling"type="text"  placeholder="e.g. red, black, $13000" name="" ng-model="variant.value[$index]">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="button-container">
+                            <button ng-click="showmeSurveyname=true; showmeCategories=false; showmeVariants=false; showmeData=false"><span>Back</span></button>
+                            <button data-ng-click="completeData(s.check1)"><span>Next</span></button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+                <!--<form class="form-horizontal">-->
+                <!--<div class="row">-->
+                <!--<div class="form-group">-->
+                <!--<h3>{{surveyData.nazwa}}-->
+                <!--<button class="btn btn-success btn-circle btn-xl " data-ng-click="completeData()"><a href="#/completeData"><i class="glyphicon glyphicon-ok"></i></a></button>-->
+                <!--</h3>-->
+                <!--<hr class="style3">-->
+                <!--<div data-ng-repeat="variant in variants">-->
+                <!--<h4>{{variant.name}}</h4>-->
+
+                <!--<div data-ng-repeat="y in surveyData.categories track by $index">-->
+
+                <!--<div class="form-group">-->
+                <!--<label for="surveyName" class="col-sm-2 control-label">{{y}} *</label>-->
+                <!--<div class="col-sm-8">-->
+                <!--<input type="text" class="form-control" placeholder="e.g. red, black, $13000" name="" ng-model="variant.value[$index]">                                        </div>-->
+
+                <!--</div>-->
+                <!--</div>-->
+                <!--<br>-->
+                <!--<hr class="style3">-->
+                <!--<br>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</form>-->
+            </div>
+        </div>
+        <!--complete-->
+
+    </div>
 
 </div>

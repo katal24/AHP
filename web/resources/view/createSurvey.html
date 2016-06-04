@@ -35,30 +35,7 @@
 
         </div>
 
-
-
-
-        <!--&lt;!&ndash; Sidebar &ndash;&gt;-->
-        <!--<div id="sidebar-wrapper">-->
-        <!--<ul class="sidebar-nav">-->
-        <!--<li class="sidebar-brand">-->
-        <!--<a href="" ng-click="showmeSurveyname=false; showmeCategories=false; showmeVariants=false; showmeData=false">WELCOME</a>-->
-        <!--</li>-->
-        <!--<li>-->
-        <!--<a href="" ng-click="showmeSurveyname=true; showmeCategories=false; showmeVariants=false; showmeData=false">Step 1. Create your survey</a>-->
-        <!--</li>-->
-        <!--&lt;!&ndash;<li>&ndash;&gt;-->
-        <!--&lt;!&ndash;<a href="" ng-click="showmeCategories=true; showmeSurveyname=false; showmeVariants=false; showmeData=false" >Step 2. Categories</a>&ndash;&gt;-->
-        <!--&lt;!&ndash;</li>&ndash;&gt;-->
-        <!--&lt;!&ndash;<li>&ndash;&gt;-->
-        <!--&lt;!&ndash;<a href="" ng-click="showmeVariants=true; showmeSurveyname=false; showmeCategories=false; showmeData=false">Step 3. Variants</a>&ndash;&gt;-->
-        <!--&lt;!&ndash;</li>&ndash;&gt;-->
-        <!--<li>-->
-        <!--<a href="" ng-click="showmeData=true; showmeSurveyname=false; showmeCategories=false; showmeVariants=false">Step 2. Complete data</a>-->
-        <!--</li>-->
-        <!--</ul>-->
-        <!--</div>-->
-        <!--&lt;!&ndash; /#sidebar-wrapper &ndash;&gt;-->
+        <!-- /#sidebar-wrapper -->
 
 
 
@@ -141,7 +118,7 @@
 
                         <div class="input-container">
                             <fieldset  data-ng-repeat="category in categories">
-                                <input type="text"  id="cat" ng-model="category.name" name="" placeholder="e.g. price" required="required">
+                                <input type="text"  id="cat" ng-model="category.name" name="" placeholder="e.g. price" >
                                 <div class="bar"></div>
                                 <label for="cat">Categories </label>
                                 <button class="buttonDark addFields" ng-show="$last" ng-click="removeCategory()">-</button>
@@ -153,7 +130,7 @@
 
                         <div class="input-container">
                             <fieldset  data-ng-repeat="variant in variants">
-                                <input type="text" id="var" ng-model="variant.name" name="" placeholder="e.g. Sony" required="required">
+                                <input type="text" id="var" ng-model="variant.name" name="" placeholder="e.g. Sony" >
                                 <div class="bar"></div>
                                 <label for="var">Variants</label>
                                 <button class="buttonDark addFields" ng-show="$last" ng-click="removeVariant()">- </button>
