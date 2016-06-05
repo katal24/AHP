@@ -20,7 +20,7 @@
                     <a href="" ng-show="!logged">WELCOME</a>
                 </li>
                 <li class="active1">
-                    <a href="" ng-click="showmeSurveyname=true; showmeCategories=false; showmeVariants=false; showmeData=false" >Create your survey</a>
+                    <a href=""  >Create your survey</a>
                 </li>
                 <li>
                     <a href="" data-ng-click="goToPublicSurveys()">Public surveys</a>
@@ -42,7 +42,7 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-            <div class="form-group" ng-show="showmeSurveyname">
+            <div class="form-group" ng-hide="showmeSurveyname">
 
                 <div class="containerSurvey">
                     <div class="card"></div>
@@ -142,7 +142,7 @@
 
 
                         <div class="button-container">
-                            <button data-ng-click="getSurveydata(); showmeData=true; showmeSurveyname=false; showmeCategories=false; showmeVariants=false"><span>Next</span></button>
+                            <button data-ng-click="getSurveydata(); showmeData=true; showmeSurveyname=true;"><span>Next</span></button>
                         </div>
 
 

@@ -9,14 +9,14 @@
                 <li class="sidebar-brand">
                     <a href="" ng-click="showmeSurveyname=false; showmeCategories=false; showmeVariants=false; showmeData=false">WELCOME</a>
                 </li>
-                <li class="active1">
-                    <a href="" ng-click="goToCreateSurvey()" ng-show="logged">Create your survey</a>
+                <li class="active1"  ng-show="logged">
+                    <a href="" ng-click="goToCreateSurvey()">Create your survey</a>
                 </li>
                 <li>
                     <a href="" data-ng-click="goToPublicSurveys()">Public surveys</a>
                 </li>
-                <li>
-                    <a href="" ng-show="logged" data-ng-click="goToOwnerSurveys()">My surveys</a>
+                <li ng-show="logged">
+                    <a href=""  data-ng-click="goToOwnerSurveys()">My surveys</a>
                 </li>
                 <li>
                     <a href="" data-ng-click="goToHome()">Home page</a>
