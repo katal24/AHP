@@ -18,7 +18,7 @@ body {
 
 /*button login in navigation*/
 .login-button-nav {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'RobotoDraft', 'Roboto', sans-serif;
     float: right;
     margin: 10px 20px 0 0;
     font-size: 15px;
@@ -324,7 +324,8 @@ h6{
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    background-color: #383f50;
+    background-color:  #f3f5f9;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     font-family: 'RobotoDraft', 'Roboto', sans-serif;
 }
 
@@ -356,52 +357,94 @@ h6{
     padding: 0;
     list-style: none;
 
+
 }
 
 .sidebar-nav li {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 300;
     line-height: 60px;
     -webkit-transition: 0.2s ease;
     transition: 0.2s ease;
     text-indent: 20px;
-    margin-top:20px;
-    margin-bottom: 20px;
+
+
+
+
 }
 
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #ffffff;
+    color: #383f50;
+    margin: 0;
+    padding: 10px 0 10px 0;
+    text-transform: uppercase;
+    z-index: 1;
+    border-left: 5px solid #ffffff;
+    font-size: 20px;
+
+
+    /*border-left: 5px solid #ffffff;*/
+    /*!*margin: 0 0 10px;*!*/
+    /*!*padding: 10px 0 10px 10px;*!*/
+   /*margin-left: 20px;*/
+
+    /*text-transform: uppercase;*/
+    /*font-size: 10px;*/
+
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
-    background-color: #606573;
+    background-color: #383f50;
+    border-left: 5px solid #383f50;
+
+
 
 }
 
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
     text-decoration: none;
+
+}
+.active1 {
+    position: relative;
+    z-index: 1;
+    border-left: 5px solid #383f50;
+    margin: 0;
+    padding: 10px 0 10px 0;
+    color: #383f50;
+    font-size: 25px;
+    text-transform: uppercase;
+
 }
 
 .sidebar-nav > .sidebar-brand {
-    height: 65px;
-    font-size: 22px;
+
     text-align: center;
-    line-height: 60px;
+
 }
 
 .sidebar-nav > .sidebar-brand a {
-    color: #ffffff;
+    color: #383f50;
+    text-decoration: solid;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 20px;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
     color: #606573;
     background: none;
+    border-left: 5px solid #ffffff;
+
+
 }
+
+
 
 @media(min-width:768px) {
     #wrapper {
@@ -691,7 +734,7 @@ p {
     position: relative;
     display: inline-block;
     background: #383f50;
-    color: #ffffff;
+    color: #f3f5f9;
     width: 240px;
     border: 2px solid #383f50;
     padding: 20px 0;
@@ -706,6 +749,8 @@ p {
 
 }
 
+
+
 .violetButt {
     background: #8897b9;
     border: 2px solid #8897b9;
@@ -719,7 +764,7 @@ p {
     -webkit-transition: .3s ease;
     transition: .3s ease;
     text-decoration: none;
-    font-family: 'RobotoDraft', 'Roboto', sans-serif;;
+    font-family: 'RobotoDraft', 'Roboto', sans-serif;
 }
 .classicButton:before {
     content: '';
@@ -737,7 +782,7 @@ p {
     transition: .3s ease;
 }
 .classicButton:hover, .classicButton:active, .classicButton:focus {
-    border-color: #f3f5f9;
+    border-color: #383f50;
 }
 .classicButton:hover span a,  .classicButton:active span a, .classicButton:focus span a {
     color: #d3d3d3;
@@ -750,6 +795,89 @@ p {
     -webkit-transform: scale(10);
     transform: scale(10);
 }
+
+
+
+
+
+
+
+
+.greyButt {
+    outline: 0;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    background: none;
+    color: #383f50;
+    width: 240px;
+    border: 2px solid #383f50;
+    padding: 20px 0;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+    overflow: hidden;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+    text-decoration: none;
+
+}
+
+.greyButt span a {
+    position: relative;
+    z-index: 1;
+    color: #383f50;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+    text-decoration: none;
+    font-family: 'RobotoDraft', 'Roboto', sans-serif;;
+}
+.greyButt:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    background: #f3f5f9;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    margin: -15px 0 0 -15px;
+    opacity: 0;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+}
+.greyButt:hover, .greyButt:active, .greyButt:focus {
+    border-color: #383f50;
+}
+.greyButt:hover span a,  .greyButt:active span a, .greyButt:focus span a {
+    color: #d3d3d3;
+}
+.greyButt:active span a, .greyButt:focus span a {
+    color: #383f50;
+}
+.greyButt:active:before, .greyButt button:focus:before {
+    opacity: 1;
+    -webkit-transform: scale(10);
+    transform: scale(10);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .field-tip {
@@ -812,6 +940,43 @@ p {
 
 }
 
-.k {
-    position: absolute;
+
+
+
+
+
+#sidebar2 {
+    background-color: #383f50;
+    font-size: 25px;
+    font-family: 'RobotoDraft', 'Roboto', sans-serif;
+    padding: 10px;
 }
+
+#sidebar2 a:hover, a:focus {
+    color: #f3f5f9;
+    text-decoration: none;
+}
+
+#sidebar2.nav > li > a,
+#sidebar2.nav > li > a:link {
+    background-color:  #383f50;
+    color: #f3f5f9;
+}
+
+#sidebar2.nav > li > a:hover,
+#sidebar2.nav > li > a:focus {
+    background-color: #606573;
+}
+
+#sidebar2.nav-pills > li.active > a,
+#sidebar2.nav-pills > li.active > a:hover,
+#sidebar2.nav-pills > li.active > a:focus {
+    color: #f3f5f9;
+    background-color: #606573;
+}
+
+
+
+
+
+

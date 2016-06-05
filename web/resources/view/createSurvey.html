@@ -19,7 +19,7 @@
                     <a href="" ng-show="logged">WELCOME, {{userek}}!</a>
                     <a href="" ng-show="!logged">WELCOME</a>
                 </li>
-                <li>
+                <li class="active1">
                     <a href="" ng-click="showmeSurveyname=true; showmeCategories=false; showmeVariants=false; showmeData=false" >Create your survey</a>
                 </li>
                 <li>
@@ -118,8 +118,9 @@
 
                         <div class="input-container">
                             <fieldset  data-ng-repeat="category in categories">
-                                <input type="text"  id="cat" ng-model="category.name" name="" placeholder="e.g. price" >
                                 <div class="bar"></div>
+                                <input type="text"  id="cat" ng-model="category.name" name="" placeholder="e.g. price">
+
                                 <label for="cat">Categories </label>
                                 <button class="buttonDark addFields" ng-show="$last" ng-click="removeCategory()">-</button>
                             </fieldset>

@@ -157,7 +157,7 @@
   background: none;
   width: 100%;
   height: 60px;
-  border: 0;
+  border: 0px;
   color: #212121;
   font-family: 'RobotoDraft', 'Roboto', sans-serif;
   font-size: 24px;
@@ -184,6 +184,7 @@
 
 .card .input-container input:focus ~ .bar:before, .card .input-container input:focus ~ .bar:after {
   width: 50%;
+
 }
 
 .card .input-container fieldset input:focus ~ .bar:before, .card .input-container fieldset input:focus ~ .bar:after {
@@ -200,6 +201,8 @@
 
 .card .input-container fieldset input:valid ~ label {
   color: #9d9d9d;
+
+
 
   /*font-weight: 300;*/
   /*line-height: 60px;*/
@@ -243,6 +246,7 @@ font-size: 30px;
   line-height: 60px;
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
+
 }
 
 
@@ -308,6 +312,7 @@ font-size: 30px;
   margin: 0 60px;
   text-align: center;
 }
+
 .card .button-container button {
   outline: 0;
   cursor: pointer;

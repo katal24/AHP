@@ -9,7 +9,7 @@
                 <li class="sidebar-brand">
                     <a href="" ng-click="showmeSurveyname=false; showmeCategories=false; showmeVariants=false; showmeData=false">WELCOME</a>
                 </li>
-                <li>
+                <li class="active1">
                     <a href="" ng-click="goToCreateSurvey()" ng-show="logged">Create your survey</a>
                 </li>
                 <li>
@@ -56,10 +56,10 @@
                         <div class="pull-left">
                             <div>
                                 <!--data-ng-controller="AppController">-->
-                                <div class="container goCenter" style="margin-top: 100px; text-align: center;" >
+                                <div class="container goCenter" style="margin-top: 100px; text-align: center; " >
                                     <!--data-ng-repeat="element in model.listToScroll track by $index">-->
                                     <section class="row">
-                                        <div class="col-sm-6 goCenter">
+                                        <div class="col-md-7 col-md-offset-1">
                                             <div>
                                                 <h5> {{complaints.s1}}</h5>
                                                 <h6> {{complaints.s2}}</h6>
