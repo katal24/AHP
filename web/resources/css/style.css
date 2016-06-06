@@ -161,8 +161,17 @@
   color: #212121;
   font-family: 'RobotoDraft', 'Roboto', sans-serif;
   font-size: 24px;
+  border-bottom: solid #757575;
+  border-width: 1px;
 
 
+}
+
+.card .input-container fieldset input:focus {
+  border-bottom: solid #383f50;
+  border-width: 2px;
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
 }
 
 

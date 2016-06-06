@@ -20,7 +20,7 @@
                     <a href="" ng-show="!logged">WELCOME</a>
                 </li>
                 <li class="active1">
-                    <a href=""  >Create your survey</a>
+                    <a href="" >Create your survey</a>
                 </li>
                 <li>
                     <a href="" data-ng-click="goToPublicSurveys()">Public surveys</a>
@@ -66,11 +66,16 @@
                                 <br/><br/><br/>
                                 <div class="form-group col-xs-6">
                                 <input  type="radio" id="radio1"name="nazwa" value="public" ng-model="s.access"/>
+                                    <br/>   <br/>   <br/>
                                 <label for="radio1">Public </label>
+                                    <div class="bar"></div>
                                 </div>
                                 <div class="form-group col-xs-6">
                                     <input  type="radio" id="radio2"name="nazwa" value="private" ng-model="s.access"/>
+                                    <br/>   <br/>   <br/>
                                     <label for="radio2">Private </label>
+                                    <div class="bar"></div>
+
                                 </div>
 
                             </div>
@@ -91,11 +96,15 @@
                                 <br/><br/><br/>
                                 <div class="form-group col-xs-6">
                                     <input  type="radio" id="radio3" name="nazwa2" value="yes" ng-model="s.check1"/>
+                                    <br/>    <br/>    <br/>
                                     <label for="radio3">Yes </label>
+                                    <div class="bar"></div>
                                 </div>
                                 <div class="form-group col-xs-6">
                                     <input  type="radio" id="radio4"name="nazwa2" value="no" ng-model="s.check1"/>
+                                    <br/>    <br/>    <br/>
                                     <label for="radio4">No </label>
+                                    <div class="bar"></div>
                                 </div>
 
                             </div>
@@ -118,10 +127,11 @@
 
                         <div class="input-container">
                             <fieldset  data-ng-repeat="category in categories">
-                                <div class="bar"></div>
+
                                 <input type="text"  id="cat" ng-model="category.name" name="" placeholder="e.g. price">
 
                                 <label for="cat">Categories </label>
+
                                 <button class="buttonDark addFields" ng-show="$last" ng-click="removeCategory()">-</button>
                             </fieldset>
                             <button class="buttonDark addFields" ng-click="addNewCategory()">+ </button>
@@ -132,7 +142,7 @@
                         <div class="input-container">
                             <fieldset  data-ng-repeat="variant in variants">
                                 <input type="text" id="var" ng-model="variant.name" name="" placeholder="e.g. Sony" >
-                                <div class="bar"></div>
+
                                 <label for="var">Variants</label>
                                 <button class="buttonDark addFields" ng-show="$last" ng-click="removeVariant()">- </button>
                             </fieldset>
