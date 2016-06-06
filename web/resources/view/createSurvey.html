@@ -169,21 +169,19 @@
                 <div class="containerSurvey">
                     <div class="card"></div>
                     <div class="card">
-                        <h1 class="title">{{surveyData.nazwa}}</h1>
+                        <h1 class="title">{{surveyData.name}}</h1>
                         <div class="input-container">
-                            <div class="kont" data-ng-repeat="variant in variants">
-                                <div class="bar"></div>
+                            <div data-ng-repeat="variant in variants">
                                 <h2 class="variant">{{variant.name}}</h2>
                                 <div data-ng-repeat="y in surveyData.categories track by $index">
-                                    <div class ="category">{{y}} *</div>
-                                    <div class="bar"></div>
-                                    <input class="filling"type="text"  placeholder="e.g. red, black, $13000" name="" ng-model="variant.value[$index]">
+                                    <div class ="category">{{y}} </div>
+                                    <input style="border-bottom: solid #757575;border-width: 1px;margin: 10px;" type="text"  placeholder="e.g. red, black, $13000" name="" ng-model="variant.value[$index]">
                                 </div>
                             </div>
 
                         </div>
                         <div class="button-container">
-                            <button ng-click="showmeSurveyname=true; showmeCategories=false; showmeVariants=false; showmeData=false"><span>Back</span></button>
+                            <button ng-click="showmeSurveyname=false; showmeData=false"><span>Back</span></button>
                             <button data-ng-click="completeData(s.check1)"><span>Next</span></button>
                         </div>
                     </div>

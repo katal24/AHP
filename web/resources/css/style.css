@@ -112,23 +112,28 @@
 }
 
 .card .variant {
-  color: #9d9d9d;
-  font-size: 40px;
+  font-size: 45px;
   font-family: 'RobotoDraft', 'Roboto', sans-serif;
   font-weight: 300;
   line-height: 60px;
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
+  text-align: center;
+  color: #383f50;
+  margin: 20px 10px 10px 10px;
+
 }
 
 .card .category {
   font-size: 25px;
   font-family: 'RobotoDraft', 'Roboto', sans-serif;
   color: #757575;
+  text-transform: uppercase;
   font-weight: 300;
   line-height: 60px;
   -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
+  margin-top: 10px;
 }
 
 .card .input-container {
@@ -163,9 +168,13 @@
   font-size: 24px;
   border-bottom: solid #757575;
   border-width: 1px;
+  margin: 10px;
 
 
 }
+
+.
+
 
 .card .input-container fieldset input:focus {
   border-bottom: solid #383f50;
