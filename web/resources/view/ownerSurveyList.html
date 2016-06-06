@@ -11,8 +11,8 @@
                     <a href="" ng-show="logged">WELCOME, {{userek}}!</a>
                     <a href="" ng-show="!logged">WELCOME</a>
                 </li>
-                <li class="active1">
-                    <a href="" ng-click="goToCreateSurvey()" ng-show="logged">Create your survey</a>
+                <li class="active1" ng-show="logged">
+                    <a href="" ng-click="goToCreateSurvey()" >Create your survey</a>
                 </li>
                 <li>
                     <a href="" data-ng-click="goToPublicSurveys()">Public surveys</a>
@@ -44,11 +44,15 @@
                             <br/><br/><br/>
                             <div class="form-group col-xs-6">
                                 <input  type="radio" id="radio3" name="nazwa2" value="yes" ng-model="s.check1"/>
+                                <br/><br/><br/>
                                 <label for="radio3">Yes </label>
+                                <div class="bar"></div>
                             </div>
                             <div class="form-group col-xs-6">
                                 <input  type="radio" id="radio4"name="nazwa2" value="no" ng-model="s.check1"/>
+                                <br/><br/><br/>
                                 <label for="radio4">No </label>
+                                <div class="bar"></div>
                             </div>
 
                         </div>
