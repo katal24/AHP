@@ -2,18 +2,6 @@
 
     <div id="wrapper">
         <div id="sidebar-wrapper">
-            <!--<i ng-click="showmeSurveyname=true; showmeCategories=false; showmeVariants=false; showmeData=false" class="material-icons">add</i>-->
-            <!--<i class="material-icons" data-ng-click="goToPublicSurveys()">public</i>-->
-            <!--<i class="material-icons" data-ng-click="goToOwnerSurveys()">settings</i>-->
-            <!--&lt;!&ndash;<i  class="material-icons">attach_file</i>&ndash;&gt;-->
-
-            <!--<i class="material-icons"  data-ng-click="goToHome()">refresh</i>-->
-            <!--&lt;!&ndash;<i class="material-icons">search</i>&ndash;&gt;-->
-
-            <!--&lt;!&ndash;<i class="material-icons">public</i>&ndash;&gt;-->
-            <!--&lt;!&ndash;<i class="material-icons">autorenew</i>&ndash;&gt;-->
-
-
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="" ng-show="logged">WELCOME, {{userek}}!</a>
@@ -58,10 +46,6 @@
 
 
                         <div class="input-container">
-                            <!--<select name="access" ng-model="s.access" required="required" id="access">-->
-                            <!--<option>private</option>-->
-                            <!--<option>public</option>-->
-                            <!--</select>-->
                             <div id="access">
                                 <br/><br/><br/>
                                 <div class="form-group col-xs-6">
@@ -80,18 +64,13 @@
 
                             </div>
                             <br/>      <br/>      <br/>
-                            <!--<input type="text" id="access" name="access" ng-model="s.access" required="required"/>-->
                             <label for="access">Access</label>
-                            <!--<div class="bar"></div>-->
                             <br/>      <br/>      <br/>
                         </div>
 
 
                         <div class="input-container">
-                            <!--<select name="access" ng-model="s.access" required="required" id="access">-->
-                            <!--<option>private</option>-->
-                            <!--<option>public</option>-->
-                            <!--</select>-->
+
                             <div id="validate">
                                 <br/><br/><br/>
                                 <div class="form-group col-xs-6">
@@ -109,21 +88,9 @@
 
                             </div>
                             <br/>      <br/>      <br/>
-                            <!--<input type="text" id="access" name="access" ng-model="s.access" required="required"/>-->
                             <label for="validate">Validate</label>
-                            <!--<div class="bar"></div>-->
                             <br/>      <br/>      <br/>
                         </div>
-
-                        <!--<div class="input-container">-->
-                            <!--&lt;!&ndash;<select name="check" ng-model="s.check" required="required" id="check">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<option>yes</option>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<option>no</option>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</select>&ndash;&gt;-->
-                            <!--<input type="text" id="check1" name="check1" ng-model="s.check1" required="required"/>-->
-                            <!--<label for="check1">Validate data entered</label>-->
-                            <!--<div class="bar"></div>-->
-                        <!--</div>-->
 
                         <div class="input-container">
                             <fieldset  data-ng-repeat="category in categories">
@@ -187,41 +154,6 @@
                     </div>
                 </div>
 
-
-
-
-
-
-
-
-
-
-                <!--<form class="form-horizontal">-->
-                <!--<div class="row">-->
-                <!--<div class="form-group">-->
-                <!--<h3>{{surveyData.nazwa}}-->
-                <!--<button class="btn btn-success btn-circle btn-xl " data-ng-click="completeData()"><a href="#/completeData"><i class="glyphicon glyphicon-ok"></i></a></button>-->
-                <!--</h3>-->
-                <!--<hr class="style3">-->
-                <!--<div data-ng-repeat="variant in variants">-->
-                <!--<h4>{{variant.name}}</h4>-->
-
-                <!--<div data-ng-repeat="y in surveyData.categories track by $index">-->
-
-                <!--<div class="form-group">-->
-                <!--<label for="surveyName" class="col-sm-2 control-label">{{y}} *</label>-->
-                <!--<div class="col-sm-8">-->
-                <!--<input type="text" class="form-control" placeholder="e.g. red, black, $13000" name="" ng-model="variant.value[$index]">                                        </div>-->
-
-                <!--</div>-->
-                <!--</div>-->
-                <!--<br>-->
-                <!--<hr class="style3">-->
-                <!--<br>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</form>-->
             </div>
         </div>
         <!--complete-->

@@ -7,7 +7,6 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <!--<a href="" ng-click="showmeSurveyname=false; showmeCategories=false; showmeVariants=false; showmeData=false">WELCOME</a>-->
                     <a href="" ng-show="logged">WELCOME, {{userek}}!</a>
                     <a href="" ng-show="!logged">WELCOME</a>
                 </li>
@@ -38,28 +37,21 @@
                        {{model.name}}
 
                         <button type="submit" ng-show="index2==model.listToScroll.length-1" class="btn btn-success btn-circle btn-xl" data-ng-click="getNext2()">
-                            <!--<a href="#/resultSurvey">-->
+
                                 <i class="glyphicon glyphicon-ok icon white"></i>
-                            <!--</a>-->
+
                         </button>
-                        <!--index2: {{index2}}-->
-                        <!--comp: {{complaints.s1}}-->
-                        <!--value: {{model.listToScroll[index2].name}} != {{model.listToScroll[index2+1].name}}-->
-                        <!--{{datka}}-->
 
                     </div>
 
 
                     <div class="goCenter">
 
-                        <!--<div data-ng-repeat="item in items">-->
-
                         <div class ="listSurveys ">{{complaints.name}}</div>
                         <div class="pull-left">
                             <div>
-                                <!--data-ng-controller="AppController">-->
                                 <div class="container goCenter" style="margin-top: 100px; text-align: center; " >
-                                    <!--data-ng-repeat="element in model.listToScroll track by $index">-->
+
                                     <section class="row">
                                         <div class="col-md-7 col-md-offset-1">
                                             <div>
@@ -89,17 +81,7 @@
                     </div>
                 </div>
             </div>
-            <!--validation-->
-            <!--{{validationOn}}-->
 
-            <!-- -&#45;&#45;-->
-
-            <!--{{model}}-->
-            <!--koniec modelu-->
-
-            <!-- -&#45;&#45;-->
-
-            <!--{{model.publicNamesSurveys}}-->
         </div>
         <!-- /#page-content-wrapper -->
     </div>

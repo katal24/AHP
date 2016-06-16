@@ -36,10 +36,6 @@
                 <div class="card">
                     <h1 class="title">my surveys</h1>
                     <div class="input-container">
-                        <!--<select name="access" ng-model="s.access" required="required" id="access">-->
-                        <!--<option>private</option>-->
-                        <!--<option>public</option>-->
-                        <!--</select>-->
                         <div id="validate">
                             <br/><br/><br/>
                             <div class="form-group col-xs-6">
@@ -57,9 +53,7 @@
 
                         </div>
                         <br/>      <br/>      <br/>
-                        <!--<input type="text" id="access" name="access" ng-model="s.access" required="required"/>-->
                         <label for="validate">Validate</label>
-                        <!--<div class="bar"></div>-->
                         <br/>      <br/>      <br/>
                     </div>
                     <div data-ng-repeat="element in model.ownerNamesSurveys track by $index">
@@ -67,7 +61,6 @@
                         <div class="input-container">
                             <div class="bar"></div>
                             <div class ="listSurveys " data-ng-click="getOwnerSurvey(element, s.check1)">{{$index +1}}.  {{element}}</h2>
-                                <!--<button class="buttonDark buttonGreen"><a href="#/createSurvey">FILL</a></span></button>-->
 
                             </div>
 
