@@ -1,6 +1,5 @@
 package sp;
 
-
 import com.google.gson.Gson;
 import model.DB;
 import model.Questionnaire;
@@ -19,10 +18,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 
-//import org.codehaus.jackson.map.ObjectMapper;
-
 /**
- * Created by dawid on 02.04.16.
+ * Created by dawid and ewelina
  */
 
 @EnableWebMvc
@@ -30,7 +27,6 @@ import java.util.*;
 @Controller
 public class BaseController {
 
-    String user = "Dawid";
     User user1;
     public Questionnaire quest;
     public static NewQuest nq = new NewQuest();
@@ -42,27 +38,17 @@ public class BaseController {
     DB dbConnection;
     public static boolean logged = false;
     public String mainNazwa;
-//    public boolean verification = true;
 
     @RequestMapping("/getSurveyData/")
     @ResponseBody
     Map<String, Object> getSurveyData() throws SQLException {
-        System.out.println("         GET DATY   YYYYYYYYYYYYYYYYY");
-        System.out.println("         NAZWA : " + nq.getSurveyName());
-        System.out.println("check::::::::::::::::::  " + nq.getCheck());
-//        if(nq.getCheck().equals("no")){
-//           verification =  false;
-//        } else{
-//            verification = true;
-//        }
+
         model.put("name", nq.getSurveyName());
         model.put("check", nq.getCheck());
-        System.out.println("check::::::::::::::::::  " + nq.getCheck());
         model.put("categories", nq.getCategoriesList());
         model.put("variants", nq.getVariantsList());
         model.put("ileVar", nq.getVariantsList().size());
         model.put("dostep", nq.getAccess());
-
 
         return model;
     }
@@ -70,13 +56,11 @@ public class BaseController {
     @RequestMapping("/getDataToScroll")
     @ResponseBody
     Map<String, Object> getDataToScroll(){
-        System.out.println("##########################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2 jestem w base w getDataScrol");
-      //  model.put("listToScroll",0);
 
         model.put("listToScroll", quest.getListToScrollFromMatrixes());
-        System.out.println("nazwa z BAZY:   " + mainNazwa);
-        if(mainNazwa!=null)
-        model.put("name",mainNazwa);
+        if(mainNazwa!=null) {
+            model.put("name", mainNazwa);
+        }
         return model;
     }
 
@@ -84,45 +68,31 @@ public class BaseController {
     @ResponseBody
     public void setAllData(@RequestBody String items){
 
-        System.out.println("--------------ITEEEEEEEEEEEEEEEEEEEEEM: " + items);
         Gson gson = new Gson();
-//
-//        // zwiera dane z formularza step 1-3
+
+// zwiera dane z formularza step 1-3
         CompleteData cd = gson.fromJson(items, CompleteData.class);
-        System.out.println("            DANE Z obiektu cd: " + cd.getItems());
 
         quest.setListToScroll(cd.getItems());
-        System.out.println("            DANE Z KLASY: " + quest.getListToScroll());
         errorFactor = quest.setValueInMaps(); //wszystkie mapy w matrixes są już uzupełnione, przepisane do macierzy i wektory wyliczone
-//
-//        if(errorFactor > 0.1){
-//            cos trzeba zrobic
-//        } else {
             quest.printAllMaps();
             // zapisuje rezultat do listy
             result = quest.countResult();
-            System.out.println("=============================================================");
-            System.out.println("=============================================================");
             System.out.println("========================== WYNIK ============================");
             System.out.println(Arrays.toString(result));
-       // }
     }
 
     @RequestMapping("/getResult")
     @ResponseBody
     Map<String, Object> getResult(){
 
-
         resultList = new LinkedList<Result>();
-        System.out.println("WYPISUJE RESULT W GETRESULT: " + result);
         for(int i=0; i<result.length; i++){
             resultList.add(new Result(nq.getVariantsList().get(i),result[i]));
         }
 
         Collections.sort(resultList);
-        System.out.println("Posortowane: " + resultList);
         model.put("resultList", resultList);
-        System.out.println("------------------------------------------------------------------errorfactor wynosi: " + errorFactor);
         if(errorFactor > 0.2 ){ //&& verification){
             model.put("error", new Integer(0));
         } else {
@@ -139,19 +109,11 @@ public class BaseController {
     }
 
     public void completeSutvey(String cs){
-        System.out.println("        JEST W BASE COMPLETE ------------------------  " + cs);
         Gson gson = new Gson();
-//
 //        // zwiera dane z formularza step 1-3
         ncq = gson.fromJson(cs, NewCompletedQuest.class);
-        System.out.println("WYPELNIONE: " + Arrays.toString(ncq.getCategoriesInput().toArray()));
-        System.out.println("DRUGI WARIANT: " + ncq.getCategoriesInput().get(1).getValue());
-
         quest = new Questionnaire();
         quest.makeQuestionnaire();
-
-        System.out.println("LISTA DO SUWAKOW: ");
-        System.out.println(quest.getListToScrollFromMatrixes());
     }
 
     @RequestMapping(value = "/setCompletedData", method = RequestMethod.POST)//, headers = "content-type=application/x-www-form-urlencoded")
@@ -159,12 +121,11 @@ public class BaseController {
     public void setCompletedData(@RequestBody String cs) throws ClassNotFoundException, SQLException, IOException {
 
         // wpisanie ankiety do bazy danych
-// TO ZAKOMENTOWYJE!!!!!!!!!!!!!!!!
         dbConnection = new DB();
         SurveysEntity surveysEntity = new SurveysEntity(nq.getAccess(), user1.getUsername(), nq.getSurveyName(), nq.getCategoriesList(), nq.getVariantsList(), nq.getCheck(), cs);
         dbConnection.saveSurvay(surveysEntity);
 
-//               // cs to JSON zawierajacay dane z formularza (step 1-3)
+               // cs to JSON zawierajacay dane z formularza (step 1-3)
         completeSutvey(cs);
     }
 
@@ -173,7 +134,6 @@ public class BaseController {
     @ResponseBody
     public void setCompletedDataFromBase(@RequestBody String name){
 
-        System.out.println("publiczne survejki");
         //pobranie z bazy
         dbConnection = new DB();
         SurveysEntity survey = dbConnection.getSurveyForName(name);
@@ -202,7 +162,6 @@ public class BaseController {
     @RequestMapping(value = "/getOwnerNamesFromBase")
     @ResponseBody
     Map<String, Object> getOwnerNamesFromBase(){
-        System.out.println("Jestem w pobieraniu nazw dl azalogowanego");
 
         //pobranie z bazy
         dbConnection = new DB();
@@ -217,17 +176,10 @@ public class BaseController {
     public void setSurveysData(@RequestBody String cs) throws ClassNotFoundException, SQLException, IOException {
 
         // cs to JSON zawierajacay dane z formularza (step 1-3)
-        System.out.println("        JEEEEEEEEEEEEEEST W BASE ------------------------  " + cs);
-
         Gson gson = new Gson();
-
         // zwiera dane z formularza step 1-3
         nq = gson.fromJson(cs, NewQuest.class);
-
         nq.setLists();
-        System.out.println("CATEGORIES: " + Arrays.toString(nq.getCategoriesList().toArray()));
-        System.out.println("VARIANTS:   " + Arrays.toString(nq.getVariantsList().toArray()));
-
     }
 
 
@@ -252,18 +204,13 @@ public class BaseController {
         dbConnection = new DB();
         logged = dbConnection.exists(user1);
         user1.setLogged(logged);
-
-
-        System.out.println("TAKI USER JEST W BAZIE: " + logged);
     }
 
     @RequestMapping("/getloggedUser")
     @ResponseBody
     Map<String, Object> getloggedUser(){
 
-
             model.put("zalogowany", logged);
-
 
         return model;
     }
@@ -275,35 +222,17 @@ public class BaseController {
 
         Questionnaire quest = new Questionnaire();
         quest.makeQuestionnaire();
-        System.out.println("            HEEEEEEEEEEEEEEEEEEEEEEEEEEEELLLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-        System.out.println(quest.getVariants());
-        System.out.println(Arrays.deepToString(quest.getMainMatrix()));
 
         return "hello";
     }
 
     @RequestMapping(value="/")
     public String index() {
-//        Questionnaire quest = new Questionnaire();
-//        quest.makeQuestionnaire();
-        System.out.println("               jestem w index");
-
-        System.out.println("            iiiiiindeeeeeeeeeeeeeeeeeeeexxxxxxxxxxxxxxxxxxxx");
-
-//        dbConnection = new DB();
-//
-//        ArrayList<SurveysEntity> publicSurveys = dbConnection.getOwnerSurvey(user);
-//
-//        for(SurveysEntity s : publicSurveys){
-//            System.out.println(s);
-//        }
-
         return "index";
     }
 
     @RequestMapping(value="/user")
     public String login() {
-        System.out.println("           LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOGIN");
         return "login";
     }
 

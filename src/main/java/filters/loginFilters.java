@@ -22,18 +22,12 @@ public class loginFilters implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
         session = (User) req.getSession().getAttribute("bean1");
-        System.out.println("****************** jestem w filter:  " + session);
-        if(session != null) {
-            System.out.println("username:" + session.getUsername());
-        }
+
         String url = req.getRequestURI();
 
-//        if(session == null || !session.isLogged()){
-//&& url.indexOf("/#/") >=0
-            if(!BaseController.logged  ){
-                resp.sendRedirect(req.getServletContext().getContextPath()+ "/#/login");
-                BaseController.logged=true;
-            System.out.println("****************** jestem w ifie nr 1. url: "+ url);
+        if(!BaseController.logged  ){
+            resp.sendRedirect(req.getServletContext().getContextPath()+ "/#/login");
+            BaseController.logged=true;
 
             if(url.indexOf("#/createSurvey.html") >=0 ){
                 resp.sendRedirect(req.getServletContext().getContextPath()+ "#/login.html");
@@ -44,23 +38,13 @@ public class loginFilters implements Filter {
         } else{
             if(url.indexOf("login.html")>=0 && session.isLogged()){
                 resp.sendRedirect(req.getServletContext().getContextPath() + "/createSurvey.html");
-            }
-// else if(url.indexOf("logout.xhtml") >= 0){
-//                req.getSession().removeAttribute("bean1");
-//                resp.sendRedirect(req.getServletContext().getContextPath() + "/login.xhtml");
-//            }
-            else{
+            } else{
                 filterChain.doFilter(servletRequest,servletResponse);
             }
         }
 
-
-
-
-
     }
 
     public void destroy() {
-
     }
 }

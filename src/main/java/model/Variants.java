@@ -16,7 +16,6 @@ public class Variants {
 
     public void addVariant(Criteria criteria){
         variants.add(criteria);
-       // return this;
     }
 
     Matrix m;
@@ -36,13 +35,11 @@ public class Variants {
     }
 
 
-
     @Override
     public String toString() {
         String calosc = new String("");
         for(Criteria c : variants){
             calosc += c.toString() + "\n";
-            //System.out.println("Raz");
         }
         return calosc;
     }

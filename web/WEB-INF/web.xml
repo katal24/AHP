@@ -22,45 +22,4 @@
 
 	</servlet-mapping>
 
-
-	<!--<servlet>-->
-		<!--<servlet-name>Faces Servlet</servlet-name>-->
-		<!--<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>-->
-		<!--<load-on-startup>1</load-on-startup>-->
-	<!--</servlet>-->
-	<!--<servlet-mapping>-->
-		<!--<servlet-name>Faces Servlet</servlet-name>-->
-		<!--<url-pattern>*.xhtml</url-pattern>-->
-	<!--</servlet-mapping>-->
-
-	<!--<filter>-->
-		<!--<filter-name>LoggingFilter</filter-name>-->
-		<!--<filter-class>filters.loginFilters</filter-class>-->
-	<!--</filter>-->
-	<!--<filter-mapping>-->
-		<!--<filter-name>LoggingFilter</filter-name>-->
-		<!--<url-pattern>/*</url-pattern>-->
-	<!--</filter-mapping>-->
-
-
-
-	<!--&lt;!&ndash;<context-param>&ndash;&gt;-->
-		<!--&lt;!&ndash;<param-name>spring</param-name>&ndash;&gt;-->
-		<!--&lt;!&ndash;<param-value>WEB-INF/view/spring-servlet.xml</param-value>&ndash;&gt;-->
-	<!--&lt;!&ndash;</context-param>&ndash;&gt;-->
-
-	<!--&lt;!&ndash;<listener>&ndash;&gt;-->
-		<!--&lt;!&ndash;<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>&ndash;&gt;-->
-	<!--&lt;!&ndash;</listener>&ndash;&gt;-->
-
-	<!--&lt;!&ndash;<context-param>&ndash;&gt;-->
-		<!--&lt;!&ndash;<param-name>contextConfigLocation</param-name>&ndash;&gt;-->
-		<!--&lt;!&ndash;<param-value>/WEB-INF/view/spring-servlet.xml</param-value>&ndash;&gt;-->
-	<!--&lt;!&ndash;</context-param>&ndash;&gt;-->
-
-	<!--&lt;!&ndash;<listener>&ndash;&gt;-->
-		<!--&lt;!&ndash;<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>&ndash;&gt;-->
-	<!--&lt;!&ndash;</listener>&ndash;&gt;-->
-
-
 </web-app>
