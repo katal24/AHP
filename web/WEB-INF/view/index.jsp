@@ -70,12 +70,5 @@
 
         </div>
 
-<%--<footer>--%>
-    <%--wszystko dziala wow wow <br/>--%>
-    <%--<a href="hello">Say Hello</a> <br/>--%>
-    <%--<a href="witaj">Przywitac Cie?</a> <br/>--%>
-
-<%--</footer>--%>
-
 </body>
 </html>
