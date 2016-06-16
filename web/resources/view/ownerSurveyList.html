@@ -7,7 +7,6 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <!--<a href="" ng-click="showmeSurveyname=false; showmeCategories=false; showmeVariants=false; showmeData=false">WELCOME</a>-->
                     <a href="" ng-show="logged">WELCOME, {{userek}}!</a>
                     <a href="" ng-show="!logged">WELCOME</a>
                 </li>
@@ -57,7 +56,6 @@
                         <br/>      <br/>      <br/>
                     </div>
                     <div data-ng-repeat="element in model.ownerNamesSurveys track by $index">
-                        <!--<div data-ng-repeat="item in items">-->
                         <div class="input-container">
                             <div class="bar"></div>
                             <div class ="listSurveys " data-ng-click="getOwnerSurvey(element, s.check1)">{{$index +1}}.  {{element}}</h2>
