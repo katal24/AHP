@@ -24,9 +24,6 @@ myApp.config(function($routeProvider) {
     }).when('/completeData', {
         templateUrl : 'resources/view/completeData.html',
         controller : 'completeDataController'
-    }).when('/userPanel', {
-        templateUrl : 'resources/view/userPanel.html',
-        controller : 'userPanelController'
     });
 });
 
@@ -44,9 +41,6 @@ myApp.controller('AppController',['$scope', function($s) {
 
 
 myApp.controller('homeController', function($scope, $http, $window) {
-    $scope.message = 'Sign up!';
-
-
 
     $scope.goToPublicSurveys  = function() {
         $window.location.href = '#/surveysList';
@@ -64,7 +58,6 @@ myApp.controller('homeController', function($scope, $http, $window) {
     $scope.goToOwnerSurveys  = function() {
         $window.location.href = '#/ownerSurveyList';
     }
-
 
 
     if ($scope.authenticated) {
@@ -103,13 +96,9 @@ myApp.controller('resultSurveyController', function($scope, $http, $window) {
     }
 
 
-
-
-
     $scope.myDataSource = {
         chart: {
             caption: "",
-            //subCaption: "Top 5 stores in last month by revenue",
             numberSuffix: "%",
             theme: "ocean"
         },
@@ -125,21 +114,9 @@ myApp.controller('resultSurveyController', function($scope, $http, $window) {
         $scope.myDataSource.data = $scope.model.resultList;
 
 
-
-
     }).error(function (data) {
-        //  location.reload();
-        //  alert('Wprowadzone dane są niespójne. \n Określ prioryetery jeszcze raz!');
-        //   $window.location.href = '#/completeData';
-        //   console.log("Setting up account failed");
-        // $rootScope.errorEditProfile = true;
 
     });
-
-
-
-
-
 
 });
 
@@ -162,24 +139,12 @@ myApp.controller('surveysListController', function($scope, $http, $window, $root
 
         $http.post('setCompletedDataFromBase/', a).success(function() {
 
-
-
-            console.log("post opublicznej");
-
             $window.location.href = '#/completeData';
-            // $window.location.href = '#/completeData';
-            //  $window.location.href = '#/setSurveysData';
 
         }).error(function () {
-            console.log("Setting up account failed dhfdjkpublicznej");
-            // $rootScope.errorEditProfile = true;
-
 
         });
-
-
     }
-
 
     $scope.goToPublicSurveys  = function() {
         $window.location.href = '#/surveysList';
@@ -197,11 +162,6 @@ myApp.controller('surveysListController', function($scope, $http, $window, $root
     $scope.goToOwnerSurveys  = function() {
         $window.location.href = '#/ownerSurveyList';
     }
-
-
-
-
-
 
 });
 
@@ -227,8 +187,6 @@ myApp.controller('ownerSurveysListController', function($scope, $http, $window, 
         $window.location.href = '#/ownerSurveyList';
     }
 
-
-    console.log('jestem w ownersyerveycontroler');
     $http.get('getOwnerNamesFromBase/').success(function (data) {
 
         $scope.model = data;
@@ -243,54 +201,41 @@ myApp.controller('ownerSurveysListController', function($scope, $http, $window, 
 
         $http.post('setCompletedDataFromBase/', a).success(function() {
 
-            console.log("post opublicznej");
             $window.location.href = '#/completeData';
-            //  $window.location.href = '#/setSurveysData';
 
         }).error(function () {
-            console.log("Setting up account failed dhfdjkpublicznej");
-            // $rootScope.errorEditProfile = true;
-
 
         });
 
     }
-
-
 
 });
 
 
 myApp.controller('newAccountController', function($scope,$window,$http) {
 
-    console.log('jestem w newaccountcontroler');
     $scope.setNewAcc = function () {
         var newAcc = {
             username: $scope.credentials.username,
             password: $scope.credentials.password
         };
 
-        console.log('register');
 
         $http.post('addNewAccount', newAcc).success(function (data){
-            console.log('jestem w sukcesie');
 
             $window.location.href = '#/login';
+
         }).error(function (data){
-            console.log('jestem w errorze');
 
             $window.location.reload();
         });
 
-        //$window.location.href = '#/';
     }
-
     $scope.message = 'New Account';
 });
 
 myApp.controller('loginController', function($rootScope, $scope, $http, $window) {
 
-    console.log('jestem w login controller');
     $scope.loginUser = function () {
         var user = {
             username: $scope.credentials.username,
@@ -298,11 +243,9 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $window)
         };
         $rootScope.userek =  $scope.credentials.username;
 
-        console.log('zrobilem var');
+
 
         $http.post('loginUser', user).success(function (){
-            console.log('jestem w sukcesie przy logowaniu');
-
 
             $http.get('getloggedUser').success(function (data) {
                 $scope.loged = data;
@@ -316,11 +259,9 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $window)
                 }
             });
         }).error(function (data){
-            console.log('jestem w errorze przy logowaniu');
-            //  alert('Niewlasciwy login lub haslo');
-            //$window.location.reload();
+
         });
-        //$window.location.href = '#/createSurvey';
+
     }
 
     $scope.logoutFoo  = function() {
@@ -333,7 +274,6 @@ myApp.controller('loginController', function($rootScope, $scope, $http, $window)
 
 
 myApp.controller('createSurveyController', function($scope, $window, $http, $rootScope) {
-    $scope.message = 'Create survey';
 
     $scope.goToPublicSurveys  = function() {
         $window.location.href = '#/surveysList';
@@ -351,9 +291,6 @@ myApp.controller('createSurveyController', function($scope, $window, $http, $roo
     $scope.goToOwnerSurveys  = function() {
         $window.location.href = '#/ownerSurveyList';
     }
-
-
-
 
     $scope.categories = [{id: 'category1'}, {id: 'category2'}];
 
@@ -387,30 +324,20 @@ myApp.controller('createSurveyController', function($scope, $window, $http, $roo
             surveyName: $scope.s.surveyName,
             access: $scope.s.access,
             check1: $scope.s.check1,
-            //  surveyName2: $scope.s.surveyName
             categories: $scope.categories,
             variants: $scope.variants
         };
 
-        console.log("GetSurvaysData sdsd");
 
         $http.post('setSurveysData/', cs).success(function (data) {
 
-            console.log(cs.surveyName);
-            // $rootScope.errorEditProfile = false;
-            // $rootScope.EditProfileOK = true;
-            console.log("udalo sie w http.post");
-            //   $window.location.href = '#/completeData';
-            //  $window.location.href = '#/setSurveysData';
             $http.get('getSurveyData/').success(function (data) {
-                console.log("get daty w MAINNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
                 $scope.surveyData = data;
             });
 
 
         }).error(function (data) {
-            console.log("Setting up account failed");
-            // $rootScope.errorEditProfile = true;
+
 
         });
 
@@ -423,36 +350,21 @@ myApp.controller('createSurveyController', function($scope, $window, $http, $roo
 
         $rootScope.validationOn = b;
 
-        console.log("Jestesmy w main.js compete");
-
         $http.post('setCompletedData/', cs).success(function (data) {
 
-            console.log("udalo sie w complee.post");
             $window.location.href = '#/completeData';
 
 
         }).error(function (data) {
-            console.log("Setting up account failed");
-            // $rootScope.errorEditProfile = true;
-
 
         });
 
-
-
     }
 
-
-
 });
 
-myApp.controller('userPanelController', function($scope) {
-    $scope.message = 'Your Panel';
-});
 
 myApp.controller('completeDataController', function($scope, $http, $window, $rootScope) {
-
-    $scope.message = 'Your Panel';
 
     $scope.goToPublicSurveys  = function() {
         $window.location.href = '#/surveysList';
@@ -472,13 +384,9 @@ myApp.controller('completeDataController', function($scope, $http, $window, $roo
     }
 
 
-
-
-
     $http.get('getDataToScroll').success(function (data) {
+
         $scope.model = data;
-
-
         $scope.index2 = 0;
         $scope.complaints = $scope.model.listToScroll[0];
         var items = {
@@ -486,11 +394,9 @@ myApp.controller('completeDataController', function($scope, $http, $window, $roo
         };
 
         $scope.getNext2 = function (){
-                console.log("przesylasz suwakiiiiiiiid");
 
                 $http.post('setAllData/', items).success(function (data) {
 
-                    console.log("udalo sie w suwakach");
                     $http.get('getResult/').success(function (data) {
 
                         $scope.datka = data.error;
@@ -505,42 +411,22 @@ myApp.controller('completeDataController', function($scope, $http, $window, $roo
                         }
 
                     }).error(function (data) {
-                        //  location.reload();
-                        //  alert('Wprowadzone dane są niespójne. \n Określ prioryetery jeszcze raz!');
-                        //   $window.location.href = '#/completeData';
-                        //   console.log("Setting up account failed");
-                        // $rootScope.errorEditProfile = true;
 
                     });
 
                 }).error(function (data) {
-                    console.log("Setting up account failed");
+
                 });
 
-
-
         }
-        //koniec
 
         $scope.getNext = function (){
 
             if(($scope.model.listToScroll[$scope.index2].name != $scope.model.listToScroll[$scope.index2+1].name) && ($rootScope.validationOn == "yes") ){
 
-                //var items = {
-                //    items: $scope.model.listToScroll
-                //};
-
-                console.log("przesylasz suwakiiiiiiiid");
-
                 $http.post('setAllData/', items).success(function (data) {
 
-                    console.log(items);
-
-                    console.log("udalo sie w suwakach");
                     $http.get('getResult/').success(function (data) {
-
-                        //$scope.modele = data;
-
 
                         if(data.error==0){
 
@@ -551,11 +437,6 @@ myApp.controller('completeDataController', function($scope, $http, $window, $roo
                         }
 
                     }).error(function (data) {
-                        //  location.reload();
-                        //  alert('Wprowadzone dane są niespójne. \n Określ prioryetery jeszcze raz!');
-                        //   $window.location.href = '#/completeData';
-                        //   console.log("Setting up account failed");
-                        // $rootScope.errorEditProfile = true;
 
                     });
 
@@ -568,10 +449,6 @@ myApp.controller('completeDataController', function($scope, $http, $window, $roo
                 $scope.index2 = $scope.index2 + 1;
                $scope.complaints = $scope.model.listToScroll[$scope.index2];
             }
-            //if(funckja spradzajaca niepewnosc > 0.2){
-            //    do nic; alert
-            //} else
-
 
         }
 
@@ -592,23 +469,14 @@ myApp.controller('completeDataController', function($scope, $http, $window, $roo
             items: $scope.model.listToScroll
         };
 
-        console.log("przesylasz suwakiiiiiiiid");
 
         $http.post('setAllData/', items).success(function (data) {
 
-            console.log(items);
-
-            console.log("udalo sie w suwakach");
 
         }).error(function (data) {
-            console.log("Setting up account failed");
+
         });
     };
-
-
-
-
-
 
 });
 
@@ -625,68 +493,3 @@ myApp.controller('completeDataController', function($scope, $http, $window, $roo
 
 
 
-
-
-
-
-myApp.controller('loginController1', function($rootScope, $scope, $http, $location, $route) {
-
-    $scope.tab = function (route) {
-        return $route.current && route === $route.current.controller;
-    };
-
-    var authenticate = function (credentials, callback) {
-
-        var headers = credentials ? {
-            authorization: "Basic "
-            + btoa(credentials.username + ":"
-                + credentials.password)
-        } : {};
-
-        $http.get('/user', {headers: headers}).success(function (data) {
-            //mapowanie user zwraca Principal a on ma getName()
-            if (data.name) {
-                $rootScope.authenticated = true;
-                $rootScope.loggedUser = credentials.username;
-
-            } else {
-                $rootScope.authenticated = false;
-            }
-            callback && callback($rootScope.authenticated);
-        }).error(function () {
-            $rootScope.authenticated = false;
-            callback && callback(false);
-        });
-
-    };
-
-    //proboje samo bez wysylania fomularza jesli juz mamy to ciastko a jedynie odswiezylismy
-    authenticate();
-
-    $scope.credentials = {};
-    $scope.login = function () {
-        authenticate($scope.credentials, function (authenticated) {
-            if (authenticated) {
-                console.log("Login succeeded");
-                $location.path("/");
-                $scope.error = false;
-                $rootScope.authenticated = true;
-            } else {
-                console.log("Login failed");
-                $location.path("/login");
-                $scope.error = true;
-                $rootScope.authenticated = false;
-            }
-        })
-    };
-
-    $scope.logout = function () {
-        $http.post('logout', {}).success(function () {
-            $rootScope.authenticated = false;
-            $location.path("/");
-        }).error(function (data) {"Logout failed";
-            $rootScope.authenticated = false;
-        });
-    }
-
-});

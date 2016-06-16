@@ -7,7 +7,8 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="" ng-click="showmeSurveyname=false; showmeCategories=false; showmeVariants=false; showmeData=false">WELCOME</a>
+                    <a href="" ng-show="logged">WELCOME, {{userek}}!</a>
+                    <a href="" ng-show="!logged">WELCOME</a>
                 </li>
                 <li class="active1" ng-show="logged">
                     <a href="" ng-click="goToCreateSurvey()">Create your survey</a>
